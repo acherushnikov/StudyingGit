@@ -9,12 +9,14 @@
 #import "ViewController.h"
 #import "PainViewController.h"
 #import "TestViewController.h"
+#import "NewViewController.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
 
 - (void)viewDidLoad
 {
@@ -24,6 +26,9 @@
 
 	TestViewController *testViewController = [TestViewController new];
 	[self.navigationController pushViewController:testViewController animated:YES];
+
+  NewViewController *newViewController = [NewViewController new];
+  [self.navigationController pushViewController:newViewController animated:YES];
 
 }
 
