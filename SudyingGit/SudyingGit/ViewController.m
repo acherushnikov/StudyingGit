@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ANDViewController.h"
 
 @interface ViewController ()
 
@@ -16,6 +17,9 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    ANDViewController* vc = [ANDViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55F7D85C1FB2144100CC3A42 /* ANDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F7D85B1FB2144100CC3A42 /* ANDViewController.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55F7D85A1FB2144100CC3A42 /* ANDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANDViewController.h; sourceTree = "<group>"; };
+		55F7D85B1FB2144100CC3A42 /* ANDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANDViewController.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 				ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */,
 				ADEDECFA1FB211E1007BC9E2 /* Info.plist */,
 				ADEDECFB1FB211E1007BC9E2 /* main.m */,
+				55F7D85A1FB2144100CC3A42 /* ANDViewController.h */,
+				55F7D85B1FB2144100CC3A42 /* ANDViewController.m */,
 			);
 			path = SudyingGit;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F7D85C1FB2144100CC3A42 /* ANDViewController.m in Sources */,
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
