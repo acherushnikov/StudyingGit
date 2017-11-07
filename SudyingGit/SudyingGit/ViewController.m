@@ -10,6 +10,7 @@
 #import "PainViewController.h"
 #import "TestViewController.h"
 #import "NewViewController.h"
+#import "MyViewController.h"
 
 @interface ViewController ()
 
