@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "NewViewController.h"
+
 
 @interface ViewController ()
 
@@ -17,6 +19,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    NewViewController *newViewController = [NewViewController new];
+    [self.navigationController pushViewController:newViewController animated:YES];
 }
 
 
