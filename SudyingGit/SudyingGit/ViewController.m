@@ -11,6 +11,7 @@
 #import "TestViewController.h"
 #import "NewViewController.h"
 
+#import "CustomViewController.h"
 @interface ViewController ()
 
 @end
@@ -29,8 +30,13 @@
 
   NewViewController *newViewController = [NewViewController new];
   [self.navigationController pushViewController:newViewController animated:YES];
+    
+    CustomViewController *customVC = [CustomViewController new];
+    [self.navigationController pushViewController:customVC animated:YES];
 
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {
