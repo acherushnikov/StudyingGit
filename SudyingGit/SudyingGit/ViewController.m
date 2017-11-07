@@ -10,6 +10,7 @@
 #import "PainViewController.h"
 #import "TestViewController.h"
 #import "NewViewController.h"
+#import "ANDViewController.h"
 
 #import "CustomViewController.h"
 @interface ViewController ()
@@ -34,10 +35,9 @@
     CustomViewController *customVC = [CustomViewController new];
     [self.navigationController pushViewController:customVC animated:YES];
 
+    ANDViewController* vc = [ANDViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
