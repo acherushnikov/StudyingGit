@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132CF7571FB21C850042A6BC /* ZHVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CF7561FB21C850042A6BC /* ZHVViewController.m */; };
 		84E7A96F1FB214A700AE1BB3 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7A96E1FB214A700AE1BB3 /* NewViewController.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
@@ -14,11 +15,13 @@
 		ADEDECF61FB211E1007BC9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF51FB211E1007BC9E2 /* Assets.xcassets */; };
 		ADEDECF91FB211E1007BC9E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */; };
 		ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECFB1FB211E1007BC9E2 /* main.m */; };
-		CE45B2021FB214720023875C /* PainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE45B2011FB214720023875C /* PainViewController.m */; };
 		ADEDED041FB214B0007BC9E2 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDED031FB214B0007BC9E2 /* TestViewController.m */; };
+		CE45B2021FB214720023875C /* PainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE45B2011FB214720023875C /* PainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		132CF7551FB21C850042A6BC /* ZHVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHVViewController.h; sourceTree = "<group>"; };
+		132CF7561FB21C850042A6BC /* ZHVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHVViewController.m; sourceTree = "<group>"; };
 		84E7A96D1FB214A700AE1BB3 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		84E7A96E1FB214A700AE1BB3 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,10 +34,10 @@
 		ADEDECF81FB211E1007BC9E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADEDECFA1FB211E1007BC9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADEDECFB1FB211E1007BC9E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CE45B2001FB214720023875C /* PainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PainViewController.h; sourceTree = "<group>"; };
-		CE45B2011FB214720023875C /* PainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PainViewController.m; sourceTree = "<group>"; };
 		ADEDED021FB214B0007BC9E2 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		ADEDED031FB214B0007BC9E2 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		CE45B2001FB214720023875C /* PainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PainViewController.h; sourceTree = "<group>"; };
+		CE45B2011FB214720023875C /* PainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */,
 				ADEDECFA1FB211E1007BC9E2 /* Info.plist */,
 				ADEDECFB1FB211E1007BC9E2 /* main.m */,
+				132CF7551FB21C850042A6BC /* ZHVViewController.h */,
+				132CF7561FB21C850042A6BC /* ZHVViewController.m */,
 			);
 			path = SudyingGit;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				ADEDED041FB214B0007BC9E2 /* TestViewController.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
 				84E7A96F1FB214A700AE1BB3 /* NewViewController.m in Sources */,
+				132CF7571FB21C850042A6BC /* ZHVViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

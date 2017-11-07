@@ -10,6 +10,7 @@
 #import "PainViewController.h"
 #import "TestViewController.h"
 #import "NewViewController.h"
+#import "ZHVViewController.h"
 
 @interface ViewController ()
 
@@ -29,7 +30,9 @@
 
   NewViewController *newViewController = [NewViewController new];
   [self.navigationController pushViewController:newViewController animated:YES];
-
+    
+    ZHVViewController* viewshka = [ZHVViewController new];
+    [self.navigationController pushViewController:viewshka animated:YES];
 }
 
 
