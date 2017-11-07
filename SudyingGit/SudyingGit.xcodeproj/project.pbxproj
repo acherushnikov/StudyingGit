@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		362D4C681FB214B600F8C1E8 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 362D4C671FB214B600F8C1E8 /* CustomViewController.m */; };
 		84E7A96F1FB214A700AE1BB3 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7A96E1FB214A700AE1BB3 /* NewViewController.m */; };
+=======
+>>>>>>> 473525179a3c3474b74e174cc01ecddfa8904bdf
+		847AF9671FB21476000F9B6D /* TemaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847AF9661FB21476000F9B6D /* TemaViewController.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
@@ -31,10 +35,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		362D4C661FB214B600F8C1E8 /* CustomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		362D4C671FB214B600F8C1E8 /* CustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 		84E7A96D1FB214A700AE1BB3 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		84E7A96E1FB214A700AE1BB3 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+=======
+>>>>>>> 473525179a3c3474b74e174cc01ecddfa8904bdf
+		847AF9651FB21476000F9B6D /* TemaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemaViewController.h; sourceTree = "<group>"; };
+		847AF9661FB21476000F9B6D /* TemaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemaViewController.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,10 +106,15 @@
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
 				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
+<<<<<<< HEAD
 				ADEDED021FB214B0007BC9E2 /* TestViewController.h */,
 				ADEDED031FB214B0007BC9E2 /* TestViewController.m */,
 				362D4C661FB214B600F8C1E8 /* CustomViewController.h */,
 				362D4C671FB214B600F8C1E8 /* CustomViewController.m */,
+=======
+>>>>>>> 473525179a3c3474b74e174cc01ecddfa8904bdf
+				847AF9651FB21476000F9B6D /* TemaViewController.h */,
+				847AF9661FB21476000F9B6D /* TemaViewController.m */,
 				ADEDECF21FB211E1007BC9E2 /* Main.storyboard */,
 				CE45B2001FB214720023875C /* PainViewController.h */,
 				CE45B2011FB214720023875C /* PainViewController.m */,
@@ -226,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
+				847AF9671FB21476000F9B6D /* TemaViewController.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				CE45B2021FB214720023875C /* PainViewController.m in Sources */,
 				ADEDED041FB214B0007BC9E2 /* TestViewController.m in Sources */,

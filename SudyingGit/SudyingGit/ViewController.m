@@ -7,9 +7,13 @@
 //
 
 #import "ViewController.h"
+<<<<<<< HEAD
 #import "PainViewController.h"
 #import "TestViewController.h"
 #import "NewViewController.h"
+=======
+>>>>>>> 473525179a3c3474b74e174cc01ecddfa8904bdf
+#import "TemaViewController.h"
 
 #import "CustomViewController.h"
 @interface ViewController ()
@@ -18,6 +22,7 @@
 
 @implementation ViewController
 
+<<<<<<< HEAD
 
 - (void)viewDidLoad
 {
@@ -33,9 +38,17 @@
     
     CustomViewController *customVC = [CustomViewController new];
     [self.navigationController pushViewController:customVC animated:YES];
+    TemaViewController *tvc = [TemaViewController new];
+    [self.navigationController pushViewController:tvc animated:YES];
 
+=======
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    TemaViewController *tvc = [TemaViewController new];
+    [self.navigationController pushViewController:tvc animated:YES];
+>>>>>>> 473525179a3c3474b74e174cc01ecddfa8904bdf
 }
-
 
 
 
