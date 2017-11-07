@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ZHVViewController.h"
 
 @interface ViewController ()
 
@@ -18,7 +19,8 @@
 {
 	[super viewDidLoad];
 
-	
+    ZHVViewController* cntrl = [ZHVViewController new];
+    [self.navigationController pushViewController:cntrl animated:true];
 }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132CF7541FB2149E0042A6BC /* ZHVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CF7531FB2149E0042A6BC /* ZHVViewController.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		132CF7521FB2149E0042A6BC /* ZHVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHVViewController.h; sourceTree = "<group>"; };
+		132CF7531FB2149E0042A6BC /* ZHVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHVViewController.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 		ADEDECEB1FB211E1007BC9E2 /* SudyingGit */ = {
 			isa = PBXGroup;
 			children = (
+				132CF7521FB2149E0042A6BC /* ZHVViewController.h */,
+				132CF7531FB2149E0042A6BC /* ZHVViewController.m */,
 				ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */,
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
@@ -143,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
+				132CF7541FB2149E0042A6BC /* ZHVViewController.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
 			);
