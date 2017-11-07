@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "TemaViewController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    TemaViewController *tvc = [TemaViewController new];
+    [self.navigationController pushViewController:tvc animated:YES];
 }
 
 
