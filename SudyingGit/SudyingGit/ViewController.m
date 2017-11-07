@@ -10,6 +10,7 @@
 #import "PainViewController.h"
 #import "TestViewController.h"
 #import "NewViewController.h"
+#import "BadViewController.h"
 
 @interface ViewController ()
 
@@ -29,6 +30,9 @@
 
   NewViewController *newViewController = [NewViewController new];
   [self.navigationController pushViewController:newViewController animated:YES];
+    
+    BadViewController* badVievController = [BadViewController new];
+    [self.navigationController pushViewController:badVievController animated:YES];
 
 }
 

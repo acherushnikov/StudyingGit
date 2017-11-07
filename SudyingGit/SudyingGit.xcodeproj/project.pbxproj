@@ -16,6 +16,7 @@
 		ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECFB1FB211E1007BC9E2 /* main.m */; };
 		CE45B2021FB214720023875C /* PainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE45B2011FB214720023875C /* PainViewController.m */; };
 		ADEDED041FB214B0007BC9E2 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDED031FB214B0007BC9E2 /* TestViewController.m */; };
+		CEBBAA161FB214D50052AB3B /* BadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBBAA151FB214D50052AB3B /* BadViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		CE45B2011FB214720023875C /* PainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PainViewController.m; sourceTree = "<group>"; };
 		ADEDED021FB214B0007BC9E2 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		ADEDED031FB214B0007BC9E2 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		CEBBAA141FB214D50052AB3B /* BadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BadViewController.h; sourceTree = "<group>"; };
+		CEBBAA151FB214D50052AB3B /* BadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BadViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */,
 				ADEDECFA1FB211E1007BC9E2 /* Info.plist */,
 				ADEDECFB1FB211E1007BC9E2 /* main.m */,
+				CEBBAA141FB214D50052AB3B /* BadViewController.h */,
+				CEBBAA151FB214D50052AB3B /* BadViewController.m */,
 			);
 			path = SudyingGit;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBBAA161FB214D50052AB3B /* BadViewController.m in Sources */,
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				CE45B2021FB214720023875C /* PainViewController.m in Sources */,
