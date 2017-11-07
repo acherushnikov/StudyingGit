@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "PainViewController.h"
+#import "TestViewController.h"
 
 @interface ViewController ()
 
@@ -17,10 +18,13 @@
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
-	
+	[super viewDidLoad];	
 	PainViewController *painViewController = [PainViewController new];
 	[self.navigationController pushViewController:painViewController animated:YES];
+
+	TestViewController *testViewController = [TestViewController new];
+	[self.navigationController pushViewController:testViewController animated:YES];
+
 }
 
 
