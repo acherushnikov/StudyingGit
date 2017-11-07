@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		949E274E1FB214FC00A1E9BF /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949E274D1FB214FC00A1E9BF /* MyViewController.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		949E274C1FB214FC00A1E9BF /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		949E274D1FB214FC00A1E9BF /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 				ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */,
 				ADEDECFA1FB211E1007BC9E2 /* Info.plist */,
 				ADEDECFB1FB211E1007BC9E2 /* main.m */,
+				949E274C1FB214FC00A1E9BF /* MyViewController.h */,
+				949E274D1FB214FC00A1E9BF /* MyViewController.m */,
 			);
 			path = SudyingGit;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			files = (
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
+				949E274E1FB214FC00A1E9BF /* MyViewController.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
