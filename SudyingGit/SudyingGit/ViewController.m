@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ViewControllerT2.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	ViewControllerT2 *viewControllerT2 = [ViewControllerT2 new]
+    [self.navigationController pushViewController:viewControllerT2 animated:YES]
 }
 
 
