@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55E23B641FB214C400D4B5B3 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E23B631FB214C400D4B5B3 /* TestViewController.m */; };
 		84E7A96F1FB214A700AE1BB3 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7A96E1FB214A700AE1BB3 /* NewViewController.m */; };
+		A6F489321FB398A60026C269 /* NightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F489311FB398A60026C269 /* NightViewController.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
@@ -24,6 +24,8 @@
 		55E23B631FB214C400D4B5B3 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		84E7A96D1FB214A700AE1BB3 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		84E7A96E1FB214A700AE1BB3 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		A6F489301FB398A60026C269 /* NightViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NightViewController.h; sourceTree = "<group>"; };
+		A6F489311FB398A60026C269 /* NightViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NightViewController.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -73,11 +75,13 @@
 				ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */,
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
+				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
 				55E23B621FB214C400D4B5B3 /* TestViewController.h */,
 				55E23B631FB214C400D4B5B3 /* TestViewController.m */,
-				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
 				ADEDED021FB214B0007BC9E2 /* TestViewController.h */,
 				ADEDED031FB214B0007BC9E2 /* TestViewController.m */,
+				A6F489301FB398A60026C269 /* NightViewController.h */,
+				A6F489311FB398A60026C269 /* NightViewController.m */,
 				ADEDECF21FB211E1007BC9E2 /* Main.storyboard */,
 				CE45B2001FB214720023875C /* PainViewController.h */,
 				CE45B2011FB214720023875C /* PainViewController.m */,
@@ -117,7 +121,7 @@
 		ADEDECE11FB211E0007BC9E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = none;
 				TargetAttributes = {
 					ADEDECE81FB211E0007BC9E2 = {
@@ -163,10 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
+				A6F489321FB398A60026C269 /* NightViewController.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				CE45B2021FB214720023875C /* PainViewController.m in Sources */,
 				ADEDED041FB214B0007BC9E2 /* TestViewController.m in Sources */,
-				55E23B641FB214C400D4B5B3 /* TestViewController.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
 				84E7A96F1FB214A700AE1BB3 /* NewViewController.m in Sources */,
 			);

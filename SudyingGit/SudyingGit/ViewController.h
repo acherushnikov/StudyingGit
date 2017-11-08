@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)showMyController:(UIButton *)sender;
 
 @end
 
