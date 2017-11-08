@@ -1,0 +1,17 @@
+platform :ios, '9.0'
+
+target 'SudyingGit' do
+  # use_frameworks!
+
+  # Pods for SudyingGit
+  pod 'AFNetworking'
+  pod 'CocoaLumberjack'
+
+  target 'SudyingGitTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'OCMock'
+
+  end
+
+end

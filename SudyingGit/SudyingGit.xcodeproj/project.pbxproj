@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		362D4C681FB214B600F8C1E8 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 362D4C671FB214B600F8C1E8 /* CustomViewController.m */; };
-		84E7A96F1FB214A700AE1BB3 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7A96E1FB214A700AE1BB3 /* NewViewController.m */; };
 		55F7D85C1FB2144100CC3A42 /* ANDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F7D85B1FB2144100CC3A42 /* ANDViewController.m */; };
+		84E7A96F1FB214A700AE1BB3 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7A96E1FB214A700AE1BB3 /* NewViewController.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
@@ -19,6 +19,8 @@
 		ADEDED041FB214B0007BC9E2 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDED031FB214B0007BC9E2 /* TestViewController.m */; };
 		ADEDED1A1FB22D41007BC9E2 /* SudyingGitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDED191FB22D41007BC9E2 /* SudyingGitTests.m */; };
 		CE45B2021FB214720023875C /* PainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE45B2011FB214720023875C /* PainViewController.m */; };
+		D80BA75E9199DF0EE20475BF /* libPods-SudyingGit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED1552C28FECF5090781596 /* libPods-SudyingGit.a */; };
+		FB53BABBB0F6B1801648BDB4 /* libPods-SudyingGitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C318470DDB1CCE8918CA12ED /* libPods-SudyingGitTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,12 +34,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0665369A92F10A427336ED16 /* Pods-SudyingGit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudyingGit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SudyingGit/Pods-SudyingGit.debug.xcconfig"; sourceTree = "<group>"; };
+		2ED1552C28FECF5090781596 /* libPods-SudyingGit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SudyingGit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35979627B239654A2C9BB5B7 /* Pods-SudyingGitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudyingGitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SudyingGitTests/Pods-SudyingGitTests.release.xcconfig"; sourceTree = "<group>"; };
 		362D4C661FB214B600F8C1E8 /* CustomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		362D4C671FB214B600F8C1E8 /* CustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
-		84E7A96D1FB214A700AE1BB3 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
-		84E7A96E1FB214A700AE1BB3 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		4FEC398C362E23E02D36E1E9 /* Pods-SudyingGitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudyingGitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SudyingGitTests/Pods-SudyingGitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		55F7D85A1FB2144100CC3A42 /* ANDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANDViewController.h; sourceTree = "<group>"; };
 		55F7D85B1FB2144100CC3A42 /* ANDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANDViewController.m; sourceTree = "<group>"; };
+		84E7A96D1FB214A700AE1BB3 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		84E7A96E1FB214A700AE1BB3 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,8 +59,10 @@
 		ADEDED171FB22D41007BC9E2 /* SudyingGitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudyingGitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDED191FB22D41007BC9E2 /* SudyingGitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SudyingGitTests.m; sourceTree = "<group>"; };
 		ADEDED1B1FB22D41007BC9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C318470DDB1CCE8918CA12ED /* libPods-SudyingGitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SudyingGitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE45B2001FB214720023875C /* PainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PainViewController.h; sourceTree = "<group>"; };
 		CE45B2011FB214720023875C /* PainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PainViewController.m; sourceTree = "<group>"; };
+		F32C9B5FB51928B884DABF21 /* Pods-SudyingGit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudyingGit.release.xcconfig"; path = "Pods/Target Support Files/Pods-SudyingGit/Pods-SudyingGit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D80BA75E9199DF0EE20475BF /* libPods-SudyingGit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,18 +78,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB53BABBB0F6B1801648BDB4 /* libPods-SudyingGitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C602570C977FBC0486F9A81 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0665369A92F10A427336ED16 /* Pods-SudyingGit.debug.xcconfig */,
+				F32C9B5FB51928B884DABF21 /* Pods-SudyingGit.release.xcconfig */,
+				4FEC398C362E23E02D36E1E9 /* Pods-SudyingGitTests.debug.xcconfig */,
+				35979627B239654A2C9BB5B7 /* Pods-SudyingGitTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5C045B607E1B2D2215736434 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2ED1552C28FECF5090781596 /* libPods-SudyingGit.a */,
+				C318470DDB1CCE8918CA12ED /* libPods-SudyingGitTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ADEDECE01FB211E0007BC9E2 = {
 			isa = PBXGroup;
 			children = (
 				ADEDECEB1FB211E1007BC9E2 /* SudyingGit */,
 				ADEDED181FB22D41007BC9E2 /* SudyingGitTests */,
 				ADEDECEA1FB211E1007BC9E2 /* Products */,
+				3C602570C977FBC0486F9A81 /* Pods */,
+				5C045B607E1B2D2215736434 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +167,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADEDECFF1FB211E1007BC9E2 /* Build configuration list for PBXNativeTarget "SudyingGit" */;
 			buildPhases = (
+				3AA178CDA150B8EB6129167E /* [CP] Check Pods Manifest.lock */,
 				ADEDECE51FB211E0007BC9E2 /* Sources */,
 				ADEDECE61FB211E0007BC9E2 /* Frameworks */,
 				ADEDECE71FB211E0007BC9E2 /* Resources */,
+				392905C10EF18D0BA514405B /* [CP] Embed Pods Frameworks */,
+				F0CF7473FEFA92F2EF570D65 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADEDED201FB22D41007BC9E2 /* Build configuration list for PBXNativeTarget "SudyingGitTests" */;
 			buildPhases = (
+				5E7BF7B224D5ED8BFEB4782F /* [CP] Check Pods Manifest.lock */,
 				ADEDED131FB22D41007BC9E2 /* Sources */,
 				ADEDED141FB22D41007BC9E2 /* Frameworks */,
 				ADEDED151FB22D41007BC9E2 /* Resources */,
+				E0A912039DBA50E5478FE182 /* [CP] Embed Pods Frameworks */,
+				3F52BAB8F8AEF97D81851516 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,6 +262,105 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		392905C10EF18D0BA514405B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudyingGit/Pods-SudyingGit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3AA178CDA150B8EB6129167E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SudyingGit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F52BAB8F8AEF97D81851516 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudyingGitTests/Pods-SudyingGitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E7BF7B224D5ED8BFEB4782F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SudyingGitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0A912039DBA50E5478FE182 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudyingGitTests/Pods-SudyingGitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0CF7473FEFA92F2EF570D65 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudyingGit/Pods-SudyingGit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ADEDECE51FB211E0007BC9E2 /* Sources */ = {
@@ -385,12 +522,14 @@
 		};
 		ADEDED001FB211E1007BC9E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0665369A92F10A427336ED16 /* Pods-SudyingGit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SudyingGit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sbertech.SudyingGit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -401,12 +540,14 @@
 		};
 		ADEDED011FB211E1007BC9E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F32C9B5FB51928B884DABF21 /* Pods-SudyingGit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SudyingGit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sbertech.SudyingGit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -417,6 +558,7 @@
 		};
 		ADEDED1E1FB22D41007BC9E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FEC398C362E23E02D36E1E9 /* Pods-SudyingGitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -431,6 +573,7 @@
 		};
 		ADEDED1F1FB22D41007BC9E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35979627B239654A2C9BB5B7 /* Pods-SudyingGitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
