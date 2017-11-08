@@ -17,7 +17,10 @@
 		ADEDECF91FB211E1007BC9E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */; };
 		ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECFB1FB211E1007BC9E2 /* main.m */; };
 		ADEDED041FB214B0007BC9E2 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDED031FB214B0007BC9E2 /* TestViewController.m */; };
+<<<<<<< HEAD
+=======
 		ADEDED1A1FB22D41007BC9E2 /* SudyingGitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDED191FB22D41007BC9E2 /* SudyingGitTests.m */; };
+>>>>>>> 25d4f5dc059bdf1fd687fa90dd45354882e95a89
 		CE45B2021FB214720023875C /* PainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE45B2011FB214720023875C /* PainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -32,10 +35,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		55E23B621FB214C400D4B5B3 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		55E23B631FB214C400D4B5B3 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+=======
 		362D4C661FB214B600F8C1E8 /* CustomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		362D4C671FB214B600F8C1E8 /* CustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+>>>>>>> 25d4f5dc059bdf1fd687fa90dd45354882e95a89
 		84E7A96D1FB214A700AE1BB3 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		84E7A96E1FB214A700AE1BB3 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		A6F489301FB398A60026C269 /* NightViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NightViewController.h; sourceTree = "<group>"; };
@@ -52,9 +58,12 @@
 		ADEDECFB1FB211E1007BC9E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADEDED021FB214B0007BC9E2 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		ADEDED031FB214B0007BC9E2 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
 		ADEDED171FB22D41007BC9E2 /* SudyingGitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudyingGitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDED191FB22D41007BC9E2 /* SudyingGitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SudyingGitTests.m; sourceTree = "<group>"; };
 		ADEDED1B1FB22D41007BC9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+>>>>>>> 25d4f5dc059bdf1fd687fa90dd45354882e95a89
 		CE45B2001FB214720023875C /* PainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PainViewController.h; sourceTree = "<group>"; };
 		CE45B2011FB214720023875C /* PainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,10 +115,13 @@
 				55E23B631FB214C400D4B5B3 /* TestViewController.m */,
 				ADEDED021FB214B0007BC9E2 /* TestViewController.h */,
 				ADEDED031FB214B0007BC9E2 /* TestViewController.m */,
+<<<<<<< HEAD
 				A6F489301FB398A60026C269 /* NightViewController.h */,
 				A6F489311FB398A60026C269 /* NightViewController.m */,
+=======
 				362D4C661FB214B600F8C1E8 /* CustomViewController.h */,
 				362D4C671FB214B600F8C1E8 /* CustomViewController.m */,
+>>>>>>> 25d4f5dc059bdf1fd687fa90dd45354882e95a89
 				ADEDECF21FB211E1007BC9E2 /* Main.storyboard */,
 				CE45B2001FB214720023875C /* PainViewController.h */,
 				CE45B2011FB214720023875C /* PainViewController.m */,

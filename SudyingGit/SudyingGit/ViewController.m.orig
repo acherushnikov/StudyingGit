@@ -34,11 +34,16 @@
 	TestViewController *testViewController = [TestViewController new];
 	[self.navigationController pushViewController:testViewController animated:YES];
 
+<<<<<<< HEAD
+    NewViewController *newViewController = [NewViewController new];
+    [self.navigationController pushViewController:newViewController animated:YES];
+=======
   NewViewController *newViewController = [NewViewController new];
   [self.navigationController pushViewController:newViewController animated:YES];
     
     CustomViewController *customVC = [CustomViewController new];
     [self.navigationController pushViewController:customVC animated:YES];
+>>>>>>> 25d4f5dc059bdf1fd687fa90dd45354882e95a89
 
 }
 
