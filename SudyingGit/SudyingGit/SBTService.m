@@ -34,7 +34,6 @@
 
 - (NSArray *)getPersonListFromProvider:(SBTPersonProvider *)provider
 {
-	NSNumber *number = @1;
 	if (!provider)
 	{
 		return nil;
