@@ -11,7 +11,7 @@
 
 @implementation SBTPersonProvider
 
-- (NSArray *)getPersonListFromJSON:(NSArray *)jsonData
+- (NSArray <SBTPerson *> *)getPersonListFromJSON:(NSArray *)jsonData
 {
 	if (!jsonData)
 	{

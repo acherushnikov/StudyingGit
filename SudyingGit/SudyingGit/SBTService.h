@@ -10,6 +10,9 @@
 #import "SBTServiceProtocol.h"
 
 @interface SBTService : NSObject <SBTServiceProtocol>
+
 @property (nonatomic, assign) BOOL isCallFakeData;
+
 - (void)callFakeData;
+
 @end
