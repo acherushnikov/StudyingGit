@@ -7,11 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "PainViewController.h"
-#import "TestViewController.h"
-#import "NewViewController.h"
 
-#import "CustomViewController.h"
 @interface ViewController ()
 
 @end
@@ -21,18 +17,7 @@
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];	
-	PainViewController *painViewController = [PainViewController new];
-	[self.navigationController pushViewController:painViewController animated:YES];
-
-	TestViewController *testViewController = [TestViewController new];
-	[self.navigationController pushViewController:testViewController animated:YES];
-
-  NewViewController *newViewController = [NewViewController new];
-  [self.navigationController pushViewController:newViewController animated:YES];
-    
-    CustomViewController *customVC = [CustomViewController new];
-    [self.navigationController pushViewController:customVC animated:YES];
+	[super viewDidLoad];
 
 }
 
