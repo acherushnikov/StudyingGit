@@ -11,6 +11,16 @@
 
 @implementation SBTService
 
+-(instancetype)init
+{
+	self = [super init];
+	if (self)
+	{
+		_isCallFakeData = YES;
+	}
+	return self;
+}
+
 - (NSArray *)fakeData
 {
 	return @[
@@ -24,6 +34,7 @@
 
 - (NSArray *)getPersonListFromProvider:(SBTPersonProvider *)provider
 {
+	NSNumber *number = @1;
 	if (!provider)
 	{
 		return nil;
@@ -36,6 +47,15 @@
 	}
 	
 	return [provider getPersonListFromJSON:data];
+}
+
+- (void)callFakeData
+{
+	if (!self.isCallFakeData) 
+	{
+		return;
+	}
+	[self fakeData];
 }
 
 @end
