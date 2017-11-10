@@ -30,10 +30,10 @@
 }
 
 
-- (IBAction)showMyController:(UIButton *)sender {
-    
-    NightViewController *newViewController = [NightViewController new];
-    [self.navigationController pushViewController:newViewController animated:YES];
-    
-}
+//- (IBAction)showMyController:(UIButton *)sender {
+//    
+//    NightViewController *newViewController = [NightViewController new];
+//    [self.navigationController pushViewController:newViewController animated:YES];
+//    
+//}
 @end

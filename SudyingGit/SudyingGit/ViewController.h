@@ -11,7 +11,7 @@
 
 @interface ViewController : UIViewController
 
-- (IBAction)showMyController:(UIButton *)sender;
+//- (IBAction)showMyController:(UIButton *)sender;
 
 @end
 
