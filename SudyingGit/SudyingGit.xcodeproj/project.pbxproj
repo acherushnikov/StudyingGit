@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8D9EC9FEA49CD3C6A2D591D /* libPods-SudyingGit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9AD96C3BE690B1339753C0 /* libPods-SudyingGit.a */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
@@ -31,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44B1D65EE78C10099B6BB8C3 /* Pods-SudyingGit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudyingGit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SudyingGit/Pods-SudyingGit.debug.xcconfig"; sourceTree = "<group>"; };
+		5B0D6FD31AF2B813C0FD0A67 /* Pods-SudyingGit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudyingGit.release.xcconfig"; path = "Pods/Target Support Files/Pods-SudyingGit/Pods-SudyingGit.release.xcconfig"; sourceTree = "<group>"; };
+		6D9AD96C3BE690B1339753C0 /* libPods-SudyingGit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SudyingGit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D9EC9FEA49CD3C6A2D591D /* libPods-SudyingGit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,12 +78,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		389BA7F6A8B2E58B5C6672C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44B1D65EE78C10099B6BB8C3 /* Pods-SudyingGit.debug.xcconfig */,
+				5B0D6FD31AF2B813C0FD0A67 /* Pods-SudyingGit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		ADEDECE01FB211E0007BC9E2 = {
 			isa = PBXGroup;
 			children = (
 				ADEDECEB1FB211E1007BC9E2 /* SudyingGit */,
 				ADEDED181FB22D41007BC9E2 /* SudyingGitTests */,
 				ADEDECEA1FB211E1007BC9E2 /* Products */,
+				389BA7F6A8B2E58B5C6672C9 /* Pods */,
+				F3802F0EBA52E946BD3A977E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +141,14 @@
 			path = SudyingGitTests;
 			sourceTree = "<group>";
 		};
+		F3802F0EBA52E946BD3A977E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D9AD96C3BE690B1339753C0 /* libPods-SudyingGit.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADEDECFF1FB211E1007BC9E2 /* Build configuration list for PBXNativeTarget "SudyingGit" */;
 			buildPhases = (
+				78049B80C020DEC5807E718B /* [CP] Check Pods Manifest.lock */,
 				ADEDECE51FB211E0007BC9E2 /* Sources */,
 				ADEDECE61FB211E0007BC9E2 /* Frameworks */,
 				ADEDECE71FB211E0007BC9E2 /* Resources */,
+				81DA51ED569F77929BFDD0F5 /* [CP] Embed Pods Frameworks */,
+				B3443825E33A42C695032F66 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,6 +248,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78049B80C020DEC5807E718B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SudyingGit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81DA51ED569F77929BFDD0F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudyingGit/Pods-SudyingGit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3443825E33A42C695032F66 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudyingGit/Pods-SudyingGit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ADEDECE51FB211E0007BC9E2 /* Sources */ = {
@@ -381,6 +459,7 @@
 		};
 		ADEDED001FB211E1007BC9E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44B1D65EE78C10099B6BB8C3 /* Pods-SudyingGit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -397,6 +476,7 @@
 		};
 		ADEDED011FB211E1007BC9E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B0D6FD31AF2B813C0FD0A67 /* Pods-SudyingGit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
