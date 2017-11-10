@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1844CC591FB4BA9600A01A76 /* SBTServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844CC581FB4BA9600A01A76 /* SBTServiceTests.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
 		ADEDECF61FB211E1007BC9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF51FB211E1007BC9E2 /* Assets.xcassets */; };
 		ADEDECF91FB211E1007BC9E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */; };
 		ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECFB1FB211E1007BC9E2 /* main.m */; };
-		ADEDED1A1FB22D41007BC9E2 /* SudyingGitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDED191FB22D41007BC9E2 /* SudyingGitTests.m */; };
 		ADFDB00E1FB4A78300962321 /* SBTPersonProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFDB0071FB4A78300962321 /* SBTPersonProvider.m */; };
 		ADFDB00F1FB4A78300962321 /* SBTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFDB0081FB4A78300962321 /* SBTPerson.m */; };
 		ADFDB0101FB4A78300962321 /* SBTService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFDB00A1FB4A78300962321 /* SBTService.m */; };
@@ -30,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1844CC581FB4BA9600A01A76 /* SBTServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBTServiceTests.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		ADEDECFA1FB211E1007BC9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADEDECFB1FB211E1007BC9E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADEDED171FB22D41007BC9E2 /* SudyingGitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudyingGitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADEDED191FB22D41007BC9E2 /* SudyingGitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SudyingGitTests.m; sourceTree = "<group>"; };
 		ADEDED1B1FB22D41007BC9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFDB0061FB4A78300962321 /* SBTPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTPerson.h; sourceTree = "<group>"; };
 		ADFDB0071FB4A78300962321 /* SBTPersonProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTPersonProvider.m; sourceTree = "<group>"; };
@@ -116,8 +116,8 @@
 		ADEDED181FB22D41007BC9E2 /* SudyingGitTests */ = {
 			isa = PBXGroup;
 			children = (
-				ADEDED191FB22D41007BC9E2 /* SudyingGitTests.m */,
 				ADEDED1B1FB22D41007BC9E2 /* Info.plist */,
+				1844CC581FB4BA9600A01A76 /* SBTServiceTests.m */,
 			);
 			path = SudyingGitTests;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADEDED1A1FB22D41007BC9E2 /* SudyingGitTests.m in Sources */,
+				1844CC591FB4BA9600A01A76 /* SBTServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Externals";
 				INFOPLIST_FILE = SudyingGitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Externals";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sbertech.SudyingGitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,7 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Externals";
 				INFOPLIST_FILE = SudyingGitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Externals";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sbertech.SudyingGitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
