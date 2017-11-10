@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1844CC591FB4BA9600A01A76 /* SBTServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844CC581FB4BA9600A01A76 /* SBTServiceTests.m */; };
+		189381101FB5E31B00EF6FE2 /* SBTPersonProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893810F1FB5E31B00EF6FE2 /* SBTPersonProviderTests.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1844CC581FB4BA9600A01A76 /* SBTServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBTServiceTests.m; sourceTree = "<group>"; };
+		1893810F1FB5E31B00EF6FE2 /* SBTPersonProviderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBTPersonProviderTests.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				ADEDED1B1FB22D41007BC9E2 /* Info.plist */,
 				1844CC581FB4BA9600A01A76 /* SBTServiceTests.m */,
+				1893810F1FB5E31B00EF6FE2 /* SBTPersonProviderTests.m */,
 			);
 			path = SudyingGitTests;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1844CC591FB4BA9600A01A76 /* SBTServiceTests.m in Sources */,
+				189381101FB5E31B00EF6FE2 /* SBTPersonProviderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
