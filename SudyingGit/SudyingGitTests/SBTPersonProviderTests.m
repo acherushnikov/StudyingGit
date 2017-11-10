@@ -11,6 +11,7 @@
 #import <Expecta/Expecta.h>
 #import "SBTPersonProvider.h"
 #import "SBTPerson.h"
+#import "SBTPersonProviderProtocol.h"
 
 @interface SBTPersonProvider (Tests)
 
@@ -28,13 +29,14 @@
 
 - (void)setUp
 {
-	self.personProvider = OCMPartialMock([SBTPersonProvider new]);
     [super setUp];
+	
+	self.personProvider = OCMPartialMock([SBTPersonProvider new]);
 }
 
 - (void)tearDown
 {
-	
+	self.personProvider = nil;
     [super tearDown];
 }
 
@@ -60,8 +62,8 @@
 	  ];
 	
 	NSArray <SBTPerson *> *persons = [self.personProvider getPersonListFromJSON:json];
-	OCMVerify([SBTPerson new]);
-	
+
+	expect(self.personProvider).to.conformTo(@protocol(SBTPersonProviderProtocol));
 	expect(persons).toNot.beNil();
 	expect(persons.count).to.equal(2);
 	expect(persons.firstObject.firstName).to.equal(@"Иван");
