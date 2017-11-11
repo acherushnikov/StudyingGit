@@ -11,6 +11,7 @@
 #import <Expecta/Expecta.h>
 #import "SBTService.h"
 #import "SBTPersonProvider.h"
+#import "SBTPerson.h"
 
 @interface SBTPersonProviderTests : XCTestCase
 
@@ -50,7 +51,12 @@
                                                                      @"lastName" : @"Иванов",
                                                                      }
                                                                  ]];
+    expect(personList).toNot.beNil();
     expect(personList.count).equal(1);
+    expect(personList.firstObject).to.beKindOf([SBTPerson class]);
+    expect(((SBTPerson *)(personList.firstObject)).firstName).equal(@"Иван");
+    expect(((SBTPerson *)(personList.firstObject)).secondName).equal(@"Иванович");
+    expect(((SBTPerson *)(personList.firstObject)).lastName).equal(@"Иванов");
 }
 
 @end
