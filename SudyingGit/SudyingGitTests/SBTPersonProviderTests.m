@@ -59,7 +59,7 @@
     
     expect(personList).toNot.beNil();
     expect(personList.count).to.equal(1);
-    expect(personList.firstObject).to.beInstanceOf([SBTPerson class]);
+    expect(personList.firstObject).to.equal(person);
 }
 
 
