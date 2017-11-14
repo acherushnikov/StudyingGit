@@ -28,13 +28,13 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	if (self)
 	{
 		SBTPerson *firstPerson = [SBTPerson new];
-		firstPerson.personCellType = CASPersonCellTypeDefault;
+		firstPerson.personCellType = CASPersonCellTypeCustom;
 		firstPerson.firstName = @"Стив";
 		firstPerson.lastName = @"Джобс";
-		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал";
+		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
 		
 		SBTPerson *secondPerson = [SBTPerson new];
-		firstPerson.personCellType = CASPersonCellTypeCustom;
+		secondPerson.personCellType = CASPersonCellTypeCustom;
 		secondPerson.firstName = @"Тим";
 		secondPerson.lastName = @"Кук";
 		secondPerson.personDescription = @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
@@ -58,9 +58,9 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (void)viewDidLayoutSubviews
 {
-	[super viewDidLayoutSubviews];
-	
-	self.tableView.frame = self.view.frame;
+    [super viewDidLayoutSubviews];
+    
+    self.tableView.frame = self.view.frame;
 }
 
 
@@ -73,31 +73,26 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell;
+	UITableViewCell* defaultCell;
+    CASPersonTableViewCell* customCell;
 	SBTPerson *person = self.personList[indexPath.row];
 	
 	if (person.personCellType == CASPersonCellTypeDefault)
 	{
-		cell = [tableView dequeueReusableCellWithIdentifier:CASCellIdentifier forIndexPath:indexPath];
+		defaultCell = [tableView dequeueReusableCellWithIdentifier:CASCellIdentifier forIndexPath:indexPath];
+        defaultCell.textLabel.text = person.firstName;
+        
+        return defaultCell;
 	}
 	else
 	{
-		cell = [tableView dequeueReusableCellWithIdentifier:CASPersonTableViewCellIdentifier forIndexPath:indexPath];
+		customCell = [tableView dequeueReusableCellWithIdentifier:CASPersonTableViewCellIdentifier forIndexPath:indexPath];
+        //CASPersonTableViewCell *personCell = (CASPersonTableViewCell*)cell;
+        customCell.firstNameLabel.text = person.firstName;
+        customCell.lastNameLabel.text = person.lastName;
+        customCell.descriptionPersonLabel.text = person.personDescription;
+        return customCell;
 	}
-	
-	if (person.personCellType == CASPersonCellTypeDefault)
-	{
-		cell.textLabel.text = person.firstName;
-	}
-	else
-	{
-		CASPersonTableViewCell *personCell = (id)cell;
-		personCell.firstNameLabel.text = person.firstName;
-		personCell.lastNameLabel.text = person.lastName;
-		personCell.descriptionPersonLabel.text = person.personDescription;		
-	}
-
-	return cell;
 }
 
 
@@ -105,12 +100,13 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	SBTPerson *person = self.personList[indexPath.row];
-	if (person.personCellType == CASPersonCellTypeDefault)
-	{
-		return 44;
-	}
-	
+    SBTPerson *person = self.personList[indexPath.row];
+    if (person.personCellType == CASPersonCellTypeCustom) {
+        
+        return [CASPersonTableViewCell heightForText:person.personDescription] + 100.f;
+    } else {
+        return 44.0;
+    }
 }
 
 @end

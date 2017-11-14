@@ -75,6 +75,7 @@
 		ADEDECE01FB211E0007BC9E2 = {
 			isa = PBXGroup;
 			children = (
+				E6D052781FBB9C6C002FB6C5 /* New Group */,
 				ADEDECEB1FB211E1007BC9E2 /* SudyingGit */,
 				ADEDED181FB22D41007BC9E2 /* SudyingGitTests */,
 				ADEDECEA1FB211E1007BC9E2 /* Products */,
@@ -97,8 +98,6 @@
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
 				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
-				AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */,
-				AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */,
 				ADFDB0061FB4A78300962321 /* SBTPerson.h */,
 				ADFDB0081FB4A78300962321 /* SBTPerson.m */,
 				ADFDB00B1FB4A78300962321 /* SBTPersonProvider.h */,
@@ -122,6 +121,15 @@
 				ADFDB0111FB4BA9000962321 /* SBTServiceTests.m */,
 			);
 			path = SudyingGitTests;
+			sourceTree = "<group>";
+		};
+		E6D052781FBB9C6C002FB6C5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */,
+				AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
