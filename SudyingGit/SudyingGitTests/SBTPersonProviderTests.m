@@ -47,6 +47,10 @@
 
 -(void)testGetPersonListFromJSON
 {
+    id person = OCMClassMock([SBTPerson class]);
+    
+    OCMStub([person new]).andReturn(person);
+    
     NSArray* personList = [self.provider getPersonListFromJSON:@[@{
                                                                      @"firstName" : @"Иван",
                                                                      @"secondName" : @"Иванович",
