@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UILabel *descriptionPersonLabel;
 @property (nonatomic, strong) UIImageView *personPhotoImageView;
 
-- (CGFloat)cellHeight;
++ (CGFloat)cellHeightWithPersonDescription:(NSString*)personDescription;
 
 @end

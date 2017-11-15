@@ -44,21 +44,56 @@ static const CGFloat CASLabelHeight = 20.f;
 {
 	[super layoutSubviews];
 	
-	self.personPhotoImageView.frame = CGRectMake(CASElementsOffset, (CGRectGetHeight(self.contentView.frame) - CASPersonPhotoSize.height)/2, CASPersonPhotoSize.width, CASPersonPhotoSize.height);
+	self.personPhotoImageView.frame = CGRectMake
+    (
+        CASElementsOffset,
+        (CGRectGetHeight(self.contentView.frame) - CASPersonPhotoSize.height)/2,
+        CASPersonPhotoSize.width,
+        CASPersonPhotoSize.height
+     );
 	
-	self.firstNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CASElementsOffset, CGRectGetWidth(self.contentView.frame) - CGRectGetWidth(self.personPhotoImageView.frame) - CASElementsOffset * 3, CASLabelHeight);
+	self.firstNameLabel.frame = CGRectMake
+    (
+     CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset,
+     CASElementsOffset,
+     CGRectGetWidth(self.contentView.frame) - CGRectGetWidth(self.personPhotoImageView.frame) - CASElementsOffset * 3,
+     CASLabelHeight
+     );
 	
-	self.lastNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.firstNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), CASLabelHeight);
+	self.lastNameLabel.frame = CGRectMake
+    (
+     CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset,
+     CGRectGetMaxY(self.firstNameLabel.frame) + CASElementsOffset,
+     CGRectGetWidth(self.firstNameLabel.frame),
+     CASLabelHeight
+    );
 	
 	CGSize detailTextLabelSize = [self.descriptionPersonLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.firstNameLabel.frame), CGFLOAT_MAX)];
 	
-	self.descriptionPersonLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
+	self.descriptionPersonLabel.frame = CGRectMake
+    (
+     CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset,
+     CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset,
+     CGRectGetWidth(self.firstNameLabel.frame),
+     detailTextLabelSize.height
+    );
 }
 
-- (CGFloat)cellHeight
++ (CGFloat)cellHeightWithPersonDescription:(NSString*)personDescription
 {
-	CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset;
-	return height;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.f]};
+
+    CGRect rect = [personDescription
+        boundingRectWithSize:
+        CGSizeMake
+        (
+        CGRectGetWidth(UIScreen.mainScreen.bounds) - 3*CASElementsOffset - CASPersonPhotoSize.width,
+        CGFLOAT_MAX
+        )
+        options:NSStringDrawingUsesLineFragmentOrigin
+        attributes:attributes
+        context:nil];
+    return 4*CASElementsOffset + 2*CASLabelHeight + (int)(rect.size.height + 0.5);
 }
 
 @end
