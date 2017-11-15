@@ -55,7 +55,7 @@ static const CGFloat CASLabelHeight = 20.f;
 	self.descriptionPersonLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
 }
 
-- (CGFloat)cellHeight
+- (CGFloat)tableCellAdjustableHeight
 {
 	CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset;
 	return height;

@@ -105,11 +105,17 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CASPersonTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 	SBTPerson *person = self.personList[indexPath.row];
 	if (person.personCellType == CASPersonCellTypeDefault)
 	{
 		return 44;
 	}
+    if (cell)
+    {
+        return [cell tableCellAdjustableHeight];
+    }
+    return 44;
 	
 }
 
