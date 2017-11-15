@@ -53,6 +53,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	self.tableView.delegate = self;
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
+    
 	[self.view addSubview:self.tableView];
 }
 
@@ -94,7 +95,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 		CASPersonTableViewCell *personCell = (id)cell;
 		personCell.firstNameLabel.text = person.firstName;
 		personCell.lastNameLabel.text = person.lastName;
-		personCell.descriptionPersonLabel.text = person.personDescription;		
+		personCell.descriptionPersonLabel.text = person.personDescription;
 	}
 
 	return cell;
@@ -105,12 +106,16 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	SBTPerson *person = self.personList[indexPath.row];
-	if (person.personCellType == CASPersonCellTypeDefault)
-	{
-		return 44;
-	}
-	
+    SBTPerson *person = self.personList[indexPath.row];
+    if(person.personCellType == CASPersonCellTypeCustom){
+
+          CASPersonTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+
+        if(cell){
+            return [cell cellHeight];
+        }}
+    return 44.f;
 }
+
 
 @end
