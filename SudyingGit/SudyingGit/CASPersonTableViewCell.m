@@ -57,8 +57,13 @@ static const CGFloat CASLabelHeight = 20.f;
 
 - (CGFloat)cellHeight
 {
-	CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset;
+	CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset; // .frame!
 	return height;
+}
+
+- (CGFloat)cellOffset
+{
+    return CASElementsOffset;
 }
 
 @end

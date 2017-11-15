@@ -16,5 +16,6 @@
 @property (nonatomic, strong) UIImageView *personPhotoImageView;
 
 - (CGFloat)cellHeight;
+- (CGFloat)cellOffset;
 
 @end
