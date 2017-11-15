@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		949851BE1FB6E61E00D6AAF3 /* SBTPersonProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 949851BD1FB6E61E00D6AAF3 /* SBTPersonProvider.m */; };
+		94B58E591FBB549A00A52103 /* MVMPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B58E581FBB549A00A52103 /* MVMPersonTableViewCell.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
-		ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF21FB211E1007BC9E2 /* Main.storyboard */; };
 		ADEDECF61FB211E1007BC9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF51FB211E1007BC9E2 /* Assets.xcassets */; };
 		ADEDECF91FB211E1007BC9E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */; };
 		ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECFB1FB211E1007BC9E2 /* main.m */; };
@@ -32,12 +32,13 @@
 
 /* Begin PBXFileReference section */
 		949851BD1FB6E61E00D6AAF3 /* SBTPersonProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBTPersonProvider.m; sourceTree = "<group>"; };
+		94B58E571FBB549A00A52103 /* MVMPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMPersonTableViewCell.h; sourceTree = "<group>"; };
+		94B58E581FBB549A00A52103 /* MVMPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMPersonTableViewCell.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ADEDECEF1FB211E1007BC9E2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		ADEDECF01FB211E1007BC9E2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		ADEDECF31FB211E1007BC9E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ADEDECF51FB211E1007BC9E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADEDECF81FB211E1007BC9E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADEDECFA1FB211E1007BC9E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +99,8 @@
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
 				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
+				94B58E571FBB549A00A52103 /* MVMPersonTableViewCell.h */,
+				94B58E581FBB549A00A52103 /* MVMPersonTableViewCell.m */,
 				ADFDB0061FB4A78300962321 /* SBTPerson.h */,
 				ADFDB0081FB4A78300962321 /* SBTPerson.m */,
 				ADFDB00B1FB4A78300962321 /* SBTPersonProvider.h */,
@@ -106,7 +109,6 @@
 				ADFDB0091FB4A78300962321 /* SBTService.h */,
 				ADFDB00A1FB4A78300962321 /* SBTService.m */,
 				ADFDB00C1FB4A78300962321 /* SBTServiceProtocol.h */,
-				ADEDECF21FB211E1007BC9E2 /* Main.storyboard */,
 				ADEDECF51FB211E1007BC9E2 /* Assets.xcassets */,
 				ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */,
 				ADEDECFA1FB211E1007BC9E2 /* Info.plist */,
@@ -209,7 +211,6 @@
 			files = (
 				ADEDECF91FB211E1007BC9E2 /* LaunchScreen.storyboard in Resources */,
 				ADEDECF61FB211E1007BC9E2 /* Assets.xcassets in Resources */,
-				ADEDECF41FB211E1007BC9E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +230,7 @@
 			files = (
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
 				ADFDB00F1FB4A78300962321 /* SBTPerson.m in Sources */,
+				94B58E591FBB549A00A52103 /* MVMPersonTableViewCell.m in Sources */,
 				ADFDB00E1FB4A78300962321 /* SBTPersonProvider.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
@@ -256,14 +258,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ADEDECF21FB211E1007BC9E2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ADEDECF31FB211E1007BC9E2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
