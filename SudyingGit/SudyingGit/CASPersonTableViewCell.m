@@ -53,6 +53,17 @@ static const CGFloat CASLabelHeight = 20.f;
 	CGSize detailTextLabelSize = [self.descriptionPersonLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.firstNameLabel.frame), CGFLOAT_MAX)];
 	
 	self.descriptionPersonLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
+	
+}
+
+- (void)prepareForReuse
+{
+	[super prepareForReuse];
+	
+	self.personPhotoImageView.image = nil;
+	self.firstNameLabel.text = nil;
+	self.lastNameLabel.text = nil;
+	self.descriptionPersonLabel.text = nil;
 }
 
 - (CGFloat)cellHeight
