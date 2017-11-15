@@ -57,7 +57,7 @@ static const CGFloat CASLabelHeight = 20.f;
 }
 
 // Общий метод для расчета высоты ячейки
-
+//
 + (CGFloat) heightForText:(NSString*) text
 
 {
