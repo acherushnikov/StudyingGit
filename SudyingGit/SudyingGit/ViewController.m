@@ -31,7 +31,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 		firstPerson.personCellType = CASPersonCellTypeCustom;
 		firstPerson.firstName = @"Стив";
 		firstPerson.lastName = @"Джобс";
-		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
+		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст Lorem Ipsum - это текст-рыба давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
 		
 		SBTPerson *secondPerson = [SBTPerson new];
 		secondPerson.personCellType = CASPersonCellTypeCustom;
@@ -103,7 +103,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     SBTPerson *person = self.personList[indexPath.row];
     if (person.personCellType == CASPersonCellTypeCustom) {
         
-        return [CASPersonTableViewCell heightForText:person.personDescription] + 100.f;
+        return [CASPersonTableViewCell heightForText:person.personDescription] + 80.f;
     } else {
         return 44.0;
     }
