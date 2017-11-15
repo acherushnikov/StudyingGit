@@ -22,6 +22,8 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 @implementation ViewController
 
+NSString
+
 - (instancetype)init
 {
 	self = [super init];
