@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		846990B31FBDE93100267D2C /* ZAMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846990B21FBDE93100267D2C /* ZAMCollectionViewController.m */; };
+		846990B61FBDF4F900267D2C /* ZAMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846990B51FBDF4F900267D2C /* ZAMCollectionViewCell.m */; };
+		846990B91FBE022F00267D2C /* ZAMCollectionReusableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 846990B81FBE022F00267D2C /* ZAMCollectionReusableViewHeader.m */; };
+		846990BC1FBE026A00267D2C /* ZAMCollectionReusableViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 846990BB1FBE026A00267D2C /* ZAMCollectionReusableViewFooter.m */; };
 		AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
@@ -30,6 +34,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		846990B11FBDE93100267D2C /* ZAMCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAMCollectionViewController.h; sourceTree = "<group>"; };
+		846990B21FBDE93100267D2C /* ZAMCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAMCollectionViewController.m; sourceTree = "<group>"; };
+		846990B41FBDF4F900267D2C /* ZAMCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAMCollectionViewCell.h; sourceTree = "<group>"; };
+		846990B51FBDF4F900267D2C /* ZAMCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAMCollectionViewCell.m; sourceTree = "<group>"; };
+		846990B71FBE022F00267D2C /* ZAMCollectionReusableViewHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAMCollectionReusableViewHeader.h; sourceTree = "<group>"; };
+		846990B81FBE022F00267D2C /* ZAMCollectionReusableViewHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAMCollectionReusableViewHeader.m; sourceTree = "<group>"; };
+		846990BA1FBE026A00267D2C /* ZAMCollectionReusableViewFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAMCollectionReusableViewFooter.h; sourceTree = "<group>"; };
+		846990BB1FBE026A00267D2C /* ZAMCollectionReusableViewFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAMCollectionReusableViewFooter.m; sourceTree = "<group>"; };
 		AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASPersonTableViewCell.h; sourceTree = "<group>"; };
 		AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASPersonTableViewCell.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +109,12 @@
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
 				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
+				846990B11FBDE93100267D2C /* ZAMCollectionViewController.h */,
+				846990B21FBDE93100267D2C /* ZAMCollectionViewController.m */,
+				846990B71FBE022F00267D2C /* ZAMCollectionReusableViewHeader.h */,
+				846990B81FBE022F00267D2C /* ZAMCollectionReusableViewHeader.m */,
+				846990BA1FBE026A00267D2C /* ZAMCollectionReusableViewFooter.h */,
+				846990BB1FBE026A00267D2C /* ZAMCollectionReusableViewFooter.m */,
 				AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */,
 				AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */,
 				ADFDB0061FB4A78300962321 /* SBTPerson.h */,
@@ -111,6 +129,8 @@
 				ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */,
 				ADEDECFA1FB211E1007BC9E2 /* Info.plist */,
 				ADEDECFB1FB211E1007BC9E2 /* main.m */,
+				846990B41FBDF4F900267D2C /* ZAMCollectionViewCell.h */,
+				846990B51FBDF4F900267D2C /* ZAMCollectionViewCell.m */,
 			);
 			path = SudyingGit;
 			sourceTree = "<group>";
@@ -228,10 +248,14 @@
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
 				AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */,
 				ADFDB00F1FB4A78300962321 /* SBTPerson.m in Sources */,
+				846990B31FBDE93100267D2C /* ZAMCollectionViewController.m in Sources */,
 				ADFDB00E1FB4A78300962321 /* SBTPersonProvider.m in Sources */,
+				846990BC1FBE026A00267D2C /* ZAMCollectionReusableViewFooter.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
 				ADFDB0101FB4A78300962321 /* SBTService.m in Sources */,
+				846990B61FBDF4F900267D2C /* ZAMCollectionViewCell.m in Sources */,
+				846990B91FBE022F00267D2C /* ZAMCollectionReusableViewHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
