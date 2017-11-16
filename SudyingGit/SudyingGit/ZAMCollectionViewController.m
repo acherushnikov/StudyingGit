@@ -37,6 +37,7 @@ static NSString *const HeaderID = @"ZAMCasfaf";
     //layout.itemSize = CGSizeMake(1000, 30);
     layout.footerReferenceSize = CGSizeMake(200, 100);
     layout.headerReferenceSize = CGSizeMake(100, 25);
+    [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     self.collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout];
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -108,5 +109,15 @@ static NSString *const HeaderID = @"ZAMCasfaf";
     }
     return reus;
 }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"sect - %ld row - %ld",indexPath.section+1,indexPath.row+1);
 
+    
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 @end
