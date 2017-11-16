@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "CASCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,10 +20,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	self.window = [UIWindow new];
 	
-	ViewController *rootViewController = [ViewController new];
+	CASCollectionViewController *rootViewController = [CASCollectionViewController new];
 	self.window.rootViewController = rootViewController;
 	
 	[self.window makeKeyAndVisible];
+    
 	return YES;
 }
 
