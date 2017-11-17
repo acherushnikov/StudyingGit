@@ -111,6 +111,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 		return 44;
 	}
 	
+    return 44;
 }
 
 @end
