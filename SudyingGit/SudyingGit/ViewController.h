@@ -11,6 +11,8 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) UIButton *leftbutton;
+@property (nonatomic, strong) UIButton *rightbutton;
 
 @end
 

@@ -51,17 +51,68 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	self.tableView = [UITableView new];
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
 	[self.view addSubview:self.tableView];
+    
+    
+    self.leftbutton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.leftbutton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.leftbutton setTitle:@"Delete" forState:UIControlStateNormal];
+    self.leftbutton.backgroundColor = UIColor.cyanColor;
+    [self.view addSubview:self.leftbutton];
+    
+    NSLayoutConstraint *leftButtonTopConstr = [NSLayoutConstraint constraintWithItem:self.leftbutton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:15];
+    [self.view addConstraint:leftButtonTopConstr];
+    
+    NSLayoutConstraint *leftButtonLeftConstr = [NSLayoutConstraint constraintWithItem:self.leftbutton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:15];
+    [self.view addConstraint:leftButtonLeftConstr];
+    
+    NSLayoutConstraint *leftButtonBottomConstr = [NSLayoutConstraint constraintWithItem:self.leftbutton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:44];
+    [self.view addConstraint:leftButtonBottomConstr];
+    
+    NSLayoutConstraint *leftButtonRightConstr = [NSLayoutConstraint constraintWithItem:self.leftbutton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:-10];
+    [self.view addConstraint:leftButtonRightConstr];
+    
+    self.rightbutton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.rightbutton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.rightbutton setTitle:@"Add" forState:UIControlStateNormal];
+    self.rightbutton.backgroundColor = UIColor.blueColor;
+    [self.view addSubview:self.rightbutton];
+    
+    NSLayoutConstraint *rightButtonTopConstr = [NSLayoutConstraint constraintWithItem:self.rightbutton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:15];
+    [self.view addConstraint:rightButtonTopConstr];
+    
+    NSLayoutConstraint *rightButtonRightConstr = [NSLayoutConstraint constraintWithItem:self.rightbutton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-15];
+    [self.view addConstraint:rightButtonRightConstr];
+    
+    NSLayoutConstraint *rightButtonBottomConstr = [NSLayoutConstraint constraintWithItem:self.rightbutton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:44];
+    [self.view addConstraint:rightButtonBottomConstr];
+    
+    NSLayoutConstraint *rightButtonLeftConstr = [NSLayoutConstraint constraintWithItem:self.rightbutton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:10];
+    [self.view addConstraint:rightButtonLeftConstr];
+    
+    NSLayoutConstraint *tableTop = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.leftbutton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:15];
+    [self.view addConstraint:tableTop];
+    
+    NSLayoutConstraint *tableLeft = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    [self.view addConstraint:tableLeft];
+    
+    NSLayoutConstraint *tableRight = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+    [self.view addConstraint:tableRight];
+    
+    NSLayoutConstraint *tableBottom = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+    [self.view addConstraint:tableBottom];
+    
 }
 
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-	
-	self.tableView.frame = self.view.frame;
-}
+//- (void)viewDidLayoutSubviews
+//{
+//    [super viewDidLayoutSubviews];
+//    
+//    self.tableView.frame = self.view.frame;
+//}
 
 
 #pragma mark - UITableViewDataSource

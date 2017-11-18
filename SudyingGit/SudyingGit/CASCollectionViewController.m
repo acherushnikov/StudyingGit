@@ -46,6 +46,7 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     layout.itemSize = CGSizeMake(175, 175);
     layout.minimumLineSpacing = 50;
     
+    
     [layout setFooterReferenceSize:CGSizeMake(100, 50)];
     [layout setHeaderReferenceSize:CGSizeMake(150, 25)];
     
@@ -60,6 +61,39 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:CollectionViewSupplyID];
     
     [self.view addSubview:self.collectionView];
+    
+    self.leftbutton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.leftbutton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.leftbutton setTitle:@"Delete" forState:UIControlStateNormal];
+    self.leftbutton.backgroundColor = UIColor.cyanColor;
+    [self.view addSubview:self.leftbutton];
+    
+    self.rightbutton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.rightbutton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.rightbutton setTitle:@"Add" forState:UIControlStateNormal];
+    self.rightbutton.backgroundColor = UIColor.blueColor;
+    [self.view addSubview:self.rightbutton];
+    
+    NSDictionary *dict =  @{
+                                @"LeftB": self.leftbutton,
+                                @"RightB": self.rightbutton,
+                                @"CollectionV": self.collectionView
+                            };
+    
+    NSArray *ButtonsSideConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[LeftB]-15-[RightB]-15-|" options: 0 metrics:nil views:dict];
+    [self.view addConstraints: ButtonsSideConstr];
+    
+//    NSArray *ButtonsTopConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[LeftB(44)]|" options: 0 metrics:nil views:dict];
+//    [self.view addConstraints: ButtonsTopConstr];
+
+    NSArray *leftButtonsHeightConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[LeftB(44)]|" options: 0 metrics:nil views:dict];
+    [self.view addConstraints:leftButtonsHeightConstr];
+    
+    NSArray *rightButtonsHeightConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[RightB(44)]|" options: 0 metrics:nil views:dict];
+    [self.view addConstraints:rightButtonsHeightConstr];
+    
+//    NSArray *collectionHeightConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-60-[CollectionV(100)]|" options: 0 metrics:nil views:dict];
+//    [self.view addConstraints:collectionHeightConstr];
 }
 
 
