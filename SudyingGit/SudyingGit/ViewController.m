@@ -12,11 +12,18 @@
 
 static NSString *const CASCellIdentifier = @"CellIdentifier";
 static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCell";
+static const CGFloat KVBButtonSize = 44.f;
+static const CGFloat KVBTableOffset = 74.f;
+static const CGFloat KVBButtonOffset = 15.f;
+static const CGFloat KVBDistanceBetweenButton = 15.f;
+
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray <SBTPerson *>* personList;
+@property (nonatomic,strong) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *rightButton;
 
 @end
 
@@ -53,15 +60,127 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	self.tableView.delegate = self;
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
-	[self.view addSubview:self.tableView];
+
+	[super viewDidLayoutSubviews];
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.tableView];
+
+    UIButton *leftButton = [UIButton new];
+    leftButton.backgroundColor = UIColor.grayColor;
+    leftButton.titleLabel.text = @"B1";
+    
+    self.leftButton = leftButton;
+    self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:leftButton];
+    
+    UIButton *rightButton = [UIButton new];
+    rightButton.backgroundColor = UIColor.greenColor;
+    rightButton.titleLabel.text = @"B2";
+    
+    self.rightButton = rightButton;
+    self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:rightButton];
+    
+    NSArray *constraints = @[[NSLayoutConstraint
+                              constraintWithItem:self.leftButton
+                                 attribute: NSLayoutAttributeTop
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem: self.view
+                                 attribute: NSLayoutAttributeTop
+                                multiplier:1.f
+                                  constant:KVBButtonOffset],
+    
+    [NSLayoutConstraint constraintWithItem:self.leftButton
+                                 attribute: NSLayoutAttributeLeft
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem: self.view
+                                 attribute: NSLayoutAttributeLeft
+                                multiplier:1.f
+                                  constant:KVBButtonOffset],
+    
+    [NSLayoutConstraint constraintWithItem:self.leftButton
+                                 attribute: NSLayoutAttributeRight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem: self.rightButton
+                                 attribute: NSLayoutAttributeLeft
+                                multiplier:1.f
+                                  constant:-KVBButtonOffset],
+    
+    
+                             [NSLayoutConstraint constraintWithItem:self.leftButton
+                                                          attribute: NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem: 0
+                                                          attribute: NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.f
+                                                           constant:44],
+                             
+    [NSLayoutConstraint constraintWithItem:self.rightButton
+                                 attribute: NSLayoutAttributeTop
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem: self.view
+                                 attribute: NSLayoutAttributeTop
+                                multiplier:1.f
+                                  constant:-KVBButtonOffset],
+    
+    [NSLayoutConstraint constraintWithItem:self.rightButton
+                                 attribute: NSLayoutAttributeRight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem: self.view
+                                 attribute: NSLayoutAttributeRight
+                                multiplier:1.f
+                                  constant:-KVBButtonOffset],
+    
+    
+    [NSLayoutConstraint constraintWithItem:self.rightButton
+                                 attribute: NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem: nil
+                                 attribute: NSLayoutAttributeNotAnAttribute
+                                multiplier:1.f
+                                  constant:44],
+                             [NSLayoutConstraint constraintWithItem:self.rightButton
+                                                          attribute: NSLayoutAttributeBottom
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem: self.tableView                                                          attribute: NSLayoutAttributeTop
+                                                         multiplier:1.f
+                                                           constant:-KVBButtonSize],
+                             
+                             
+    [NSLayoutConstraint constraintWithItem:self.tableView
+                                 attribute: NSLayoutAttributeLeft
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeLeft
+                                multiplier:1.f
+                                  constant:0],
+    
+    
+    [NSLayoutConstraint constraintWithItem:self.tableView
+                                 attribute: NSLayoutAttributeRight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeRight
+                                multiplier:1.f
+                                  constant:0],
+                             
+ 
+    
+    
+    [NSLayoutConstraint constraintWithItem:self.tableView
+                                 attribute: NSLayoutAttributeBottom
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeBottom
+                                multiplier:1.f
+                                  constant:0]];
+    
+    [self.view addConstraints:constraints];
+    
+    
+    
 }
 
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-	
-	self.tableView.frame = self.view.frame;
-}
 
 
 #pragma mark - UITableViewDataSource

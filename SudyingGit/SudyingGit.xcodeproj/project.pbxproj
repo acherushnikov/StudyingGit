@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84239D9D1FBDE945006041C2 /* KVBCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84239D9C1FBDE945006041C2 /* KVBCollectionViewController.m */; };
+		84239DA01FBDF533006041C2 /* KVBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84239D9F1FBDF533006041C2 /* KVBCollectionViewCell.m */; };
+		84239DA31FBE0269006041C2 /* KVBHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84239DA21FBE0269006041C2 /* KVBHeaderCollectionReusableView.m */; };
 		AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
@@ -29,6 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84239D9B1FBDE945006041C2 /* KVBCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVBCollectionViewController.h; sourceTree = "<group>"; };
+		84239D9C1FBDE945006041C2 /* KVBCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVBCollectionViewController.m; sourceTree = "<group>"; };
+		84239D9E1FBDF533006041C2 /* KVBCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVBCollectionViewCell.h; sourceTree = "<group>"; };
+		84239D9F1FBDF533006041C2 /* KVBCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVBCollectionViewCell.m; sourceTree = "<group>"; };
+		84239DA11FBE0269006041C2 /* KVBHeaderCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVBHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		84239DA21FBE0269006041C2 /* KVBHeaderCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVBHeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASPersonTableViewCell.h; sourceTree = "<group>"; };
 		AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASPersonTableViewCell.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +104,12 @@
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
 				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
+				84239D9B1FBDE945006041C2 /* KVBCollectionViewController.h */,
+				84239D9C1FBDE945006041C2 /* KVBCollectionViewController.m */,
+				84239DA11FBE0269006041C2 /* KVBHeaderCollectionReusableView.h */,
+				84239DA21FBE0269006041C2 /* KVBHeaderCollectionReusableView.m */,
+				84239D9E1FBDF533006041C2 /* KVBCollectionViewCell.h */,
+				84239D9F1FBDF533006041C2 /* KVBCollectionViewCell.m */,
 				AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */,
 				AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */,
 				ADFDB0061FB4A78300962321 /* SBTPerson.h */,
@@ -225,9 +240,12 @@
 				AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */,
 				ADFDB00F1FB4A78300962321 /* SBTPerson.m in Sources */,
 				ADFDB00E1FB4A78300962321 /* SBTPersonProvider.m in Sources */,
+				84239DA31FBE0269006041C2 /* KVBHeaderCollectionReusableView.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
+				84239D9D1FBDE945006041C2 /* KVBCollectionViewController.m in Sources */,
 				ADFDB0101FB4A78300962321 /* SBTService.m in Sources */,
+				84239DA01FBDF533006041C2 /* KVBCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
