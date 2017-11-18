@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "MEKCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+    
+    self.window = [UIWindow new];
+    self.window.rootViewController = [MEKCollectionViewController new];
+    [self.window makeKeyAndVisible];
+    
 	return YES;
 }
 
