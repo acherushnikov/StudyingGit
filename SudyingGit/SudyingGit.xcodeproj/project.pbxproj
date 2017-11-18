@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13F4A2781FC041760049C478 /* VMZCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F4A26C1FC041740049C478 /* VMZCollectionReusableView.m */; };
+		13F4A2791FC041760049C478 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F4A26D1FC041740049C478 /* TableViewCell.m */; };
+		13F4A27A1FC041760049C478 /* FrameExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F4A26E1FC041750049C478 /* FrameExtension.m */; };
+		13F4A27B1FC041760049C478 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F4A2741FC041750049C478 /* TableViewController.m */; };
+		13F4A27C1FC041760049C478 /* VMZCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F4A2751FC041760049C478 /* VMZCollectionViewCell.m */; };
+		13F4A27D1FC041760049C478 /* VMZCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F4A2771FC041760049C478 /* VMZCollectionViewController.m */; };
 		2BF2677E1FBDE952007E873F /* CASCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2677D1FBDE952007E873F /* CASCollectionViewController.m */; };
 		2BF267811FBDF540007E873F /* CASCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF267801FBDF540007E873F /* CASCollectionViewCell.m */; };
 		2BF267841FBE02CF007E873F /* CASCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */; };
@@ -34,6 +40,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13F4A26C1FC041740049C478 /* VMZCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMZCollectionReusableView.m; sourceTree = "<group>"; };
+		13F4A26D1FC041740049C478 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		13F4A26E1FC041750049C478 /* FrameExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameExtension.m; sourceTree = "<group>"; };
+		13F4A26F1FC041750049C478 /* VMZCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMZCollectionViewCell.h; sourceTree = "<group>"; };
+		13F4A2701FC041750049C478 /* FrameExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameExtension.h; sourceTree = "<group>"; };
+		13F4A2711FC041750049C478 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		13F4A2721FC041750049C478 /* VMZCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMZCollectionReusableView.h; sourceTree = "<group>"; };
+		13F4A2731FC041750049C478 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		13F4A2741FC041750049C478 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		13F4A2751FC041760049C478 /* VMZCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMZCollectionViewCell.m; sourceTree = "<group>"; };
+		13F4A2761FC041760049C478 /* VMZCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMZCollectionViewController.h; sourceTree = "<group>"; };
+		13F4A2771FC041760049C478 /* VMZCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMZCollectionViewController.m; sourceTree = "<group>"; };
 		2BF2677C1FBDE952007E873F /* CASCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASCollectionViewController.h; sourceTree = "<group>"; };
 		2BF2677D1FBDE952007E873F /* CASCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASCollectionViewController.m; sourceTree = "<group>"; };
 		2BF2677F1FBDF540007E873F /* CASCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASCollectionViewCell.h; sourceTree = "<group>"; };
@@ -124,6 +142,18 @@
 				ADFDB0081FB4A78300962321 /* SBTPerson.m */,
 				ADFDB00B1FB4A78300962321 /* SBTPersonProvider.h */,
 				ADFDB0071FB4A78300962321 /* SBTPersonProvider.m */,
+				13F4A2701FC041750049C478 /* FrameExtension.h */,
+				13F4A26E1FC041750049C478 /* FrameExtension.m */,
+				13F4A2731FC041750049C478 /* TableViewCell.h */,
+				13F4A26D1FC041740049C478 /* TableViewCell.m */,
+				13F4A2711FC041750049C478 /* TableViewController.h */,
+				13F4A2741FC041750049C478 /* TableViewController.m */,
+				13F4A2721FC041750049C478 /* VMZCollectionReusableView.h */,
+				13F4A26C1FC041740049C478 /* VMZCollectionReusableView.m */,
+				13F4A26F1FC041750049C478 /* VMZCollectionViewCell.h */,
+				13F4A2751FC041760049C478 /* VMZCollectionViewCell.m */,
+				13F4A2761FC041760049C478 /* VMZCollectionViewController.h */,
+				13F4A2771FC041760049C478 /* VMZCollectionViewController.m */,
 				ADFDB00D1FB4A78300962321 /* SBTPersonProviderProtocol.h */,
 				ADFDB0091FB4A78300962321 /* SBTService.h */,
 				ADFDB00A1FB4A78300962321 /* SBTService.m */,
@@ -252,11 +282,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13F4A27D1FC041760049C478 /* VMZCollectionViewController.m in Sources */,
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
+				13F4A2791FC041760049C478 /* TableViewCell.m in Sources */,
+				13F4A27A1FC041760049C478 /* FrameExtension.m in Sources */,
+				13F4A27C1FC041760049C478 /* VMZCollectionViewCell.m in Sources */,
 				AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */,
 				2BF2677E1FBDE952007E873F /* CASCollectionViewController.m in Sources */,
+				13F4A27B1FC041760049C478 /* TableViewController.m in Sources */,
 				ADFDB00F1FB4A78300962321 /* SBTPerson.m in Sources */,
 				ADFDB00E1FB4A78300962321 /* SBTPersonProvider.m in Sources */,
+				13F4A2781FC041760049C478 /* VMZCollectionReusableView.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
 				2BF267811FBDF540007E873F /* CASCollectionViewCell.m in Sources */,
