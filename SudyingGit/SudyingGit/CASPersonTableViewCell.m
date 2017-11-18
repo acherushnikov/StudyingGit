@@ -26,7 +26,7 @@ static const CGFloat CASLabelHeight = 20.f;
 		
 		_lastNameLabel = [UILabel new];
 		_lastNameLabel.textColor = [UIColor greenColor];
-		_lastNameLabel.font = [UIFont systemFontOfSize:20.f];
+		//_lastNameLabel.font = [UIFont systemFontOfSize:20.f];
 		[self.contentView addSubview:_lastNameLabel];
 		
 		_descriptionPersonLabel = [UILabel new];
@@ -37,10 +37,42 @@ static const CGFloat CASLabelHeight = 20.f;
 		_personPhotoImageView = [UIImageView new];
 		_personPhotoImageView.backgroundColor = [UIColor orangeColor];
 		[self.contentView addSubview:_personPhotoImageView];
+        
+        
+        UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+        
+        [_personPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentView.mas_top).with.offset(padding.top);
+            make.left.equalTo(self.contentView.mas_left).with.offset(padding.left);
+            make.width.equalTo(@50);
+            make.height.equalTo(@50);
+        }];
+        
+        [_firstNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentView.mas_top).with.offset(padding.top);
+            make.left.equalTo(_personPhotoImageView.mas_right).with.offset(padding.left);
+            make.right.equalTo(self.contentView.mas_right).with.offset(-padding.right);
+            //make.height.equalTo(@20);
+        }];
+        
+        [_lastNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_firstNameLabel.mas_bottom).with.offset(padding.top);
+            make.left.equalTo(_personPhotoImageView.mas_right).with.offset(padding.left);
+            make.right.equalTo(self.contentView.mas_right).with.offset(-padding.right);
+            //make.height.equalTo(@20);
+        }];
+        
+        [_descriptionPersonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_lastNameLabel.mas_bottom).with.offset(padding.top);
+            make.left.equalTo(_personPhotoImageView.mas_right).with.offset(padding.left);
+            make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-padding.bottom);
+            make.right.equalTo(self.contentView.mas_right).with.offset(-padding.right);
+        }];
+        
 	}
 	return self;
 }
-
+/*
 - (void)layoutSubviews
 {
 	[super layoutSubviews];
@@ -55,7 +87,7 @@ static const CGFloat CASLabelHeight = 20.f;
 	
 	self.descriptionPersonLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
 }
-
+*/
 - (CGFloat)cellHeight
 {
 	CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset;
