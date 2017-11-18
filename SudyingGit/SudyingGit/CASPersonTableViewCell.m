@@ -37,24 +37,49 @@ static const CGFloat CASLabelHeight = 20.f;
 		_personPhotoImageView = [UIImageView new];
 		_personPhotoImageView.backgroundColor = [UIColor orangeColor];
 		[self.contentView addSubview:_personPhotoImageView];
+        
+        
+        [_personPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentView.mas_top).with.offset(15); //with is an optional semantic filler
+            make.left.equalTo(self.contentView.mas_left).with.offset(15);
+            make.right.equalTo(_lastNameLabel.mas_right).with.offset(15);
+            make.height.mas_equalTo(CASPersonPhotoSize.height);
+            make.width.mas_equalTo(CASPersonPhotoSize.width);
+        }];
+        
+        [_firstNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentView.mas_top).with.offset(15); //with is an optional semantic filler
+            make.right.equalTo(self.contentView.mas_right).with.offset(15);
+            make.left.equalTo(_personPhotoImageView.mas_right).with.offset(15);
+            make.bottom.equalTo(_lastNameLabel.mas_top).with.offset(15);
+            make.height.mas_equalTo(CASLabelHeight);
+            make.width.mas_equalTo(CASLabelHeight);
+        }];
+        
+        [_lastNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView.mas_right).with.offset(15);
+            make.leading.equalTo(_firstNameLabel.mas_right).with.offset(15);
+            make.bottom.equalTo(_descriptionPersonLabel.mas_top).with.offset(15);
+            make.height.mas_equalTo(CASLabelHeight);
+            make.width.mas_equalTo(CASLabelHeight);
+            
+        }];
+        
+        [_descriptionPersonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView.mas_right).with.offset(15);
+            make.leading.equalTo(_firstNameLabel.mas_right).with.offset(15);
+            make.bottom.equalTo(self.contentView.mas_top).with.offset(15);
+            
+        }];
+        
+        
+        
+        
+        
 	}
 	return self;
 }
 
-- (void)layoutSubviews
-{
-	[super layoutSubviews];
-	
-	self.personPhotoImageView.frame = CGRectMake(CASElementsOffset, (CGRectGetHeight(self.contentView.frame) - CASPersonPhotoSize.height)/2, CASPersonPhotoSize.width, CASPersonPhotoSize.height);
-	
-	self.firstNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CASElementsOffset, CGRectGetWidth(self.contentView.frame) - CGRectGetWidth(self.personPhotoImageView.frame) - CASElementsOffset * 3, CASLabelHeight);
-	
-	self.lastNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.firstNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), CASLabelHeight);
-	
-	CGSize detailTextLabelSize = [self.descriptionPersonLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.firstNameLabel.frame), CGFLOAT_MAX)];
-	
-	self.descriptionPersonLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
-}
 
 - (CGFloat)cellHeight
 {
