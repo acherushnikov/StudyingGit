@@ -13,7 +13,7 @@ static const CGFloat CASElementsOffset = 10.f;
 static const CGFloat CASLabelHeight = 20.f;
 
 @implementation CASPersonTableViewCell
-
+UITableViewController
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

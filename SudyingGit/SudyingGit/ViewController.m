@@ -38,6 +38,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 		secondPerson.firstName = @"Тим";
 		secondPerson.lastName = @"Кук";
 		secondPerson.personDescription = @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
+        
 		
 		_personList = @[firstPerson, secondPerson];
 	}
@@ -54,13 +55,23 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
 	[self.view addSubview:self.tableView];
+    self.view.translatesAutoresizingMaskIntoConstraints = false;
+    self.tableView.translatesAutoresizingMaskIntoConstraints = false;
+//
+//    [[self.tableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:100] setActive:true];
+//    [[self.tableView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor] setActive:true];
+//    [[self.tableView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor] setActive:true];
+    
+    
+
+    
 }
 
 - (void)viewDidLayoutSubviews
 {
 	[super viewDidLayoutSubviews];
 	
-	self.tableView.frame = self.view.frame;
+	//self.tableView.frame = self.view.frame;
 }
 
 

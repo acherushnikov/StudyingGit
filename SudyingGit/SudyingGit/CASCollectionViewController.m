@@ -16,7 +16,9 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
 
 
 @interface CASCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-
+@property (strong, nonatomic) UIButton* firstButton;
+@property (strong, nonatomic) UIButton* secondButton;
+@property (strong, nonatomic) UIView* buttonsView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, copy) NSArray *albums;
 
@@ -60,6 +62,40 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:CollectionViewSupplyID];
     
     [self.view addSubview:self.collectionView];
+    
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = false;
+    self.view.translatesAutoresizingMaskIntoConstraints = false;
+    
+    self.buttonsView = [UIView new];
+    self.firstButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.secondButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [self.view addSubview:self.buttonsView];
+    [self.buttonsView addSubview:self.firstButton];
+    [self.buttonsView addSubview:self.secondButton];
+    
+    NSDictionary* views = @{@"buttonView": self.buttonsView, @"collectionView": self.collectionView};
+    
+    NSArray* verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[buttonView]-20-[collectionView]-20-|" options:0 metrics:nil views:views];
+    
+    NSArray* horizontalConstraints1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[buttonView]-20-|" options:0 metrics:nil views:views];
+    
+    NSArray* horizontalConstraints2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[collectionView]-20-|" options:0 metrics:nil views:views];
+    
+    NSDictionary* buttonViews = @{@"firstButton": self.firstButton, @"secondButton": self.secondButton};
+    
+    NSArray* verticalButtonConstraints1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[firstButton]-20-|" options:0 metrics:0 views:buttonViews];
+    NSArray* verticalButtonConstraints2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[secondButton]-20-|" options:0 metrics:nil views:buttonViews];
+    
+    NSArray* horizontalButtonConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[firstButton(==secondButton)]-20-[secondButton(==firstButton)]-20-|" options:0 metrics:nil views:buttonViews];
+    
+    [self.view addConstraints:verticalConstraints];
+    [self.view addConstraints:horizontalConstraints1];
+    [self.view addConstraints:horizontalConstraints2];
+
+    [self.buttonsView addConstraints:verticalButtonConstraints1];
+    [self.buttonsView addConstraints:verticalButtonConstraints2];
+    [self.buttonsView addConstraints:horizontalButtonConstraints];
 }
 
 
