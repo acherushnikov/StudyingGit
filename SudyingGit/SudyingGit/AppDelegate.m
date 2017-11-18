@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "MVMCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [UIWindow new];
     
-    ViewController *rootViewController = [ViewController new];
+    MVMCollectionViewController *rootViewController = [MVMCollectionViewController new];
+    //ViewController *rootViewController = [ViewController new];
     self.window.rootViewController = rootViewController;
     
     [self.window makeKeyAndVisible];

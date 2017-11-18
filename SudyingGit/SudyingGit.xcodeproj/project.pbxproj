@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		949851BE1FB6E61E00D6AAF3 /* SBTPersonProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 949851BD1FB6E61E00D6AAF3 /* SBTPersonProvider.m */; };
 		94B58E591FBB549A00A52103 /* MVMPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B58E581FBB549A00A52103 /* MVMPersonTableViewCell.m */; };
+		94F399A51FBDE93200481A95 /* MVMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F399A41FBDE93200481A95 /* MVMCollectionViewController.m */; };
+		94F399A81FBDF51900481A95 /* MVMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F399A71FBDF51900481A95 /* MVMCollectionViewCell.m */; };
+		94F399AB1FBE025500481A95 /* MVMCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F399AA1FBE025500481A95 /* MVMCollectionReusableView.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF61FB211E1007BC9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF51FB211E1007BC9E2 /* Assets.xcassets */; };
@@ -34,6 +37,12 @@
 		949851BD1FB6E61E00D6AAF3 /* SBTPersonProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBTPersonProvider.m; sourceTree = "<group>"; };
 		94B58E571FBB549A00A52103 /* MVMPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMPersonTableViewCell.h; sourceTree = "<group>"; };
 		94B58E581FBB549A00A52103 /* MVMPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMPersonTableViewCell.m; sourceTree = "<group>"; };
+		94F399A31FBDE93200481A95 /* MVMCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMCollectionViewController.h; sourceTree = "<group>"; };
+		94F399A41FBDE93200481A95 /* MVMCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMCollectionViewController.m; sourceTree = "<group>"; };
+		94F399A61FBDF51900481A95 /* MVMCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMCollectionViewCell.h; sourceTree = "<group>"; };
+		94F399A71FBDF51900481A95 /* MVMCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMCollectionViewCell.m; sourceTree = "<group>"; };
+		94F399A91FBE025500481A95 /* MVMCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMCollectionReusableView.h; sourceTree = "<group>"; };
+		94F399AA1FBE025500481A95 /* MVMCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMCollectionReusableView.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,6 +83,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94F399AC1FBE0E2200481A95 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				94B58E581FBB549A00A52103 /* MVMPersonTableViewCell.m */,
+				94B58E571FBB549A00A52103 /* MVMPersonTableViewCell.h */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		94F399AD1FBE0F0E00481A95 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				94F399A91FBE025500481A95 /* MVMCollectionReusableView.h */,
+				94F399A41FBDE93200481A95 /* MVMCollectionViewController.m */,
+				94F399A71FBDF51900481A95 /* MVMCollectionViewCell.m */,
+				94F399A31FBDE93200481A95 /* MVMCollectionViewController.h */,
+				94F399A61FBDF51900481A95 /* MVMCollectionViewCell.h */,
+				94F399AA1FBE025500481A95 /* MVMCollectionReusableView.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		ADEDECE01FB211E0007BC9E2 = {
 			isa = PBXGroup;
 			children = (
@@ -95,12 +126,12 @@
 		ADEDECEB1FB211E1007BC9E2 /* SudyingGit */ = {
 			isa = PBXGroup;
 			children = (
+				94F399AD1FBE0F0E00481A95 /* CollectionView */,
+				94F399AC1FBE0E2200481A95 /* TableView */,
 				ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */,
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
 				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
-				94B58E571FBB549A00A52103 /* MVMPersonTableViewCell.h */,
-				94B58E581FBB549A00A52103 /* MVMPersonTableViewCell.m */,
 				ADFDB0061FB4A78300962321 /* SBTPerson.h */,
 				ADFDB0081FB4A78300962321 /* SBTPerson.m */,
 				ADFDB00B1FB4A78300962321 /* SBTPersonProvider.h */,
@@ -231,9 +262,12 @@
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
 				ADFDB00F1FB4A78300962321 /* SBTPerson.m in Sources */,
 				94B58E591FBB549A00A52103 /* MVMPersonTableViewCell.m in Sources */,
+				94F399A51FBDE93200481A95 /* MVMCollectionViewController.m in Sources */,
 				ADFDB00E1FB4A78300962321 /* SBTPersonProvider.m in Sources */,
+				94F399A81FBDF51900481A95 /* MVMCollectionViewCell.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
+				94F399AB1FBE025500481A95 /* MVMCollectionReusableView.m in Sources */,
 				ADFDB0101FB4A78300962321 /* SBTService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
