@@ -37,45 +37,41 @@ static const CGFloat CASLabelHeight = 20.f;
 		_personPhotoImageView = [UIImageView new];
 		_personPhotoImageView.backgroundColor = [UIColor orangeColor];
 		[self.contentView addSubview:_personPhotoImageView];
-        
+        self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+
         
         [_personPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.contentView.mas_top).with.offset(15); //with is an optional semantic filler
+            make.centerY.mas_equalTo(self.contentView.center.y);
             make.left.equalTo(self.contentView.mas_left).with.offset(15);
-            make.right.equalTo(_lastNameLabel.mas_right).with.offset(15);
+            make.right.equalTo(_firstNameLabel.mas_left).with.offset(-15);
             make.height.mas_equalTo(CASPersonPhotoSize.height);
             make.width.mas_equalTo(CASPersonPhotoSize.width);
         }];
         
         [_firstNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.contentView.mas_top).with.offset(15); //with is an optional semantic filler
+            make.top.equalTo(self.contentView.mas_top).with.offset(15);
             make.right.equalTo(self.contentView.mas_right).with.offset(15);
-            make.left.equalTo(_personPhotoImageView.mas_right).with.offset(15);
-            make.bottom.equalTo(_lastNameLabel.mas_top).with.offset(15);
+            make.bottom.equalTo(_lastNameLabel.mas_top).with.offset(-15);
             make.height.mas_equalTo(CASLabelHeight);
-            make.width.mas_equalTo(CASLabelHeight);
         }];
         
         [_lastNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView.mas_right).with.offset(15);
-            make.leading.equalTo(_firstNameLabel.mas_right).with.offset(15);
-            make.bottom.equalTo(_descriptionPersonLabel.mas_top).with.offset(15);
+            make.left.equalTo(_personPhotoImageView.mas_right).with.offset(15);
+            make.bottom.equalTo(_descriptionPersonLabel.mas_top).with.offset(-15);
             make.height.mas_equalTo(CASLabelHeight);
-            make.width.mas_equalTo(CASLabelHeight);
-            
         }];
         
         [_descriptionPersonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.contentView.mas_right).with.offset(15);
-            make.leading.equalTo(_firstNameLabel.mas_right).with.offset(15);
-            make.bottom.equalTo(self.contentView.mas_top).with.offset(15);
-            
+            make.right.equalTo(self.contentView.mas_right).with.offset(-15);
+            make.left.equalTo(_personPhotoImageView.mas_right).with.offset(15);
+            make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-15);
+            make.width.mas_lessThanOrEqualTo([UIScreen mainScreen].bounds.size.width - CASPersonPhotoSize.width - 3*CASElementsOffset);
         }];
         
         
         
-        
-        
+        [super updateConstraints];
 	}
 	return self;
 }

@@ -14,11 +14,26 @@
 
 static NSString *const CASCellIdentifier = @"CellIdentifier";
 static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCell";
+static CGFloat   const KVBElementOffset = 15.f;
+static CGFloat   const KVBButtonHeight = 44.f;
+
+static NSString *KVBNames[] = {@"Matt", @"Alex", @"Bob", @"Kurt", @"Jay" };
+static NSString *KVBLastName[] = {@"Leno", @"Fisher", @"Marley", @"Nash", @"Madden" };
+static NSString *KVBDescriptions[] = {
+    @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является ",
+    @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал",
+    @"Mar используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текстley",
+    @"Здесь ваш текст",
+    @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал"
+    };
+
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray <SBTPerson *>* personList;
+@property (nonatomic, strong) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *rightButton;
 
 @end
 
@@ -50,20 +65,47 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 {
 	[super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
+    
 	self.tableView = [UITableView new];
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
+    
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
+    
+    self.tableView.estimatedRowHeight = 85.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
 	[self.view addSubview:self.tableView];
+    
+    self.leftButton = [UIButton new];
+    self.leftButton.backgroundColor = UIColor.grayColor;
+  
+    [self.leftButton setTitle:@"Delete" forState:UIControlStateNormal];
+    [self.leftButton setShowsTouchWhenHighlighted:YES];
+    [self.leftButton addTarget:self
+                        action:@selector(deletePerson)
+              forControlEvents:UIControlEventTouchDown];
+    
+
+    [self.view addSubview:self.leftButton];
+    
+    
+    self.rightButton = [UIButton new];
+    self.rightButton.backgroundColor = UIColor.grayColor;
+   
+    [self.rightButton setTitle:@"Insert" forState:UIControlStateNormal];
+    [self.rightButton setShowsTouchWhenHighlighted:YES];
+    [self.rightButton addTarget:self
+                         action:@selector(insertPerson)
+               forControlEvents:UIControlEventTouchDown];
+    
+    [self.view addSubview:self.rightButton];
+    
+    [self setConstrains];
+    
 }
 
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-	
-	self.tableView.frame = self.view.frame;
-}
 
 
 #pragma mark - UITableViewDataSource
@@ -105,15 +147,105 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	SBTPerson *person = self.personList[indexPath.row];
-	if (person.personCellType == CASPersonCellTypeDefault)
-	{
-		return 44;
-	}
-	
-    return 44;
+    return UITableViewAutomaticDimension;
 }
+
+#pragma mark - Masonry
+
+- (void) setConstrains
+{
+    self.leftButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).with.offset(KVBElementOffset);
+        make.left.equalTo(self.view.mas_left).with.offset(KVBElementOffset);
+        make.right.equalTo(self.rightButton.mas_left).with.offset(-KVBElementOffset);
+        make.bottom.equalTo(self.tableView.mas_top).with.offset(-KVBElementOffset);
+        make.height.mas_equalTo(KVBButtonHeight);
+        make.width.equalTo(self.rightButton.mas_width);
+    }];
+    
+    [self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).with.offset(KVBElementOffset);
+        make.right.equalTo(self.view.mas_right).with.offset(-KVBElementOffset);
+        make.bottom.equalTo(self.tableView.mas_top).with.offset(-KVBElementOffset);
+        make.height.mas_equalTo(KVBButtonHeight);
+    }];
+    
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    
+    
+}
+
+#pragma mark - Button actions
+
+- (void) insertPerson
+{
+    NSInteger random = (arc4random() / 100) % 100;
+    SBTPerson *newPerson = [SBTPerson new];
+    
+    if(random < 50)
+    {
+        newPerson.personCellType = CASPersonCellTypeCustom;
+    }
+    else
+    {
+        newPerson.personCellType = CASPersonCellTypeDefault;
+    }
+    
+    newPerson.firstName = KVBNames[arc4random()% 5];
+    newPerson.lastName  = KVBLastName[arc4random()% 5];
+    newPerson.personDescription = KVBDescriptions[arc4random()% 5];
+   
+    NSMutableArray *newPersonArray= [NSMutableArray arrayWithArray:self.personList];
+    
+    [self.tableView beginUpdates];
+    
+    
+    [newPersonArray addObject: newPerson];
+    
+    self.personList = newPersonArray;
+    
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:self.personList.count - 1 inSection:0];
+  
+    [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    
+    
+    [self.tableView endUpdates];
+    
+}
+
+- (void) deletePerson
+{
+    if(self.personList.count >1)
+    {
+        [self.tableView beginUpdates];
+    
+        NSMutableArray *newPersonArray= [NSMutableArray arrayWithArray:self.personList];
+    
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:self.personList.count - 1 inSection:0];
+
+        [newPersonArray removeLastObject];
+    
+        self.personList = newPersonArray;
+    
+        [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+    
+    
+        [self.tableView endUpdates];
+    }
+    
+}
+
+
 
 @end
