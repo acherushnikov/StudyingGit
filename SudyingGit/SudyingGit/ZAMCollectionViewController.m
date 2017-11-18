@@ -37,7 +37,7 @@ static NSString *const HeaderID = @"ZAMCasfaf";
     //layout.itemSize = CGSizeMake(1000, 30);
     layout.footerReferenceSize = CGSizeMake(200, 100);
     layout.headerReferenceSize = CGSizeMake(100, 25);
-    [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    //[layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     self.collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:layout];
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -52,6 +52,82 @@ static NSString *const HeaderID = @"ZAMCasfaf";
 
     
     [self.view addSubview:_collectionView];
+    
+    UIView *buttonView = [[UIView alloc]init];
+    
+    
+    UIButton *deleteButton = [UIButton new];
+    [buttonView addSubview:deleteButton];
+    deleteButton.backgroundColor  = [UIColor greenColor];
+    
+    UIButton *addButton = [UIButton new];
+    addButton.backgroundColor = [UIColor orangeColor];
+    
+    [buttonView addSubview:addButton];
+    buttonView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:buttonView];
+    
+    buttonView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.view.translatesAutoresizingMaskIntoConstraints =NO;
+    self.collectionView.translatesAutoresizingMaskIntoConstraints =NO;
+    addButton.translatesAutoresizingMaskIntoConstraints = NO;
+    deleteButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSDictionary *dict = @{@"buttonView":buttonView,@"collection":self.collectionView,@"add":addButton,@"delete":deleteButton};
+    NSDictionary *dictOfMetrics= @{@"heightOfButtonView":@74};
+    NSMutableArray *verticalConstraints = [[NSLayoutConstraint
+                                              constraintsWithVisualFormat:@"V:|[buttonView(heightOfButtonView)][collection]|"
+                                              options:0
+                                              metrics:dictOfMetrics
+                                              views:dict]mutableCopy];
+    
+    NSMutableArray *horisontalConstraints = [[NSLayoutConstraint
+                                            constraintsWithVisualFormat:@"H:|[buttonView]|"
+                                            options:0
+                                            metrics:dictOfMetrics
+                                            views:dict]mutableCopy];
+    NSMutableArray *horisontalConstraints2 = [[NSLayoutConstraint
+                                              constraintsWithVisualFormat:@"H:|[collection]|"
+                                              options:0
+                                              metrics:dictOfMetrics
+                                              views:dict]mutableCopy];
+    
+    NSMutableArray *horisontalInButtonView = [[NSLayoutConstraint
+                                               constraintsWithVisualFormat:@"H:|-15-[add(==delete)]-15-[delete]-15-|"
+                                               options:0
+                                               metrics:dictOfMetrics
+                                               views:dict]mutableCopy];
+    
+    NSMutableArray *verticalInButtonView = [[NSLayoutConstraint
+                                               constraintsWithVisualFormat:@"V:|-15-[add]-15-|"
+                                               options:0
+                                               metrics:dictOfMetrics
+                                               views:dict]mutableCopy];
+    NSMutableArray *verticalInButtonView1 = [[NSLayoutConstraint
+                                             constraintsWithVisualFormat:@"V:|-15-[delete]-15-|"
+                                             options:0
+                                             metrics:dictOfMetrics
+                                             views:dict]mutableCopy];
+    
+    for (NSLayoutConstraint *constraint in verticalConstraints) {
+        [self.view addConstraint:constraint];
+    }
+    for (NSLayoutConstraint *constraint in horisontalConstraints) {
+        [self.view addConstraint:constraint];
+    }
+    for (NSLayoutConstraint *constraint in horisontalConstraints2) {
+        [self.view addConstraint:constraint];
+    }
+    for (NSLayoutConstraint *constraint in horisontalInButtonView) {
+        [buttonView addConstraint:constraint];
+    }
+    for (NSLayoutConstraint *constraint in verticalInButtonView) {
+        [buttonView addConstraint:constraint];
+    }
+    for (NSLayoutConstraint *constraint in verticalInButtonView1) {
+        [buttonView addConstraint:constraint];
+    }
+    
 }
 
 
@@ -112,7 +188,6 @@ static NSString *const HeaderID = @"ZAMCasfaf";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"sect - %ld row - %ld",indexPath.section+1,indexPath.row+1);
-
     
 }
 
