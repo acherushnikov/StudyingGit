@@ -41,19 +41,13 @@ static const CGFloat CASLabelHeight = 20.f;
 	return self;
 }
 
-- (void)layoutSubviews
-{
-	[super layoutSubviews];
-	
-	self.personPhotoImageView.frame = CGRectMake(CASElementsOffset, (CGRectGetHeight(self.contentView.frame) - CASPersonPhotoSize.height)/2, CASPersonPhotoSize.width, CASPersonPhotoSize.height);
-	
-	self.firstNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CASElementsOffset, CGRectGetWidth(self.contentView.frame) - CGRectGetWidth(self.personPhotoImageView.frame) - CASElementsOffset * 3, CASLabelHeight);
-	
-	self.lastNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.firstNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), CASLabelHeight);
-	
-	CGSize detailTextLabelSize = [self.descriptionPersonLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.firstNameLabel.frame), CGFLOAT_MAX)];
-	
-	self.descriptionPersonLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
+-(void)updateConstraints{
+    [self.personPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.superview.mas_centerY);
+        make.left.equalTo(self.superview.mas_left).with.offset(CASElementsOffset);
+        make.size.height.equalTo(@50);
+        make.size.width.equalTo(@50);
+    }];
 }
 
 - (CGFloat)cellHeight

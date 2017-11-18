@@ -56,6 +56,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
 	[self.view addSubview:self.tableView];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewDidLayoutSubviews
@@ -105,15 +106,6 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	SBTPerson *person = self.personList[indexPath.row];
-	if (person.personCellType == CASPersonCellTypeDefault)
-	{
-		return 44;
-	}
-	
-    return 44;
-}
+
 
 @end
