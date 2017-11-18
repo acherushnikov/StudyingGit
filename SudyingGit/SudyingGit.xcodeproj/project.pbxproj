@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		556968A41FBDE92F00B7FCE6 /* NAOCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 556968A31FBDE92F00B7FCE6 /* NAOCollectionViewController.m */; };
+		556968A81FBDF54B00B7FCE6 /* NAOCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 556968A71FBDF54B00B7FCE6 /* NAOCollectionViewCell.m */; };
+		556968AB1FBE022100B7FCE6 /* NAOHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 556968AA1FBE022100B7FCE6 /* NAOHeaderCollectionReusableView.m */; };
+		556968AE1FBE022F00B7FCE6 /* NAOFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 556968AD1FBE022F00B7FCE6 /* NAOFooterCollectionReusableView.m */; };
 		AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
@@ -30,6 +34,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		556968A21FBDE92F00B7FCE6 /* NAOCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAOCollectionViewController.h; sourceTree = "<group>"; };
+		556968A31FBDE92F00B7FCE6 /* NAOCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAOCollectionViewController.m; sourceTree = "<group>"; };
+		556968A61FBDF54B00B7FCE6 /* NAOCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAOCollectionViewCell.h; sourceTree = "<group>"; };
+		556968A71FBDF54B00B7FCE6 /* NAOCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAOCollectionViewCell.m; sourceTree = "<group>"; };
+		556968A91FBE022100B7FCE6 /* NAOHeaderCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAOHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		556968AA1FBE022100B7FCE6 /* NAOHeaderCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAOHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		556968AC1FBE022F00B7FCE6 /* NAOFooterCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAOFooterCollectionReusableView.h; sourceTree = "<group>"; };
+		556968AD1FBE022F00B7FCE6 /* NAOFooterCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAOFooterCollectionReusableView.m; sourceTree = "<group>"; };
 		AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASPersonTableViewCell.h; sourceTree = "<group>"; };
 		AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASPersonTableViewCell.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +123,14 @@
 				ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */,
 				ADEDECFA1FB211E1007BC9E2 /* Info.plist */,
 				ADEDECFB1FB211E1007BC9E2 /* main.m */,
+				556968A21FBDE92F00B7FCE6 /* NAOCollectionViewController.h */,
+				556968A31FBDE92F00B7FCE6 /* NAOCollectionViewController.m */,
+				556968A61FBDF54B00B7FCE6 /* NAOCollectionViewCell.h */,
+				556968A71FBDF54B00B7FCE6 /* NAOCollectionViewCell.m */,
+				556968A91FBE022100B7FCE6 /* NAOHeaderCollectionReusableView.h */,
+				556968AA1FBE022100B7FCE6 /* NAOHeaderCollectionReusableView.m */,
+				556968AC1FBE022F00B7FCE6 /* NAOFooterCollectionReusableView.h */,
+				556968AD1FBE022F00B7FCE6 /* NAOFooterCollectionReusableView.m */,
 			);
 			path = SudyingGit;
 			sourceTree = "<group>";
@@ -226,8 +246,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
+				556968A41FBDE92F00B7FCE6 /* NAOCollectionViewController.m in Sources */,
 				AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */,
 				ADFDB00F1FB4A78300962321 /* SBTPerson.m in Sources */,
+				556968A81FBDF54B00B7FCE6 /* NAOCollectionViewCell.m in Sources */,
+				556968AE1FBE022F00B7FCE6 /* NAOFooterCollectionReusableView.m in Sources */,
+				556968AB1FBE022100B7FCE6 /* NAOHeaderCollectionReusableView.m in Sources */,
 				ADFDB00E1FB4A78300962321 /* SBTPersonProvider.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
 				ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */,
