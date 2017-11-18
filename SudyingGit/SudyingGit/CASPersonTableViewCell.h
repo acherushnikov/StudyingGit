@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class SBTPerson;
 @interface CASPersonTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *firstNameLabel;
@@ -17,5 +17,6 @@
 
 - (CGFloat)cellHeight;
 - (CGFloat)cellOffset;
++ (CGFloat)heightForCellWithPerson: (SBTPerson*) person;
 
 @end

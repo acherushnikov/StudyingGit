@@ -94,9 +94,8 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 		CASPersonTableViewCell *personCell = (id)cell;
 		personCell.firstNameLabel.text = person.firstName;
 		personCell.lastNameLabel.text = person.lastName;
-		personCell.descriptionPersonLabel.text = person.personDescription;		
-	}
-
+		personCell.descriptionPersonLabel.text = person.personDescription;
+    }
 	return cell;
 }
 
@@ -113,27 +112,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	}
     else
     {
-
-        CASPersonTableViewCell *personCell = [CASPersonTableViewCell new];
-            personCell.firstNameLabel.text = person.firstName;
-            personCell.lastNameLabel.text = person.lastName;
-            personCell.descriptionPersonLabel.text = person.personDescription;
-    
-        
-        NSString *firstNameText = person.firstName;
-        CGFloat height = [self heightOfAttributedText:firstNameText];
-        
-        NSString *lastName = person.lastName;
-        height += [self heightOfAttributedText:lastName];
-        
-        NSString * description = person.personDescription;
-        height += [self heightOfAttributedText:description];
-        
-        
-        CASPersonTableViewCell* unusedCell = [CASPersonTableViewCell new];
-        height +=3*[unusedCell cellOffset];
-        
-        return height  ;
+        return [CASPersonTableViewCell heightForCellWithPerson:person]  ;
     }
 
 }
