@@ -37,17 +37,38 @@ static const CGFloat CASLabelHeight = 20.f;
 		_personPhotoImageView = [UIImageView new];
 		_personPhotoImageView.backgroundColor = [UIColor orangeColor];
 		[self.contentView addSubview:_personPhotoImageView];
+        
+        [self.personPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.superview.mas_centerY);
+            make.left.equalTo(self.superview.mas_left).with.offset(CASElementsOffset);
+            make.size.height.equalTo(@50);
+            make.size.width.equalTo(@50);
+        }];
+        
+        [self.firstNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.personPhotoImageView.mas_right).with.offset(CASElementsOffset);
+            make.top.equalTo(self.superview.mas_top).with.offset(CASElementsOffset);
+            //make.height.mas_equalTo(CASLabelHeight);
+            make.right.equalTo(self.superview.mas_right).with.offset(CASElementsOffset);
+        }];
+        
+        [self.lastNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.personPhotoImageView.mas_right).with.offset(CASElementsOffset);
+            make.top.equalTo(self.firstNameLabel.mas_bottom).with.offset(CASElementsOffset);
+            //make.height.mas_equalTo(CASLabelHeight);
+            make.right.equalTo(self.superview.mas_right).with.offset(CASElementsOffset);
+        }];
+        
+        [self.descriptionPersonLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.personPhotoImageView.mas_right).with.offset(CASElementsOffset);
+            make.top.equalTo(self.lastNameLabel.mas_bottom).with.offset(CASElementsOffset);
+            //make.height.mas_equalTo(CASLabelHeight);
+            make.right.equalTo(self.superview.mas_right).with.offset(CASElementsOffset);
+            make.bottom.equalTo(self.superview.mas_bottom).with.offset(-CASElementsOffset);
+        }];
+        
 	}
 	return self;
-}
-
--(void)updateConstraints{
-    [self.personPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.superview.mas_centerY);
-        make.left.equalTo(self.superview.mas_left).with.offset(CASElementsOffset);
-        make.size.height.equalTo(@50);
-        make.size.width.equalTo(@50);
-    }];
 }
 
 - (CGFloat)cellHeight
