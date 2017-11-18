@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "CASPersonTableViewCell.h"
 #import "SBTPerson.h"
+#import "DKNCollectionViewController.h"
 
 static NSString *const CASCellIdentifier = @"CellIdentifier";
 static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCell";
@@ -17,6 +18,10 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray <SBTPerson *>* personList;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UIButton *buttonAdd;
+@property (nonatomic, strong) UIButton *buttonDelete;
+
 
 @end
 
@@ -53,14 +58,99 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	self.tableView.delegate = self;
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
+      self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.view addSubview:self.tableView];
-}
+    
+    self.buttonAdd = [UIButton new];
+    self.buttonAdd.translatesAutoresizingMaskIntoConstraints = NO;
+    self.buttonDelete = [UIButton new];
+        self.buttonDelete.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonDelete isEqual:self.buttonAdd];
+  
 
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-	
-	self.tableView.frame = self.view.frame;
+    self.buttonAdd.backgroundColor = [UIColor redColor];
+      self.buttonDelete.backgroundColor = [UIColor orangeColor];
+    [self.buttonAdd setTitle:@"Button add" forState:UIControlStateNormal];
+    [self.buttonDelete setTitle:@"Button delete" forState:UIControlStateNormal];
+    [self.view addSubview:self.buttonAdd];
+    [self.view addSubview:self.buttonDelete];
+    
+    
+   
+    NSLayoutConstraint * buttonAddConstraintLeft =[NSLayoutConstraint
+                                                   constraintWithItem:self.buttonAdd
+                                                           attribute:NSLayoutAttributeLeft
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:self.view
+                                                           attribute:NSLayoutAttributeLeft
+                                                          multiplier:1.0 constant:15];
+    NSLayoutConstraint * buttonAddConstraintTop =[NSLayoutConstraint
+                                                  constraintWithItem:self.buttonAdd
+                                                           attribute:NSLayoutAttributeTop
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:self.view
+                                                           attribute:NSLayoutAttributeTop
+                                                          multiplier:1.0 constant:15];
+    
+    NSLayoutConstraint * buttonAddConstraintHeight = [NSLayoutConstraint                constraintWithItem:self.buttonAdd
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:0
+                                                               multiplier:1.0
+                                                                 constant:44];
+    NSLayoutConstraint * buttonDeleteConstraintRight =[NSLayoutConstraint        constraintWithItem:self.buttonDelete
+                                                                               attribute:NSLayoutAttributeRight
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:self.view
+                                                                               attribute:NSLayoutAttributeRight
+                                                                              multiplier:1.0 constant:-15];
+    NSLayoutConstraint * buttonDeleteConstraintTop =[NSLayoutConstraint constraintWithItem:self.buttonDelete
+                                                                              attribute:NSLayoutAttributeTop
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self.view
+                                                                              attribute:NSLayoutAttributeTop
+                                                                             multiplier:1.0 constant:15];
+    
+    NSLayoutConstraint * buttonDeleteConstraintHeight = [NSLayoutConstraint constraintWithItem:self.buttonDelete
+                                                                                  attribute:NSLayoutAttributeHeight
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:nil
+                                                                                  attribute:0
+                                                                                 multiplier:1.0
+                                                                                   constant:44];
+    NSLayoutConstraint *buttonDeleteConstraintGap = [NSLayoutConstraint
+                                                    constraintWithItem:self.buttonAdd attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.buttonDelete attribute:NSLayoutAttributeLeft multiplier:1 constant: -15];
+    
+NSLayoutConstraint *buttonsWidth = [NSLayoutConstraint
+                                    constraintWithItem:self.buttonDelete attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.buttonAdd attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+
+    [self.view addConstraints:@[buttonAddConstraintTop,
+                                buttonAddConstraintLeft,
+                                buttonAddConstraintHeight,
+                                buttonDeleteConstraintTop,
+                                buttonDeleteConstraintRight,
+                                buttonDeleteConstraintHeight,
+                                buttonsWidth,
+                                buttonDeleteConstraintGap
+                               ]];
+  
+    NSLayoutConstraint *tableConstraintTop = [NSLayoutConstraint
+                                              constraintWithItem:self.tableView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:74];
+    NSLayoutConstraint *tableConstraintLeft = [NSLayoutConstraint
+                                              constraintWithItem:self.tableView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+    NSLayoutConstraint *tableConstraintRight = [NSLayoutConstraint
+                                              constraintWithItem:self.tableView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0];
+    NSLayoutConstraint *tableConstraintBottom = [NSLayoutConstraint
+                                                constraintWithItem:self.tableView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+
+   [self.view addConstraints:@[tableConstraintTop,tableConstraintLeft,tableConstraintRight, tableConstraintBottom]];
+
+    
+    
+
+
+    
 }
 
 
@@ -111,6 +201,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	{
 		return 44;
 	}
+   
     if (cell)
     {
         return [cell tableCellAdjustableHeight];

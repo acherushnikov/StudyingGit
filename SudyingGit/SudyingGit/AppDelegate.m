@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "DKNCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	self.window = [UIWindow new];
 	
-	ViewController *rootViewController = [ViewController new];
+	DKNCollectionViewController *rootViewController = [DKNCollectionViewController new];
 	self.window.rootViewController = rootViewController;
 	
 	[self.window makeKeyAndVisible];
