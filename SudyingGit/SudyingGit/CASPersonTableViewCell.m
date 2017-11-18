@@ -7,6 +7,7 @@
 //
 
 #import "CASPersonTableViewCell.h"
+#import <Masonry/Masonry.h>
 
 static const CGSize CASPersonPhotoSize = {50.f, 50.f};
 static const CGFloat CASElementsOffset = 10.f;

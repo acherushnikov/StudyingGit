@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "CASPersonTableViewCell.h"
 #import "SBTPerson.h"
+#import <Masonry/Masonry.h>
+
 
 static NSString *const CASCellIdentifier = @"CellIdentifier";
 static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCell";
