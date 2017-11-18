@@ -16,6 +16,8 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *button1;
+@property (nonatomic, strong) UIButton *button2;
 @property (nonatomic, copy) NSArray <SBTPerson *>* personList;
 
 @end
@@ -49,20 +51,119 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	[super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.tableView = [UITableView new];
+    self.button1 = [UIButton new];
+    self.button2 = [UIButton new];
+    self.button1.backgroundColor = UIColor.blackColor;
+    self.button2.backgroundColor = UIColor.cyanColor;
+    
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.button2.translatesAutoresizingMaskIntoConstraints = NO;
+    self.button1.translatesAutoresizingMaskIntoConstraints = NO;
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
 	[self.view addSubview:self.tableView];
+    
+    [self.view addSubview:self.button1];
+    [self.view addSubview:self.button2];
+    
+    NSArray* button1Constrains = @[
+                     [NSLayoutConstraint constraintWithItem:self.button1
+                                                  attribute:NSLayoutAttributeTop
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:self.view
+                                                  attribute:NSLayoutAttributeTop
+                                                 multiplier:1.0
+                                                   constant:15],
+                     [NSLayoutConstraint constraintWithItem:self.button1
+                                                  attribute:NSLayoutAttributeLeading
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:self.view
+                                                  attribute:NSLayoutAttributeLeading
+                                                 multiplier:1.0
+                                                   constant:15],
+                     [NSLayoutConstraint constraintWithItem:self.button1
+                                                  attribute:NSLayoutAttributeRight
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:self.button2
+                                                  attribute:NSLayoutAttributeLeft
+                                                 multiplier:1.0
+                                                   constant:-15],
+                     [NSLayoutConstraint constraintWithItem:self.button1
+                                                  attribute:NSLayoutAttributeHeight
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:nil
+                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                 multiplier:1.0
+                                                   constant:44],
+                     [NSLayoutConstraint constraintWithItem:self.button1
+                                                  attribute:NSLayoutAttributeTop
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:self.button2
+                                                  attribute:NSLayoutAttributeTop
+                                                 multiplier:1.0
+                                                   constant:0],
+                     [NSLayoutConstraint constraintWithItem:self.button1
+                                                  attribute:NSLayoutAttributeBottom
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:self.button2
+                                                  attribute:NSLayoutAttributeBottom
+                                                 multiplier:1.0
+                                                   constant:0],
+                      [NSLayoutConstraint constraintWithItem:self.button1
+                                                   attribute:NSLayoutAttributeWidth
+                                                   relatedBy:NSLayoutRelationEqual
+                                                      toItem:self.button2
+                                                   attribute:NSLayoutAttributeWidth
+                                                  multiplier:1.0
+                                                    constant:0]
+                     ];
+    NSArray* button2Constrains = @[
+                                   [NSLayoutConstraint constraintWithItem:self.button2
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.view
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1.0
+                                                                 constant:-15]];
+    
+    NSArray* tableViewConstrains = @[[NSLayoutConstraint constraintWithItem:self.tableView
+                                                                  attribute:NSLayoutAttributeTop
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.button1
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                 multiplier:1.0
+                                                                   constant:15],
+                                     [NSLayoutConstraint constraintWithItem:self.tableView
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.view
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                 multiplier:1.0
+                                                                   constant:-15],
+                                     [NSLayoutConstraint constraintWithItem:self.tableView
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.view
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                 multiplier:1.0
+                                                                   constant:-15],
+                                     [NSLayoutConstraint constraintWithItem:self.tableView
+                                                                  attribute:NSLayoutAttributeTrailing
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.view
+                                                                  attribute:NSLayoutAttributeTrailing
+                                                                 multiplier:1.0
+                                                                   constant:-15]];
+    
+    [self.view addConstraints:button1Constrains];
+    [self.view addConstraints:button2Constrains];
+    [self.view addConstraints:tableViewConstrains];
+    
 }
-
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-	
-	self.tableView.frame = self.view.frame;
-}
-
 
 #pragma mark - UITableViewDataSource
 

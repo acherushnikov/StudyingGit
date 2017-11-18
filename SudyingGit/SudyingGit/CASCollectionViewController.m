@@ -19,6 +19,8 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, copy) NSArray *albums;
+@property (nonatomic, strong) UIButton *button1;
+@property (nonatomic, strong) UIButton *button2;
 
 @end
 
@@ -49,17 +51,46 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     [layout setFooterReferenceSize:CGSizeMake(100, 50)];
     [layout setHeaderReferenceSize:CGSizeMake(150, 25)];
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame    collectionViewLayout:layout];
-    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     self.collectionView.backgroundColor = UIColor.greenColor;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    
+    self.button1 = [UIButton new];
+    self.button2 = [UIButton new];
+    self.button1.backgroundColor = UIColor.yellowColor;
+    self.button2.backgroundColor = UIColor.cyanColor;
+    
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.button2.translatesAutoresizingMaskIntoConstraints = NO;
+    self.button1.translatesAutoresizingMaskIntoConstraints = NO;
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
     
     [self.collectionView registerClass:[CASCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewID];
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:CollectionViewSupplyID];
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:CollectionViewSupplyID];
     
     [self.view addSubview:self.collectionView];
+    
+    
+    [self.view addSubview:self.button1];
+    [self.view addSubview:self.button2];
+    
+    NSString* horizontal = @"H:|-15-[button1(==button2)]-15-[button2]-15-|";
+    NSString* verticalCollectionView = @"H:|-0-[collectionView]-0-|";
+    NSString* vertical = @"V:|-15-[button1(==44)]-15-[collectionView]-0-|";
+    NSString* vertical2 = @"V:|-15-[button2(==44)]-15-[collectionView]-0-|";
+    NSDictionary* views = @{@"collectionView":self.collectionView, @"button2":self.button2, @"button1":self.button1};
+    
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.button1.translatesAutoresizingMaskIntoConstraints = NO;
+    self.button2.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:vertical options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:horizontal options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:verticalCollectionView options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:vertical2 options:0 metrics:nil views:views]];
 }
 
 
