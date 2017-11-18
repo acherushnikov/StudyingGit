@@ -11,6 +11,11 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) UIButton *button1;
+@property (nonatomic, strong) UIButton *button2;
+
 
 @end
+
+
 
