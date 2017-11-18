@@ -32,7 +32,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 		SBTPerson *firstPerson = [SBTPerson new];
 		firstPerson.personCellType = CASPersonCellTypeDefault;
 		firstPerson.firstName = @"Стив";
-		firstPerson.lastName = @"Джобс";
+		firstPerson.lastName = @"Джобс Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал";
 		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал";
 		
 		SBTPerson *secondPerson = [SBTPerson new];
@@ -107,13 +107,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	SBTPerson *person = self.personList[indexPath.row];
-	if (person.personCellType == CASPersonCellTypeDefault)
-	{
-		return 44;
-	}
-	
-    return 44;
+    return UITableViewAutomaticDimension;
 }
 
 @end
