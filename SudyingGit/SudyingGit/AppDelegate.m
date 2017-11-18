@@ -23,7 +23,7 @@
     self.window = [UIWindow new];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    UIViewController *ctrlr = [VMZCollectionViewController new];
+    UIViewController *ctrlr = [TableViewController new];
     self.window.rootViewController = ctrlr;
     [self.window makeKeyAndVisible];
     return YES;

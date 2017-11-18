@@ -68,7 +68,7 @@ static NSString *const VMZCellIdentifier = @"reusableCell";
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return UITableViewAutomaticDimension;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
