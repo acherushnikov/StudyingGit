@@ -84,6 +84,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		563ADE5B1FC1715C00E6CBC8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
+				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		563ADE5C1FC1716F00E6CBC8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */,
+				AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		563ADE5D1FC1717B00E6CBC8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		ADCE1BD91FC027E500ACEB6F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,12 +139,11 @@
 		ADEDECEB1FB211E1007BC9E2 /* SudyingGit */ = {
 			isa = PBXGroup;
 			children = (
+				563ADE5D1FC1717B00E6CBC8 /* Models */,
+				563ADE5C1FC1716F00E6CBC8 /* Views */,
+				563ADE5B1FC1715C00E6CBC8 /* Controllers */,
 				ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */,
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
-				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
-				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
-				AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */,
-				AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */,
 				ADFDB0061FB4A78300962321 /* SBTPerson.h */,
 				ADFDB0081FB4A78300962321 /* SBTPerson.m */,
 				ADFDB00B1FB4A78300962321 /* SBTPersonProvider.h */,
@@ -135,8 +159,8 @@
 				2BF2677C1FBDE952007E873F /* CASCollectionViewController.h */,
 				2BF2677D1FBDE952007E873F /* CASCollectionViewController.m */,
 				2BF2677F1FBDF540007E873F /* CASCollectionViewCell.h */,
-				2BF267801FBDF540007E873F /* CASCollectionViewCell.m */,
 				2BF267821FBE02CF007E873F /* CASCollectionReusableView.h */,
+				2BF267801FBDF540007E873F /* CASCollectionViewCell.m */,
 				2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */,
 			);
 			path = SudyingGit;
