@@ -8,7 +8,6 @@
 
 #import "CASCollectionViewCell.h"
 
-
 @implementation CASCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame

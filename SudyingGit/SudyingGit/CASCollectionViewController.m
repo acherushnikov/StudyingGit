@@ -19,6 +19,8 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, copy) NSArray *albums;
+@property (nonatomic, strong) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *rightButton;
 
 @end
 
@@ -27,6 +29,33 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.leftButton = [UIButton new];
+    [self.leftButton setTitle:@"Add" forState:UIControlStateNormal];
+    [self.leftButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.leftButton setBackgroundColor:[UIColor yellowColor]];
+    [self.view addSubview:self.leftButton];
+    [self.leftButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    self.rightButton = [UIButton new];
+    [self.rightButton setTitle:@"Delete" forState:UIControlStateNormal];
+    [self.rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.rightButton setBackgroundColor:[UIColor yellowColor]];
+    [self.view addSubview:self.rightButton];
+    [self.rightButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    NSDictionary *buttons = @{
+                              @"leftButton": self.leftButton,
+                              @"rightButton": self.rightButton
+                              };
+//    NSLog(@"%@", buttons);
+    
+    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[leftButton]-30-[rightButton(==leftButton)]-15-|" options:0 metrics:nil views:buttons];
+    NSArray *leftButtonVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[leftButton(44)]-15-|" options:0 metrics:nil views:buttons];
+    NSArray *rightButtonVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[rightButton(44)]-15-|" options:0 metrics:nil views:buttons];
+    [self.view addConstraints:horizontalConstraints];
+    [self.view addConstraints:leftButtonVerticalConstraints];
+    [self.view addConstraints:rightButtonVerticalConstraints];
     
     self.albums = @[
                     @[
@@ -60,6 +89,11 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:CollectionViewSupplyID];
     
     [self.view addSubview:self.collectionView];
+    
+    NSDictionary *collectionView = @{ @"collectionView": self.collectionView };
+    
+    NSArray *collectionViewConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-74-[collectionView]" options:0 metrics:nil views:collectionView];
+    [self.view addConstraints:collectionViewConstraints];
 }
 
 
