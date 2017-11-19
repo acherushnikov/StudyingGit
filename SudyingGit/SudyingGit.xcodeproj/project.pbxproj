@@ -10,6 +10,7 @@
 		2BF2677E1FBDE952007E873F /* CASCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2677D1FBDE952007E873F /* CASCollectionViewController.m */; };
 		2BF267811FBDF540007E873F /* CASCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF267801FBDF540007E873F /* CASCollectionViewCell.m */; };
 		2BF267841FBE02CF007E873F /* CASCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */; };
+		563ADE601FC1A77800E6CBC8 /* SKBoxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 563ADE5F1FC1A77800E6CBC8 /* SKBoxer.m */; };
 		AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */; };
 		ADCE1BDB1FC027E600ACEB6F /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCE1BDA1FC027E600ACEB6F /* Masonry.framework */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
@@ -40,6 +41,8 @@
 		2BF267801FBDF540007E873F /* CASCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASCollectionViewCell.m; sourceTree = "<group>"; };
 		2BF267821FBE02CF007E873F /* CASCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASCollectionReusableView.h; sourceTree = "<group>"; };
 		2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASCollectionReusableView.m; sourceTree = "<group>"; };
+		563ADE5E1FC1A77800E6CBC8 /* SKBoxer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SKBoxer.h; path = SudyingGit/Models/SKBoxer.h; sourceTree = SOURCE_ROOT; };
+		563ADE5F1FC1A77800E6CBC8 /* SKBoxer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SKBoxer.m; path = SudyingGit/Models/SKBoxer.m; sourceTree = SOURCE_ROOT; };
 		AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASPersonTableViewCell.h; sourceTree = "<group>"; };
 		AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASPersonTableViewCell.m; sourceTree = "<group>"; };
 		ADCE1BDA1FC027E600ACEB6F /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = Externals/Masonry.framework; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 		563ADE5D1FC1717B00E6CBC8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				563ADE5E1FC1A77800E6CBC8 /* SKBoxer.h */,
+				563ADE5F1FC1A77800E6CBC8 /* SKBoxer.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				2BF267811FBDF540007E873F /* CASCollectionViewCell.m in Sources */,
 				ADFDB0101FB4A78300962321 /* SBTService.m in Sources */,
 				2BF267841FBE02CF007E873F /* CASCollectionReusableView.m in Sources */,
+				563ADE601FC1A77800E6CBC8 /* SKBoxer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

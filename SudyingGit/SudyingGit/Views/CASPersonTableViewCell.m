@@ -67,7 +67,7 @@ static const CGFloat KSElementOffset = 8.f;
         view.translatesAutoresizingMaskIntoConstraints = false;
         view.clipsToBounds = true;
         view.layer.cornerRadius = 3.f;
-        view.layer.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.2f].CGColor;
+        view.layer.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f].CGColor;
         view.layer.shadowOffset = CGSizeMake(0, 0);
         view.layer.shadowOpacity = 0.8f;
         view.layer.masksToBounds = false;
@@ -85,7 +85,7 @@ static const CGFloat KSElementOffset = 8.f;
         
         UILabel* label = [[UILabel alloc] init];
         label.translatesAutoresizingMaskIntoConstraints = false;
-        label.backgroundColor = [UIColor redColor];
+        label.backgroundColor = [UIColor clearColor];
         
         _nameBoxerLabel = label;
     }
@@ -101,7 +101,7 @@ static const CGFloat KSElementOffset = 8.f;
         UILabel* label = [[UILabel alloc] init];
         label.numberOfLines = 0;
         label.translatesAutoresizingMaskIntoConstraints = false;
-        label.backgroundColor = [UIColor redColor];
+        label.backgroundColor = [UIColor clearColor];
         
         _descriptionBoxerLabel = label;
     }
@@ -115,7 +115,7 @@ static const CGFloat KSElementOffset = 8.f;
     if (!_boxerPhotoImageView) {
         
         UIImageView* imageView = [[UIImageView alloc] init];
-        imageView.backgroundColor = [UIColor redColor];
+        imageView.backgroundColor = [UIColor clearColor];
         imageView.translatesAutoresizingMaskIntoConstraints = false;
         //imageView.layer.cornerRadius = 20.f;
         imageView.layer.masksToBounds = true;
@@ -125,26 +125,5 @@ static const CGFloat KSElementOffset = 8.f;
     
     return _boxerPhotoImageView;
 }
-
-//- (void)layoutSubviews
-//{
-//    [super layoutSubviews];
-//
-//    self.personPhotoImageView.frame = CGRectMake(CASElementsOffset, (CGRectGetHeight(self.contentView.frame) - CASPersonPhotoSize.height)/2, CASPersonPhotoSize.width, CASPersonPhotoSize.height);
-//
-//    self.firstNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CASElementsOffset, CGRectGetWidth(self.contentView.frame) - CGRectGetWidth(self.personPhotoImageView.frame) - CASElementsOffset * 3, CASLabelHeight);
-//
-//    self.lastNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.firstNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), CASLabelHeight);
-//
-//    CGSize detailTextLabelSize = [self.descriptionPersonLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.firstNameLabel.frame), CGFLOAT_MAX)];
-//
-//    self.descriptionPersonLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
-//}
-
-//- (CGFloat)cellHeight
-//{
-//    CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset;
-//    return height;
-//}
 
 @end
