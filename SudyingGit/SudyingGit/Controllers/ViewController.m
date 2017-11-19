@@ -26,7 +26,6 @@ static CGFloat const SKHeightBetweenCells = 15.f;
 
 @implementation ViewController
 
-
 - (void)viewDidLoad {
     
     self.tableView = [[UITableView alloc] init];
@@ -34,7 +33,7 @@ static CGFloat const SKHeightBetweenCells = 15.f;
     self.tableView.translatesAutoresizingMaskIntoConstraints = false;
     self.view.translatesAutoresizingMaskIntoConstraints = false;
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor grayColor];
     
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.containerView];
@@ -44,9 +43,8 @@ static CGFloat const SKHeightBetweenCells = 15.f;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.tableView.estimatedRowHeight = 100.f;
+    self.tableView.estimatedRowHeight = self.tableView.rowHeight;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
     
     [self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:SKBoxerCellIdentifier];
     
@@ -73,8 +71,8 @@ static CGFloat const SKHeightBetweenCells = 15.f;
     //Anchors addButton
     [[self.addButton.bottomAnchor constraintEqualToAnchor:self.containerView.bottomAnchor constant:-10.f] setActive:true];
     [[self.addButton.leftAnchor constraintEqualToAnchor:self.containerView.leftAnchor constant:10.f] setActive:true];
-    [[self.addButton.widthAnchor constraintEqualToConstant:100.f] setActive:true];
-    [[self.addButton.heightAnchor constraintEqualToConstant:20.f] setActive:true];
+    [[self.addButton.widthAnchor constraintEqualToAnchor:self.containerView.widthAnchor multiplier:1.f/3.f] setActive:true];
+    [[self.addButton.heightAnchor constraintEqualToAnchor:self.containerView.heightAnchor multiplier:1.f/5.f] setActive:true];
     
     //Anchors deleteButton
     [[self.deleteButton.centerYAnchor constraintEqualToAnchor:self.addButton.centerYAnchor] setActive:true];
@@ -92,7 +90,7 @@ static CGFloat const SKHeightBetweenCells = 15.f;
         
         UIView* view = [[UIView alloc] init];
         view.translatesAutoresizingMaskIntoConstraints = false;
-        view.backgroundColor = [UIColor redColor];
+        view.backgroundColor = [UIColor grayColor];
         
         _containerView = view;
     }
@@ -108,7 +106,7 @@ static CGFloat const SKHeightBetweenCells = 15.f;
         UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
         button.translatesAutoresizingMaskIntoConstraints = false;
         
-        button.backgroundColor = [UIColor yellowColor];
+        button.backgroundColor = [UIColor whiteColor];
         
         _addButton = button;
     }
@@ -123,7 +121,7 @@ static CGFloat const SKHeightBetweenCells = 15.f;
         UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
         button.translatesAutoresizingMaskIntoConstraints = false;
         
-        button.backgroundColor = [UIColor orangeColor];
+        button.backgroundColor = [UIColor whiteColor];
         
         _deleteButton = button;
     }
@@ -146,10 +144,17 @@ static CGFloat const SKHeightBetweenCells = 15.f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:SKBoxerCellIdentifier];
+    CASPersonTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:SKBoxerCellIdentifier];
     
+    cell.boxerPhotoImageView.image = [UIImage imageNamed:@"image"];
+    cell.descriptionBoxerLabel.text = @"Его первый профессиональный боксерский поединок в среднем весе произошел в 1935 или 1936 году. Свои первые 13 боев Арчи выиграл нокаутом. На протяжении долгой, красочной карьеры спортсмена, умный и опасный боксер совершил 220 боев. Из них 136 завершил нокаутом – рекордная отметка в истории бокса.";
+    cell.nameBoxerLabel.text = @"Арчи Мур (1913-1998) – американский боксер, родился в городе Беноит, штат Миссисипи. При рождении им было получено имя Арчи Ли Райт. Он заявил, что родился в 1916 году в Коллинсвилле, штат Иллинойс.";
+
+    [cell.nameBoxerLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
+    [cell.descriptionBoxerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:11.f]];
     return cell;
 }
+
 
 #pragma mark - UITableViewDelegate
 

@@ -25,32 +25,34 @@ static const CGFloat KSElementOffset = 8.f;
         [self.backgroundCardView addSubview:self.nameBoxerLabel];
         [self.backgroundCardView addSubview:self.boxerPhotoImageView];
         [self.backgroundCardView addSubview:self.descriptionBoxerLabel];
-        
+    
         //Anchors backgroundCardView
         [[self.backgroundCardView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor] setActive:true];
         [[self.backgroundCardView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor] setActive:true];
         [[self.backgroundCardView.widthAnchor constraintEqualToAnchor:self.widthAnchor] setActive:true];
         [[self.backgroundCardView.heightAnchor constraintEqualToAnchor:self.heightAnchor] setActive:true];
         
+        //Anchors boxerPhotoImageView
+        [[self.boxerPhotoImageView.topAnchor constraintEqualToAnchor:self.backgroundCardView.topAnchor constant:8.f] setActive:true];
+        [[self.boxerPhotoImageView.leftAnchor constraintEqualToAnchor:self.backgroundCardView.leftAnchor constant:8.f] setActive:true];
+        //[[self.boxerPhotoImageView.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-14] setActive:true];
+        [[self.boxerPhotoImageView.widthAnchor constraintEqualToConstant:110.f] setActive:true];
+        [[self.boxerPhotoImageView.heightAnchor constraintEqualToConstant:130.f] setActive:true];
+        //[[self.boxerPhotoImageView.widthAnchor constraintEqualToAnchor:self.backgroundCardView.widthAnchor multiplier:1.0/3.0] setActive:true];
+        //[[self.boxerPhotoImageView.heightAnchor constraintEqualToAnchor:self.backgroundCardView.heightAnchor multiplier:1.0/6.0] setActive:true];
+        
         //Anchors nameBoxerLabel
-        [[self.nameBoxerLabel.topAnchor constraintEqualToAnchor:self.boxerPhotoImageView.topAnchor] setActive:true];
-        [[self.nameBoxerLabel.leftAnchor constraintEqualToAnchor:self.boxerPhotoImageView.rightAnchor constant:KSElementOffset] setActive:true];
-        [[self.nameBoxerLabel.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-KSElementOffset] setActive:true];
-        [[self.nameBoxerLabel.heightAnchor constraintEqualToConstant:30.f] setActive:true];
+        [[self.nameBoxerLabel.topAnchor constraintEqualToAnchor:self.backgroundCardView.topAnchor constant:8.f] setActive:true];
+        [[self.nameBoxerLabel.leftAnchor constraintEqualToAnchor:self.boxerPhotoImageView.rightAnchor constant:8.f] setActive:true];
+        [[self.nameBoxerLabel.rightAnchor constraintEqualToAnchor:self.backgroundCardView.rightAnchor constant:-9.f] setActive:true];
+        //[[self.nameBoxerLabel.heightAnchor constraintEqualToAnchor:self.boxerPhotoImageView.widthAnchor multiplier:1.f/4.f] setActive:true];
         
         //Anchors descriptionLabel
-        [[self.descriptionBoxerLabel.leftAnchor constraintEqualToAnchor:self.boxerPhotoImageView.rightAnchor constant:KSElementOffset] setActive:true];
-        [[self.descriptionBoxerLabel.topAnchor constraintEqualToAnchor:self.nameBoxerLabel.bottomAnchor constant:KSElementOffset] setActive:true];
-        [[self.descriptionBoxerLabel.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-KSElementOffset] setActive:true];
-        [[self.descriptionBoxerLabel.bottomAnchor constraintEqualToAnchor:self.boxerPhotoImageView.bottomAnchor] setActive:true];
-        
-        //Anchors boxerPhotoImageView
-        [[self.boxerPhotoImageView.topAnchor constraintEqualToAnchor:self.topAnchor constant:KSElementOffset] setActive:true];
-        [[self.boxerPhotoImageView.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:KSElementOffset] setActive:true];
-        [[self.boxerPhotoImageView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-KSElementOffset] setActive:true];
-        [[self.boxerPhotoImageView.widthAnchor constraintEqualToConstant:110.f] setActive:true];
-        [[self.boxerPhotoImageView.heightAnchor constraintEqualToConstant:120.f] setActive:true];
-
+        [[self.descriptionBoxerLabel.topAnchor constraintEqualToAnchor:self.nameBoxerLabel.bottomAnchor constant:8] setActive:true];
+        [[self.descriptionBoxerLabel.leftAnchor constraintEqualToAnchor:self.boxerPhotoImageView.rightAnchor constant:8] setActive:true];
+        [[self.descriptionBoxerLabel.rightAnchor constraintEqualToAnchor:self.backgroundCardView.rightAnchor constant:-9] setActive:true];
+        [[self.descriptionBoxerLabel.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-8] setActive:true];
+    
     }
     return self;
 }
@@ -66,10 +68,10 @@ static const CGFloat KSElementOffset = 8.f;
         view.backgroundColor = [UIColor colorWithRed:240.f/255.f green:240.f/255 blue:240.f/255.f alpha:1.f];
         view.translatesAutoresizingMaskIntoConstraints = false;
         view.clipsToBounds = true;
-        view.layer.cornerRadius = 3.f;
-        view.layer.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f].CGColor;
+        view.layer.cornerRadius = 10.f;
+        view.layer.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f].CGColor;
         view.layer.shadowOffset = CGSizeMake(0, 0);
-        view.layer.shadowOpacity = 0.8f;
+        view.layer.shadowOpacity = 1.f;
         view.layer.masksToBounds = false;
         
         _backgroundCardView = view;
@@ -85,7 +87,8 @@ static const CGFloat KSElementOffset = 8.f;
         
         UILabel* label = [[UILabel alloc] init];
         label.translatesAutoresizingMaskIntoConstraints = false;
-        label.backgroundColor = [UIColor clearColor];
+        label.numberOfLines = 0;
+
         
         _nameBoxerLabel = label;
     }
@@ -101,7 +104,9 @@ static const CGFloat KSElementOffset = 8.f;
         UILabel* label = [[UILabel alloc] init];
         label.numberOfLines = 0;
         label.translatesAutoresizingMaskIntoConstraints = false;
-        label.backgroundColor = [UIColor clearColor];
+        label.textAlignment = NSTextAlignmentJustified;
+        //label.backgroundColor = [UIColor grayColor];
+        //label.font = [UIFont fontWithName:@"Headline" size:.f];
         
         _descriptionBoxerLabel = label;
     }
@@ -115,8 +120,9 @@ static const CGFloat KSElementOffset = 8.f;
     if (!_boxerPhotoImageView) {
         
         UIImageView* imageView = [[UIImageView alloc] init];
-        imageView.backgroundColor = [UIColor clearColor];
+        imageView.backgroundColor = [UIColor grayColor];
         imageView.translatesAutoresizingMaskIntoConstraints = false;
+        imageView.layer.cornerRadius = 5.f;
         //imageView.layer.cornerRadius = 20.f;
         imageView.layer.masksToBounds = true;
         
