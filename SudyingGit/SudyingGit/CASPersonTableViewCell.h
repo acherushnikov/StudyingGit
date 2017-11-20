@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class SBTPerson;
 @interface CASPersonTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *firstNameLabel;
@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UILabel *descriptionPersonLabel;
 @property (nonatomic, strong) UIImageView *personPhotoImageView;
 
-- (CGFloat)cellHeight;
++(CGFloat) heightForCellWithPerson:(SBTPerson *)person;
 
+- (void)prepareForReuse;
+- (CGFloat)cellHeight;
 @end

@@ -8,6 +8,7 @@
 
 #import "CASPersonTableViewCell.h"
 #import <Masonry/Masonry.h>
+#import "SBTPerson.h"
 
 static const CGSize CASPersonPhotoSize = {50.f, 50.f};
 static const CGFloat CASElementsOffset = 10.f;
@@ -77,10 +78,48 @@ static const CGFloat CASLabelHeight = 20.f;
 }
 
 
+-(void) prepareForReuse
+{
+    [super prepareForReuse];
+    
+    _firstNameLabel.text = nil;
+    _lastNameLabel.text  = nil;
+    _descriptionPersonLabel.text = nil;
+    _personPhotoImageView = nil;
+    
+}
 - (CGFloat)cellHeight
 {
-	CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset;
-	return height;
+    CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset;
+    return height;
+    
+}
+
++(CGFloat) heightForCellWithPerson:(SBTPerson *)person
+{
+    NSString * description = person.personDescription;
+    CGFloat height = [CASPersonTableViewCell heightOfAttributedText:description];
+    
+    height +=(4*CASElementsOffset + 2*CASLabelHeight);
+    NSLog(@"My height %f", height);
+    return height;
+    
+}
+
++ (CGFloat) heightOfAttributedText: (NSString*) text
+{
+    
+    UIFont *font = [UIFont systemFontOfSize:20.f];
+    
+    CGRect rect1 = [text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - CASPersonPhotoSize.width - 3*CASElementsOffset, CGFLOAT_MAX)
+                                      options:NSStringDrawingUsesLineFragmentOrigin
+                                   attributes:@{NSFontAttributeName: font}
+                                      context:nil];
+    
+    CGFloat height = rect1.size.height;
+    
+    
+    return height;
 }
 
 @end

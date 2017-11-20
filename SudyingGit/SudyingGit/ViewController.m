@@ -57,6 +57,9 @@ static NSString *KVBDescriptions[] = {
 		secondPerson.personDescription = @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
 		
 		_personList = @[firstPerson, secondPerson];
+        
+        
+        
 	}
 	return self;
 }
@@ -73,7 +76,7 @@ static NSString *KVBDescriptions[] = {
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
     
-    self.tableView.estimatedRowHeight = 85.0;
+   self.tableView.estimatedRowHeight = 44.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
 	[self.view addSubview:self.tableView];
@@ -104,8 +107,12 @@ static NSString *KVBDescriptions[] = {
     
     [self setConstrains];
     
+    CGPoint content = CGPointMake(0, 15.f);
+    [self.tableView setContentOffset:content animated:YES];
+    
+    
+    
 }
-
 
 
 #pragma mark - UITableViewDataSource
@@ -117,17 +124,20 @@ static NSString *KVBDescriptions[] = {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell;
+	CASPersonTableViewCell *cell;
 	SBTPerson *person = self.personList[indexPath.row];
-	
+    
 	if (person.personCellType == CASPersonCellTypeDefault)
 	{
-		cell = [tableView dequeueReusableCellWithIdentifier:CASCellIdentifier forIndexPath:indexPath];
+		
+        cell = [tableView dequeueReusableCellWithIdentifier:CASCellIdentifier forIndexPath:indexPath];
 	}
 	else
 	{
 		cell = [tableView dequeueReusableCellWithIdentifier:CASPersonTableViewCellIdentifier forIndexPath:indexPath];
 	}
+    
+    [cell prepareForReuse];
 	
 	if (person.personCellType == CASPersonCellTypeDefault)
 	{
@@ -140,16 +150,16 @@ static NSString *KVBDescriptions[] = {
 		personCell.lastNameLabel.text = person.lastName;
 		personCell.descriptionPersonLabel.text = person.personDescription;		
 	}
-
 	return cell;
 }
 
 
 #pragma mark - UITableViewDelegate
 
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return UITableViewAutomaticDimension;
+    return  UITableViewAutomaticDimension;
 }
 
 #pragma mark - Masonry
@@ -186,10 +196,34 @@ static NSString *KVBDescriptions[] = {
     
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+ 
+    
+    NSArray *arrayOfVisibleIndexPaths = [self.tableView indexPathsForVisibleRows];
+    NSIndexPath *currentPath = arrayOfVisibleIndexPaths.lastObject;
+    if (indexPath.row == currentPath.row)
+    {
+        NSArray * pathArray = @[ [NSValue valueWithCGPoint:CGPointMake(cell.center.x, cell.center.y)], [NSValue valueWithCGPoint:CGPointMake(cell.center.x + 20, cell.center.y)], [NSValue valueWithCGPoint:CGPointMake(cell.center.x-20, cell.center.y)], [NSValue valueWithCGPoint:CGPointMake(cell.center.x, cell.center.y)], ];
+    
+        CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        
+        pathAnimation.values = pathArray;
+        pathAnimation.duration = 2.0;
+        
+        [cell.layer addAnimation:pathAnimation forKey:@"position"];
+
+        
+    }
+        
+}
+
+
 #pragma mark - Button actions
 
 - (void) insertPerson
 {
+    
     NSInteger random = (arc4random() / 100) % 100;
     SBTPerson *newPerson = [SBTPerson new];
     
@@ -205,7 +239,8 @@ static NSString *KVBDescriptions[] = {
     newPerson.firstName = KVBNames[arc4random()% 5];
     newPerson.lastName  = KVBLastName[arc4random()% 5];
     newPerson.personDescription = KVBDescriptions[arc4random()% 5];
-   
+    
+    
     NSMutableArray *newPersonArray= [NSMutableArray arrayWithArray:self.personList];
     
     [self.tableView beginUpdates];
@@ -213,16 +248,25 @@ static NSString *KVBDescriptions[] = {
     
     [newPersonArray addObject: newPerson];
     
-    self.personList = newPersonArray;
+    self.personList = [NSArray arrayWithArray:newPersonArray];
     
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:self.personList.count - 1 inSection:0];
-  
     [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
     
+
+
     
     [self.tableView endUpdates];
     
+//    if(![self isVisible:newIndexPath])
+//    {
+//         [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    }
+    
+    
 }
+
+
 
 - (void) deletePerson
 {
@@ -233,19 +277,44 @@ static NSString *KVBDescriptions[] = {
         NSMutableArray *newPersonArray= [NSMutableArray arrayWithArray:self.personList];
     
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:self.personList.count - 1 inSection:0];
-
+        
         [newPersonArray removeLastObject];
     
         self.personList = newPersonArray;
     
         [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationRight];
     
-    
+        
         [self.tableView endUpdates];
     }
     
 }
 
+-(BOOL) isVisible: (NSIndexPath *) indexPath
+{
+    NSArray *arrayOfVisibleIndexPaths = [self.tableView indexPathsForVisibleRows];
+
+    if([arrayOfVisibleIndexPaths lastObject]!= indexPath)
+    {
+        return NO;
+    }
+    else
+    {
+        return  YES;
+    }
+}
+
+//- (void) addHeightForPerson:(SBTPerson*) person
+//{
+//    
+//    CGFloat height = [CASPersonTableViewCell heightForCellWithPerson:person];
+//    
+//    if (person.personCellType ==CASPersonCellTypeDefault) {
+//        height = 40;
+//    }
+//    [self.heights addObject:[NSNumber numberWithFloat:height]];
+//    
+//}
 
 
 @end
