@@ -7,12 +7,13 @@
 //
 
 #import "ViewController.h"
+
 #import "CASPersonTableViewCell.h"
-#import "SBTPerson.h"
+#import "SKBoxer.h"
 #import <Masonry/Masonry.h>
 
 static NSString * const SKBoxerCellIdentifier = @"SKBoxerCell";
-static CGFloat const SKHeightBetweenCells = 15.f;
+static CGFloat const SKHeightBetweenCells = 20.f;
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -54,6 +55,7 @@ static CGFloat const SKHeightBetweenCells = 15.f;
     [[self.tableView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor] setActive:true];
     [[self.tableView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor] setActive:true];
     
+    
     [self setupContainerView];
 }
 
@@ -77,7 +79,6 @@ static CGFloat const SKHeightBetweenCells = 15.f;
     //Anchors deleteButton
     [[self.deleteButton.centerYAnchor constraintEqualToAnchor:self.addButton.centerYAnchor] setActive:true];
     [[self.deleteButton.rightAnchor constraintEqualToAnchor:self.containerView.rightAnchor constant:-10.f] setActive:true];
-    [[self.deleteButton.bottomAnchor constraintEqualToAnchor:self.addButton.bottomAnchor] setActive:true];
     [[self.deleteButton.widthAnchor constraintEqualToAnchor:self.addButton.widthAnchor] setActive:true];
 }
 
@@ -90,7 +91,7 @@ static CGFloat const SKHeightBetweenCells = 15.f;
         
         UIView* view = [[UIView alloc] init];
         view.translatesAutoresizingMaskIntoConstraints = false;
-        view.backgroundColor = [UIColor grayColor];
+        view.backgroundColor = [UIColor whiteColor];
         
         _containerView = view;
     }
@@ -105,8 +106,8 @@ static CGFloat const SKHeightBetweenCells = 15.f;
         
         UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
         button.translatesAutoresizingMaskIntoConstraints = false;
-        
-        button.backgroundColor = [UIColor whiteColor];
+        button.layer.cornerRadius = 10.f;
+        button.backgroundColor = [UIColor grayColor];
         
         _addButton = button;
     }
@@ -120,8 +121,8 @@ static CGFloat const SKHeightBetweenCells = 15.f;
         
         UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
         button.translatesAutoresizingMaskIntoConstraints = false;
-        
-        button.backgroundColor = [UIColor whiteColor];
+        button.layer.cornerRadius = 10.f;
+        button.backgroundColor = [UIColor grayColor];
         
         _deleteButton = button;
     }
@@ -129,11 +130,24 @@ static CGFloat const SKHeightBetweenCells = 15.f;
     return _deleteButton;
 }
 
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.alpha = 0;
+    cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0);
+
+    [UIView animateWithDuration:0.7f animations:^{
+        cell.alpha = 1.f;
+        cell.layer.transform = CATransform3DIdentity;
+    }];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 50;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -154,7 +168,6 @@ static CGFloat const SKHeightBetweenCells = 15.f;
     [cell.descriptionBoxerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:11.f]];
     return cell;
 }
-
 
 #pragma mark - UITableViewDelegate
 
