@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "CASPersonTableViewCell.h"
 #import "SBTPerson.h"
+//#import "Masonry.h"
+
 
 static NSString *const CASCellIdentifier = @"CellIdentifier";
 static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCell";
@@ -28,18 +30,26 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	if (self)
 	{
 		SBTPerson *firstPerson = [SBTPerson new];
-		firstPerson.personCellType = CASPersonCellTypeDefault;
+		//firstPerson.personCellType = CASPersonCellTypeDefault;
+        firstPerson.personCellType = CASPersonCellTypeCustom;
 		firstPerson.firstName = @"Стив";
 		firstPerson.lastName = @"Джобс";
-		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал";
+		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века.\n\n\n";
 		
 		SBTPerson *secondPerson = [SBTPerson new];
-		firstPerson.personCellType = CASPersonCellTypeCustom;
+		secondPerson.personCellType = CASPersonCellTypeCustom;
 		secondPerson.firstName = @"Тим";
 		secondPerson.lastName = @"Кук";
-		secondPerson.personDescription = @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
+		secondPerson.personDescription = @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации.";
 		
-		_personList = @[firstPerson, secondPerson];
+        SBTPerson *thirdPerson = [SBTPerson new];
+        thirdPerson.personCellType = CASPersonCellTypeCustom;
+        thirdPerson.firstName = @"Тони";
+        thirdPerson.lastName = @"Старк";
+        thirdPerson.personDescription = @"При создании связей типа Action и Outlet разрешены соединения типа один-ко-многим. То есть мы могли добавить на нашу форму еще несколько элементов и связать их с нажатием на кнопку. В этом случае вызов Touch Up Inside приводил к реакции сразу нескольких элементов.";
+		
+        _personList = @[firstPerson, secondPerson, thirdPerson];
+        //_personList = @[firstPerson];
 	}
 	return self;
 }
@@ -61,6 +71,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     self.leftbutton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.leftbutton setTitle:@"Delete" forState:UIControlStateNormal];
     self.leftbutton.backgroundColor = UIColor.cyanColor;
+    [self.leftbutton addTarget:self action:@selector(delButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.leftbutton];
     
     NSLayoutConstraint *leftButtonTopConstr = [NSLayoutConstraint constraintWithItem:self.leftbutton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:15];
@@ -79,6 +90,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     self.rightbutton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.rightbutton setTitle:@"Add" forState:UIControlStateNormal];
     self.rightbutton.backgroundColor = UIColor.blueColor;
+    [self.rightbutton addTarget:self action:@selector(addButtonAction:toTable:toTheCell:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.rightbutton];
     
     NSLayoutConstraint *rightButtonTopConstr = [NSLayoutConstraint constraintWithItem:self.rightbutton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:15];
@@ -104,7 +116,29 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     
     NSLayoutConstraint *tableBottom = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
     [self.view addConstraint:tableBottom];
-    
+    /*
+    self.testbutton =[UIButton buttonWithType:UIButtonTypeCustom];
+    self.testbutton.frame = CGRectMake(150, 300, 100, 100);
+    self.testbutton.backgroundColor = [UIColor lightGrayColor];*/
+    /*
+     NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:30],
+     NSForegroundColorAttributeName: [UIColor orangeColor]
+     };
+     NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"But" attributes:attributes];
+     [self.testbutton setAttributedTitle:title forState:UIControlStateNormal];
+     */
+    /*
+    [self.testbutton setTitle:@"Button" forState:UIControlStateNormal];
+    [self.testbutton setTitle:@"Button Pressed" forState:UIControlStateHighlighted];
+    [self.testbutton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.testbutton setTitleColor:[UIColor greenColor] forState:UIControlStateHighlighted];*/
+    //[self.testbutton];
+    /*UIEdgeInsets insets = UIEdgeInsetsMake(50, 50, 0, 0);
+     self.testbutton.titleEdgeInsets = insets;*/
+    /*
+    [self.view addSubview:self.testbutton];
+    [self.testbutton addTarget:self action:@selector(ActionTest:) forControlEvents:UIControlEventTouchUpInside];
+    [self.testbutton addTarget:self action:@selector(ActionTest2:) forControlEvents:UIControlEventTouchUpOutside];*/
 }
 
 //- (void)viewDidLayoutSubviews
@@ -114,6 +148,36 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 //    self.tableView.frame = self.view.frame;
 //}
 
+#pragma mark - Actions
+
+- (void)delButtonAction:(UIButton*) but
+{
+    NSLog(@"Del button pressed");
+    BOOL isEditing = self.tableView.editing;
+    [self.tableView setEditing:!isEditing];
+    if (isEditing) {
+        [but setTitle:@"Del" forState:UIControlStateNormal];
+    }
+    else{
+        [but setTitle:@"Done" forState:UIControlStateNormal];
+    }
+};
+- (void)addButtonAction:(UIButton*)sender toTable:(UITableView *)tableView toTheCell:(NSIndexPath *)indexPath
+{
+    NSLog(@"Add button pressed");
+    BOOL isEditing = self.tableView.editing;
+    [self.tableView setEditing:!isEditing];
+    
+    //UITableViewCell *cell;
+    CASPersonTableViewCell *addingNewCell = [[CASPersonTableViewCell alloc] initWithStyle:CASPersonCellTypeCustom reuseIdentifier:@"test"];
+    addingNewCell.firstNameLabel.text = @"Новый";
+    addingNewCell.lastNameLabel.text = @"Персонаж";
+    addingNewCell.descriptionPersonLabel.text =@"omnomnomnomnomnomnomnomnomnomnomnomnomnomnomnom";
+    //addingNewCell.frame = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    //[addingNewCell layoutSubviews];
+    //[self.tableView insertSections:addingNewCell withRowAnimation:UITableViewRowAnimationLeft];
+    [self.view addSubview:addingNewCell];
+};
 
 #pragma mark - UITableViewDataSource
 
@@ -135,14 +199,13 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	{
 		cell = [tableView dequeueReusableCellWithIdentifier:CASPersonTableViewCellIdentifier forIndexPath:indexPath];
 	}
-	
 	if (person.personCellType == CASPersonCellTypeDefault)
 	{
 		cell.textLabel.text = person.firstName;
 	}
 	else
 	{
-		CASPersonTableViewCell *personCell = (id)cell;
+        CASPersonTableViewCell *personCell = (id)cell;
 		personCell.firstNameLabel.text = person.firstName;
 		personCell.lastNameLabel.text = person.lastName;
 		personCell.descriptionPersonLabel.text = person.personDescription;		
@@ -150,7 +213,6 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 	return cell;
 }
-
 
 #pragma mark - UITableViewDelegate
 
@@ -162,7 +224,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 		return 44;
 	}
 	
-    return 44;
+    return 150;
 }
 
 @end

@@ -18,6 +18,7 @@
     {
         _textLabel = [UILabel new];
         _textLabel.frame = CGRectMake(0, 0, CGRectGetWidth(frame), 25);
+        _textLabel.textColor = [UIColor whiteColor];
         
         [self.contentView addSubview:_textLabel];
     }

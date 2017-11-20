@@ -30,7 +30,7 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     
     self.albums = @[
                     @[
-                        @{ @"title": @"12424j" }
+                        @{ @"title": @"I'm just a cell" }
                     ],
                     @[],
                     @[
@@ -52,14 +52,14 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame    collectionViewLayout:layout];
     
-    self.collectionView.backgroundColor = UIColor.greenColor;
+    self.collectionView.backgroundColor = UIColor.whiteColor;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
     [self.collectionView registerClass:[CASCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewID];
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:CollectionViewSupplyID];
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:CollectionViewSupplyID];
-    
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.collectionView];
     
     self.leftbutton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -80,20 +80,17 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
                                 @"CollectionV": self.collectionView
                             };
     
-    NSArray *ButtonsSideConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[LeftB]-15-[RightB]-15-|" options: 0 metrics:nil views:dict];
+    NSArray *ButtonsSideConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[LeftB]-15-[RightB(==LeftB)]-15-|" options: 0 metrics:nil views:dict];
     [self.view addConstraints: ButtonsSideConstr];
-    
-//    NSArray *ButtonsTopConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[LeftB(44)]|" options: 0 metrics:nil views:dict];
-//    [self.view addConstraints: ButtonsTopConstr];
-
-    NSArray *leftButtonsHeightConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[LeftB(44)]|" options: 0 metrics:nil views:dict];
-    [self.view addConstraints:leftButtonsHeightConstr];
     
     NSArray *rightButtonsHeightConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[RightB(44)]|" options: 0 metrics:nil views:dict];
     [self.view addConstraints:rightButtonsHeightConstr];
     
-//    NSArray *collectionHeightConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-60-[CollectionV(100)]|" options: 0 metrics:nil views:dict];
-//    [self.view addConstraints:collectionHeightConstr];
+    NSArray *collectionHeightConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[LeftB(44)]-15-[CollectionV]-|" options: 0 metrics:nil views:dict];
+    [self.view addConstraints:collectionHeightConstr];
+    
+    NSArray *collectionWidthConstr = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[CollectionV]-0-|" options: 0 metrics:nil views:dict];
+    [self.view addConstraints:collectionWidthConstr];
 }
 
 
@@ -104,7 +101,7 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
                                 forIndexPath:indexPath];
     
     cell.textLabel.text = self.albums[indexPath.section][indexPath.row][@"title"];
-    cell.backgroundColor = UIColor.redColor;
+    cell.backgroundColor = UIColor.blueColor;
     
     return cell;
 }
@@ -116,16 +113,16 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     if (kind == UICollectionElementKindSectionFooter)
     {
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:CollectionViewSupplyID forIndexPath:indexPath];
-        reusableView.backgroundColor = UIColor.blueColor;
+        reusableView.backgroundColor = UIColor.grayColor;
     }
     
     if (kind == UICollectionElementKindSectionHeader)
     {
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:CollectionViewSupplyID forIndexPath:indexPath];
-        reusableView.backgroundColor = UIColor.blackColor;
+        reusableView.backgroundColor = UIColor.redColor;
     }
     
-    reusableView.lolLabel.text = @"1235";
+    reusableView.lolLabel.text = @"header text";
     
     return reusableView;
 }

@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) UIButton *leftbutton;
 @property (nonatomic, strong) UIButton *rightbutton;
+@property (nonatomic, strong) UIButton *testbutton;
+
 
 @end
 

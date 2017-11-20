@@ -8,9 +8,10 @@
 
 #import "CASPersonTableViewCell.h"
 
-static const CGSize CASPersonPhotoSize = {50.f, 50.f};
+static const CGSize CASPersonPhotoSize = {50.f, 100.f};
 static const CGFloat CASElementsOffset = 10.f;
 static const CGFloat CASLabelHeight = 20.f;
+//static const CGFloat KMDDetailLabelHeight = 50.f;
 
 @implementation CASPersonTableViewCell
 
@@ -24,17 +25,21 @@ static const CGFloat CASLabelHeight = 20.f;
 		[self.contentView addSubview:_firstNameLabel];
 		
 		_lastNameLabel = [UILabel new];
-		_lastNameLabel.textColor = [UIColor greenColor];
-		_lastNameLabel.font = [UIFont systemFontOfSize:20.f];
+		//_lastNameLabel.textColor = [UIColor greenColor];
+        _lastNameLabel.textColor = [UIColor redColor];
+		//_lastNameLabel.font = [UIFont systemFontOfSize:20.f];
 		[self.contentView addSubview:_lastNameLabel];
 		
 		_descriptionPersonLabel = [UILabel new];
-		_descriptionPersonLabel.textColor = [UIColor yellowColor];
-		_descriptionPersonLabel.numberOfLines = 0;
+		//_descriptionPersonLabel.textColor = [UIColor yellowColor];
+        _descriptionPersonLabel.textColor = [UIColor blackColor];
+		_descriptionPersonLabel.numberOfLines = 3;
+        //_descriptionPersonLabel.numberOfLines = 0;
 		[self.contentView addSubview:_descriptionPersonLabel];
 		
 		_personPhotoImageView = [UIImageView new];
-		_personPhotoImageView.backgroundColor = [UIColor orangeColor];
+		//_personPhotoImageView.backgroundColor = [UIColor orangeColor];
+        _personPhotoImageView.backgroundColor = [UIColor grayColor];
 		[self.contentView addSubview:_personPhotoImageView];
 	}
 	return self;
@@ -44,20 +49,23 @@ static const CGFloat CASLabelHeight = 20.f;
 {
 	[super layoutSubviews];
 	
-	self.personPhotoImageView.frame = CGRectMake(CASElementsOffset, (CGRectGetHeight(self.contentView.frame) - CASPersonPhotoSize.height)/2, CASPersonPhotoSize.width, CASPersonPhotoSize.height);
+	//self.personPhotoImageView.frame = CGRectMake(CASElementsOffset, (CGRectGetHeight(self.contentView.frame) - CASPersonPhotoSize.height)/2, CASPersonPhotoSize.width, CASPersonPhotoSize.height);
+    
+    self.personPhotoImageView.frame = CGRectMake(CASElementsOffset, (CGRectGetHeight(self.contentView.frame) - CASPersonPhotoSize.height)/2, CASPersonPhotoSize.width, CASPersonPhotoSize.height);
 	
 	self.firstNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CASElementsOffset, CGRectGetWidth(self.contentView.frame) - CGRectGetWidth(self.personPhotoImageView.frame) - CASElementsOffset * 3, CASLabelHeight);
 	
 	self.lastNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.firstNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), CASLabelHeight);
 	
 	CGSize detailTextLabelSize = [self.descriptionPersonLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.firstNameLabel.frame), CGFLOAT_MAX)];
-	
+    
 	self.descriptionPersonLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + CASElementsOffset, CGRectGetMaxY(self.lastNameLabel.frame) + CASElementsOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
 }
 
 - (CGFloat)cellHeight
 {
-	CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset;
+	CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset * 10;
+    //CGFloat height = CGRectGetMaxY(self.descriptionPersonLabel.frame) + CASElementsOffset + CASLabelHeight*2;
 	return height;
 }
 
