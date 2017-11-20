@@ -31,7 +31,7 @@ static const CGFloat CASLabelHeight = 20.f;
         
         
         _descriptionPersonLabel = [UILabel new];
-        _descriptionPersonLabel.textColor = [UIColor yellowColor];
+        _descriptionPersonLabel.textColor = [UIColor blueColor];
         _descriptionPersonLabel.numberOfLines = 0;
         
         

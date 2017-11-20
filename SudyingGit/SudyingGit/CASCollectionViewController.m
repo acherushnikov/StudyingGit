@@ -20,7 +20,7 @@ static const CGFloat SMAButtonsOffset = 15.f;
 @interface CASCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, copy) NSArray *albums;
+@property (nonatomic, copy) NSMutableArray *albums;
 @property (nonatomic, strong) UIView *buttonsView;
 @property (nonatomic, strong) UIButton *firstButton;
 @property (nonatomic, strong) UIButton *secondButton;
@@ -28,6 +28,15 @@ static const CGFloat SMAButtonsOffset = 15.f;
 @end
 
 @implementation CASCollectionViewController
+
+- (void)setAlbums:(NSMutableArray *)albums {
+    
+    if (_albums != albums) {
+        _albums = [albums mutableCopy];
+    }
+    
+    return;
+}
 
 - (void)viewDidLoad
 {
@@ -78,12 +87,16 @@ static const CGFloat SMAButtonsOffset = 15.f;
     
     self.firstButton = [UIButton new];
     self.firstButton.translatesAutoresizingMaskIntoConstraints = NO;
-    self.firstButton.backgroundColor = UIColor.orangeColor;
+    self.firstButton.backgroundColor = UIColor.blueColor;
+    self.firstButton.titleLabel.textColor = UIColor.whiteColor;
+    [self.firstButton setTitle:@"Добавить" forState: UIControlStateNormal];
     [self.firstButton addTarget:self action:@selector(addCell) forControlEvents:UIControlEventTouchUpInside];
     
     self.secondButton = [UIButton new];
     self.secondButton.translatesAutoresizingMaskIntoConstraints = NO;
-    self.secondButton.backgroundColor = UIColor.orangeColor;
+    self.secondButton.backgroundColor = UIColor.magentaColor;
+    [self.secondButton setTitle:@"Удалить" forState: UIControlStateNormal];
+    [self.secondButton addTarget:self action:@selector(deleteCell) forControlEvents:UIControlEventTouchUpInside];
     
     [self.buttonsView addSubview:self.firstButton];
     [self.buttonsView addSubview:self.secondButton];
@@ -189,8 +202,14 @@ static const CGFloat SMAButtonsOffset = 15.f;
 
 # pragma mark - Actions
 
-//- (void)addCell() {
-//
-//}
+- (void)addCell {
+    [self.albums insertObject:@[] atIndex:0];
+    [self.collectionView reloadData];
+}
+
+- (void)deleteCell {
+    [self.albums removeObjectAtIndex:0];
+    [self.collectionView reloadData];
+}
 
 @end
