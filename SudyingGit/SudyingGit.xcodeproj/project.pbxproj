@@ -10,8 +10,10 @@
 		2BF2677E1FBDE952007E873F /* CASCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2677D1FBDE952007E873F /* CASCollectionViewController.m */; };
 		2BF267811FBDF540007E873F /* CASCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF267801FBDF540007E873F /* CASCollectionViewCell.m */; };
 		2BF267841FBE02CF007E873F /* CASCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */; };
+		36C58BF41FC367BD00400701 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCE1BDA1FC027E600ACEB6F /* Masonry.framework */; };
+		36C58BF51FC367BD00400701 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ADCE1BDA1FC027E600ACEB6F /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */; };
-		ADCE1BDB1FC027E600ACEB6F /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCE1BDA1FC027E600ACEB6F /* Masonry.framework */; };
+		ADCE1BDB1FC027E600ACEB6F /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCE1BDA1FC027E600ACEB6F /* Masonry.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
 		ADEDECF61FB211E1007BC9E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEDECF51FB211E1007BC9E2 /* Assets.xcassets */; };
@@ -32,6 +34,20 @@
 			remoteInfo = SudyingGit;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		36C58BF61FC367BD00400701 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				36C58BF51FC367BD00400701 /* Masonry.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2BF2677C1FBDE952007E873F /* CASCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASCollectionViewController.h; sourceTree = "<group>"; };
@@ -70,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36C58BF41FC367BD00400701 /* Masonry.framework in Frameworks */,
 				ADCE1BDB1FC027E600ACEB6F /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +178,7 @@
 				ADEDECE51FB211E0007BC9E2 /* Sources */,
 				ADEDECE61FB211E0007BC9E2 /* Frameworks */,
 				ADEDECE71FB211E0007BC9E2 /* Resources */,
+				36C58BF61FC367BD00400701 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

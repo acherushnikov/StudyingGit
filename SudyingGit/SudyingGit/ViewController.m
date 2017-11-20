@@ -73,7 +73,6 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
 	[self.view addSubview:self.tableView];
-    
     [self updateConstraints];
     
 }
@@ -103,6 +102,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	if (person.personCellType == CASPersonCellTypeDefault)
 	{
 		cell.textLabel.text = person.firstName;
+        cell.textLabel.textColor = [UIColor grayColor];
 	}
 	else
 	{
@@ -134,7 +134,6 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make)
      {
          make.bottom.equalTo(self.view.mas_bottom).with.offset(-15);
-         make.left.equalTo(self.deleteButton.mas_right).with.offset(15);
          make.width.equalTo(self.addButton.mas_width);
          make.right.equalTo(self.view.mas_right).with.offset(-15);
          make.height.equalTo(@44);
@@ -156,12 +155,61 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (void) addButtonClicked:(UIButton*)sender
 {
-    NSLog(@"add button");
+    
+    SBTPerson *newPerson = [SBTPerson new];
+
+    NSInteger random = arc4random_uniform(10);
+    
+    newPerson.firstName = @"First name";
+    newPerson.lastName  = @"Last name";
+    newPerson.personDescription = @"Description field";
+   if (random > 5)
+   {
+    newPerson.personCellType = CASPersonCellTypeCustom;
+   }
+    else
+        newPerson.personCellType = CASPersonCellTypeDefault;
+    
+    NSMutableArray *personArray= [NSMutableArray arrayWithArray:self.personList];
+    
+    [self.tableView beginUpdates];
+    
+    
+    [personArray addObject: newPerson];
+    
+    self.personList = personArray;
+    
+   NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:self.personList.count - 1 inSection:0];
+ 
+    [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+    
+    
+    [self.tableView endUpdates];
+
+    
+
   
 }
 - (void) deleteButtonClicked:(UIButton*)sender
 {
-       NSLog(@"Delete button");
+
+    if(self.personList.count >0)
+    {
+        [self.tableView beginUpdates];
+        
+        NSMutableArray *personArray= [NSMutableArray arrayWithArray:self.personList];
+        
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:self.personList.count - 1 inSection:0];
+        
+        [personArray removeLastObject];
+        
+        self.personList = personArray;
+        
+        [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+        
+        
+        [self.tableView endUpdates];
+    }
 }
 
 @end

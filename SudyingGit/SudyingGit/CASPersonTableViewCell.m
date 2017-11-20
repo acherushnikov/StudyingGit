@@ -21,24 +21,24 @@ static const CGFloat CASLabelHeight = 20.f;
 	if (self)
 	{
 		_firstNameLabel = [UILabel new];
-		_firstNameLabel.textColor = [UIColor redColor];
+        _firstNameLabel.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
         self.firstNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
 		[self.contentView addSubview:_firstNameLabel];
 		
 		_lastNameLabel = [UILabel new];
-		_lastNameLabel.textColor = [UIColor greenColor];
+		_lastNameLabel.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
 		_lastNameLabel.font = [UIFont systemFontOfSize:20.f];
         self.lastNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
 		[self.contentView addSubview:_lastNameLabel];
 		
 		_descriptionPersonLabel = [UILabel new];
-		_descriptionPersonLabel.textColor = [UIColor yellowColor];
+		_descriptionPersonLabel.textColor = [UIColor grayColor];
 		_descriptionPersonLabel.numberOfLines = 0;
         self.descriptionPersonLabel.translatesAutoresizingMaskIntoConstraints = NO;
 		[self.contentView addSubview:_descriptionPersonLabel];
 		
 		_personPhotoImageView = [UIImageView new];
-		_personPhotoImageView.backgroundColor = [UIColor orangeColor];
+		_personPhotoImageView.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
         self.personPhotoImageView.translatesAutoresizingMaskIntoConstraints = NO;
 		[self.contentView addSubview:_personPhotoImageView];
 	}
