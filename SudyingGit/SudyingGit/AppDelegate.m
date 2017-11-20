@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	self.window = [UIWindow new];
 	
-	CASCollectionViewController *rootViewController = [CASCollectionViewController new];
+	ViewController *rootViewController = [ViewController new];
 	self.window.rootViewController = rootViewController;
 	
 	[self.window makeKeyAndVisible];

@@ -21,15 +21,17 @@ static const CGFloat CASLabelHeight = 20.f;
 	{
 		_firstNameLabel = [UILabel new];
 		_firstNameLabel.textColor = [UIColor redColor];
+        //_firstNameLabel.numberOfLines=0;
 		[self.contentView addSubview:_firstNameLabel];
 		
 		_lastNameLabel = [UILabel new];
 		_lastNameLabel.textColor = [UIColor greenColor];
 		_lastNameLabel.font = [UIFont systemFontOfSize:20.f];
+        //_lastNameLabel.numberOfLines=0;
 		[self.contentView addSubview:_lastNameLabel];
 		
 		_descriptionPersonLabel = [UILabel new];
-		_descriptionPersonLabel.textColor = [UIColor yellowColor];
+		_descriptionPersonLabel.textColor = [UIColor redColor];
 		_descriptionPersonLabel.numberOfLines = 0;
 		[self.contentView addSubview:_descriptionPersonLabel];
 		

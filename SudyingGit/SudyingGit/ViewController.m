@@ -28,7 +28,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	if (self)
 	{
 		SBTPerson *firstPerson = [SBTPerson new];
-		firstPerson.personCellType = CASPersonCellTypeDefault;
+		firstPerson.personCellType = CASPersonCellTypeCustom;
 		firstPerson.firstName = @"Стив";
 		firstPerson.lastName = @"Джобс";
 		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал";
@@ -55,6 +55,13 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
 	[self.view addSubview:self.tableView];
 }
+
+/*-(void)viewWillAppear:(BOOL)animated
+{
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 50.0;
+}*/
 
 - (void)viewDidLayoutSubviews
 {
@@ -93,7 +100,6 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	{
 		CASPersonTableViewCell *personCell = (id)cell;
 		personCell.firstNameLabel.text = person.firstName;
-		personCell.lastNameLabel.text = person.lastName;
 		personCell.descriptionPersonLabel.text = person.personDescription;		
 	}
 
@@ -105,13 +111,24 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	SBTPerson *person = self.personList[indexPath.row];
-	if (person.personCellType == CASPersonCellTypeDefault)
-	{
-		return 44;
-	}
-	
+    CASPersonTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    SBTPerson *person = self.personList[indexPath.row];
+    if (person.personCellType == CASPersonCellTypeDefault)
+    {
+        return 44;
+    }
+    if (cell)
+    {
+        return [cell cellHeight];
+    }
     return 44;
 }
+
+/*-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return UITableViewAutomaticDimension;
+}*/
+
+
 
 @end
