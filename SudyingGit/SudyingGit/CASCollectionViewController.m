@@ -13,12 +13,17 @@
 
 static NSString *const CollectionViewID = @"CASCollectionViewCell";
 static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
+static const CGFloat SMAButtonsOffset = 15.f;
+
 
 
 @interface CASCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, copy) NSArray *albums;
+@property (nonatomic, strong) UIView *buttonsView;
+@property (nonatomic, strong) UIButton *firstButton;
+@property (nonatomic, strong) UIButton *secondButton;
 
 @end
 
@@ -55,11 +60,59 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     [self.collectionView registerClass:[CASCollectionViewCell class] forCellWithReuseIdentifier:CollectionViewID];
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:CollectionViewSupplyID];
     [self.collectionView registerClass:[CASCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:CollectionViewSupplyID];
     
     [self.view addSubview:self.collectionView];
+    
+    
+    
+    self.buttonsView = [UIView new];
+    self.buttonsView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.buttonsView.backgroundColor = UIColor.whiteColor;
+    [self.view addSubview:self.buttonsView];
+    
+    
+    self.firstButton = [UIButton new];
+    self.firstButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.firstButton.backgroundColor = UIColor.orangeColor;
+    [self.firstButton addTarget:self action:@selector(addCell) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.secondButton = [UIButton new];
+    self.secondButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.secondButton.backgroundColor = UIColor.orangeColor;
+    
+    [self.buttonsView addSubview:self.firstButton];
+    [self.buttonsView addSubview:self.secondButton];
+    
+
+    NSDictionary *views = @{@"buttonsView":self.buttonsView, @"collectionView":self.collectionView};
+    NSDictionary *metrics = @{@"offset": @15};
+
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-offset-[buttonsView]-offset-[collectionView]-offset-|" options:0 metrics:metrics views:views];
+    
+    NSArray *horizontalConstraints1 =[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-offset-[buttonsView]-offset-|"  options:0 metrics:metrics views:views];
+    NSArray *horizontalConstraints2 =[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-offset-[collectionView]-offset-|" options:0 metrics:metrics views:views];
+    
+    NSDictionary *buttonViews = @{@"firstButton":self.firstButton, @"secondButton":self.secondButton};
+    
+    NSArray *verticalButtonConstraints1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-offset-[firstButton]-offset-|" options:0 metrics:metrics views:buttonViews];
+    NSArray *verticalButtonConstraints2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-offset-[secondButton]-offset-|" options:0 metrics:metrics views:buttonViews];
+    
+    NSArray *horizontalButtonConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-offset-[firstButton(==secondButton)]-offset-[secondButton(==firstButton)]-offset-|" options:0 metrics:metrics views:buttonViews];
+
+    
+    [self.view addConstraints:verticalConstraints];
+    [self.view addConstraints:horizontalConstraints1];
+    [self.view addConstraints:horizontalConstraints2];
+    
+    [self.buttonsView addConstraints:verticalButtonConstraints1];
+    [self.buttonsView addConstraints:verticalButtonConstraints2];
+    [self.buttonsView addConstraints:horizontalButtonConstraints];
+
 }
 
 
@@ -133,4 +186,11 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     return CGSizeMake(100, 100);
 }
 */
+
+# pragma mark - Actions
+
+//- (void)addCell() {
+//
+//}
+
 @end
