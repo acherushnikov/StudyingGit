@@ -184,6 +184,28 @@ static const CGFloat SMAButtonsOffset = 15.f;
     return self.albums.count;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    CATransform3D rotation;
+    rotation = CATransform3DMakeRotation( (60.0*M_PI)/180, 0.0, 0.7, 0.7);
+    
+    CATransform3D scale;
+    scale = CATransform3DMakeScale(0.05, 0.05, 0.1);
+    
+    cell.alpha = 0;
+    
+    CATransform3D animations;
+    animations = CATransform3DConcat(rotation, scale);
+    
+    cell.layer.transform = animations;
+    cell.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    
+    [UIView beginAnimations:@"animation" context:NULL];
+    [UIView setAnimationDuration:0.5];
+    cell.layer.transform = CATransform3DIdentity;
+    cell.alpha = 1;
+    [UIView commitAnimations];
+}
+
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
@@ -203,13 +225,15 @@ static const CGFloat SMAButtonsOffset = 15.f;
 # pragma mark - Actions
 
 - (void)addCell {
-    [self.albums insertObject:@[] atIndex:0];
+    [self.albums insertObject:@[@{ @"title": @"12424j" }] atIndex:0];
     [self.collectionView reloadData];
 }
 
 - (void)deleteCell {
-    [self.albums removeObjectAtIndex:0];
-    [self.collectionView reloadData];
+    if ([self.albums count] > 0) {
+        [self.albums removeObjectAtIndex:0];
+        [self.collectionView reloadData];
+    }
 }
 
 @end
