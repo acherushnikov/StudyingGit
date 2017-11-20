@@ -31,7 +31,6 @@
         [self.backgroundCardView addSubview:self.descriptionBoxerLabel];
         [self.backgroundCardView addSubview:self.boxerPhotoImageView];
         
-        
         //Anchors backgroundCardView
         [[self.backgroundCardView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor] setActive:true];
         [[self.backgroundCardView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor] setActive:true];
@@ -56,9 +55,6 @@
         [[self.descriptionBoxerLabel.leadingAnchor constraintEqualToAnchor:self.nameBoxerLabel.leadingAnchor] setActive:true];
         [[self.descriptionBoxerLabel.trailingAnchor constraintEqualToAnchor:self.nameBoxerLabel.trailingAnchor] setActive:true];
         [[self.descriptionBoxerLabel.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-20.f] setActive:true];
-        
-        //[self.boxerPhotoImageView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:<#(CGFloat)#>]
-
     }
     return self;
 }
