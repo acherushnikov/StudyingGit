@@ -18,7 +18,7 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView* tableView;
-@property (nonatomic, copy) NSArray* boxers;
+@property (nonatomic, strong) NSMutableArray* boxers;
 
 @property (nonatomic, strong) UIView* containerView;
 @property (nonatomic, strong) UIButton* addButton;
@@ -29,6 +29,7 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 
 - (void)viewDidLoad {
     
+    //[self.tableView insertRow]
     self.tableView = [[UITableView alloc] init];
     
     self.tableView.translatesAutoresizingMaskIntoConstraints = false;
@@ -49,17 +50,35 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     
     [self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:SKBoxerCellIdentifier];
     
+    self.boxers = [NSMutableArray new];
+    
     //Anchors tableView
     [[self.tableView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor] setActive:true];
     [[self.tableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:150.f] setActive:true];
     [[self.tableView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor] setActive:true];
     [[self.tableView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor] setActive:true];
     
-    
     [self setupContainerView];
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(0.f, 0.f, 170.f, 0.f);
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 150.f, 0.f);
 }
 
-#pragma mark - Private methods
+#pragma mark - Handlers buttons
+
+- (void)addRowForIndexPath
+{
+
+    [self.tableView beginUpdates];
+    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+}
+
+- (void)deleteRowForIndexPath{
+    
+}
+
+#pragma mark - Anchors
 
 - (void)setupContainerView
 {
@@ -104,7 +123,10 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 {
     if (!_addButton) {
         
-        UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
+        UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button addTarget:self action:@selector(addRowForIndexPath) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:@"Add Row" forState:UIControlStateNormal];
+        button.showsTouchWhenHighlighted = true;
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.layer.cornerRadius = 10.f;
         button.backgroundColor = [UIColor grayColor];
@@ -119,7 +141,10 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 {
     if (!_deleteButton) {
         
-        UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
+        UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button addTarget:self action:@selector(deleteRowForIndexPath) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:@"Delete Row" forState:UIControlStateNormal];
+        button.showsTouchWhenHighlighted = true;
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.layer.cornerRadius = 10.f;
         button.backgroundColor = [UIColor grayColor];
@@ -135,9 +160,9 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.alpha = 0;
-    cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0);
+    cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 10);
 
-    [UIView animateWithDuration:0.7f animations:^{
+    [UIView animateWithDuration:1.f animations:^{
         cell.alpha = 1.f;
         cell.layer.transform = CATransform3DIdentity;
     }];
@@ -147,7 +172,7 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 50;
+    return [self.boxers count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
