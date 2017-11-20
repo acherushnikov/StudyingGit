@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "CASCollectionViewController.h"
+#import "CASTouchRecognitionViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	self.window = [UIWindow new];
 	
-	CASCollectionViewController *rootViewController = [CASCollectionViewController new];
+	CASTouchRecognitionViewController *rootViewController = [CASTouchRecognitionViewController new];
 	self.window.rootViewController = rootViewController;
 	
 	[self.window makeKeyAndVisible];

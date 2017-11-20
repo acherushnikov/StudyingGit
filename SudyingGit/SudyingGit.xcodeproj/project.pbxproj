@@ -10,6 +10,8 @@
 		2BF2677E1FBDE952007E873F /* CASCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2677D1FBDE952007E873F /* CASCollectionViewController.m */; };
 		2BF267811FBDF540007E873F /* CASCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF267801FBDF540007E873F /* CASCollectionViewCell.m */; };
 		2BF267841FBE02CF007E873F /* CASCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */; };
+		5DB27C641FC2F9160026B49D /* CASTouchRecognitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB27C631FC2F9160026B49D /* CASTouchRecognitionViewController.m */; };
+		5DB27C681FC2FAF90026B49D /* TouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB27C671FC2FAF90026B49D /* TouchView.m */; };
 		AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */; };
 		ADEDECEE1FB211E1007BC9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */; };
 		ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEDECF01FB211E1007BC9E2 /* ViewController.m */; };
@@ -39,6 +41,10 @@
 		2BF267801FBDF540007E873F /* CASCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASCollectionViewCell.m; sourceTree = "<group>"; };
 		2BF267821FBE02CF007E873F /* CASCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASCollectionReusableView.h; sourceTree = "<group>"; };
 		2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASCollectionReusableView.m; sourceTree = "<group>"; };
+		5DB27C621FC2F9160026B49D /* CASTouchRecognitionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASTouchRecognitionViewController.h; sourceTree = "<group>"; };
+		5DB27C631FC2F9160026B49D /* CASTouchRecognitionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASTouchRecognitionViewController.m; sourceTree = "<group>"; };
+		5DB27C661FC2FAF90026B49D /* TouchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchView.h; sourceTree = "<group>"; };
+		5DB27C671FC2FAF90026B49D /* TouchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchView.m; sourceTree = "<group>"; };
 		AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASPersonTableViewCell.h; sourceTree = "<group>"; };
 		AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASPersonTableViewCell.m; sourceTree = "<group>"; };
 		ADEDECE91FB211E1007BC9E2 /* SudyingGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudyingGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DB27C651FC2FAC10026B49D /* TouchViews */ = {
+			isa = PBXGroup;
+			children = (
+				5DB27C661FC2FAF90026B49D /* TouchView.h */,
+				5DB27C671FC2FAF90026B49D /* TouchView.m */,
+			);
+			path = TouchViews;
+			sourceTree = "<group>";
+		};
 		ADEDECE01FB211E0007BC9E2 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +117,7 @@
 		ADEDECEB1FB211E1007BC9E2 /* SudyingGit */ = {
 			isa = PBXGroup;
 			children = (
+				5DB27C651FC2FAC10026B49D /* TouchViews */,
 				ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */,
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
 				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
@@ -126,6 +142,8 @@
 				2BF267801FBDF540007E873F /* CASCollectionViewCell.m */,
 				2BF267821FBE02CF007E873F /* CASCollectionReusableView.h */,
 				2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */,
+				5DB27C621FC2F9160026B49D /* CASTouchRecognitionViewController.h */,
+				5DB27C631FC2F9160026B49D /* CASTouchRecognitionViewController.m */,
 			);
 			path = SudyingGit;
 			sourceTree = "<group>";
@@ -240,9 +258,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DB27C681FC2FAF90026B49D /* TouchView.m in Sources */,
 				ADEDECF11FB211E1007BC9E2 /* ViewController.m in Sources */,
 				AD11848E1FBB5480004E87A7 /* CASPersonTableViewCell.m in Sources */,
 				2BF2677E1FBDE952007E873F /* CASCollectionViewController.m in Sources */,
+				5DB27C641FC2F9160026B49D /* CASTouchRecognitionViewController.m in Sources */,
 				ADFDB00F1FB4A78300962321 /* SBTPerson.m in Sources */,
 				ADFDB00E1FB4A78300962321 /* SBTPersonProvider.m in Sources */,
 				ADEDECFC1FB211E1007BC9E2 /* main.m in Sources */,
