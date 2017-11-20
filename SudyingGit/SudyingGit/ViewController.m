@@ -19,6 +19,8 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray <SBTPerson *>* personList;
+@property (nonatomic, strong) UIButton *addButton;
+@property (nonatomic, strong) UIButton *deleteButton;
 
 @end
 
@@ -48,21 +50,32 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (void)viewDidLoad
 {
+    self.addButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.deleteButton setTitle:@"Delete cell" forState:UIControlStateNormal];
+    [self.addButton setTitle:@"Add cell" forState:UIControlStateNormal];
+    self.addButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.deleteButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.addButton addTarget:self action:@selector(addButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+      [self.deleteButton addTarget:self action:@selector(deleteButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self.view addSubview:self.addButton];
+    [self.view addSubview:self.deleteButton];
 	[super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.tableView = [UITableView new];
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
+    self.tableView.estimatedRowHeight = 44.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
 	[self.view addSubview:self.tableView];
-}
-
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-	
-	self.tableView.frame = self.view.frame;
+    
+    [self updateConstraints];
+    
 }
 
 
@@ -101,19 +114,54 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 	return cell;
 }
+-(void) updateConstraints
+{
+    
+    
+    UIEdgeInsets padding = UIEdgeInsetsMake(0, 0, 74, 0);
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.edges.equalTo(self.view).with.insets(padding);
+     }];
+    [self.addButton mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.bottom.equalTo(self.view.mas_bottom).with.offset(-15);
+         make.left.equalTo(self.view.mas_left).with.offset(15);
+         make.width.equalTo(self.deleteButton.mas_width);
+         make.right.equalTo(self.deleteButton.mas_left).with.offset(-15);
+         make.height.equalTo(@44);
+     }];
+    [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.bottom.equalTo(self.view.mas_bottom).with.offset(-15);
+         make.left.equalTo(self.deleteButton.mas_right).with.offset(15);
+         make.width.equalTo(self.addButton.mas_width);
+         make.right.equalTo(self.view.mas_right).with.offset(-15);
+         make.height.equalTo(@44);
+     }];
+
+
+}
 
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	SBTPerson *person = self.personList[indexPath.row];
-	if (person.personCellType == CASPersonCellTypeDefault)
-	{
-		return 44;
-	}
-	
-    return 44;
+    return UITableViewAutomaticDimension;
+}
+
+
+#pragma mark - ButtonActions
+
+- (void) addButtonClicked:(UIButton*)sender
+{
+    NSLog(@"add button");
+  
+}
+- (void) deleteButtonClicked:(UIButton*)sender
+{
+       NSLog(@"Delete button");
 }
 
 @end
