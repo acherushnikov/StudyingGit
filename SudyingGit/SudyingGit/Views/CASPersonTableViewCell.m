@@ -10,7 +10,7 @@
 #import <Masonry/Masonry.h>
 
 //static const CGSize CASPersonPhotoSize = {50.f, 50.f};
-static const CGFloat KSElementOffset = 8.f;
+//static const CGFloat KSElementOffset = 8.f;
 //static const CGFloat CASLabelHeight = 20.f;
 
 @implementation CASPersonTableViewCell
@@ -35,21 +35,22 @@ static const CGFloat KSElementOffset = 8.f;
         //Anchors boxerPhotoImageView
         [[self.boxerPhotoImageView.topAnchor constraintEqualToAnchor:self.backgroundCardView.topAnchor constant:8.f] setActive:true];
         [[self.boxerPhotoImageView.leftAnchor constraintEqualToAnchor:self.backgroundCardView.leftAnchor constant:8.f] setActive:true];
-        //[[self.boxerPhotoImageView.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-14] setActive:true];
+        [[self.boxerPhotoImageView.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-14] setActive:true];
         [[self.boxerPhotoImageView.widthAnchor constraintEqualToConstant:110.f] setActive:true];
         [[self.boxerPhotoImageView.heightAnchor constraintEqualToConstant:130.f] setActive:true];
+        //[[self.boxerPhotoImageView.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-9.f] setActive:true];
         //[[self.boxerPhotoImageView.widthAnchor constraintEqualToAnchor:self.backgroundCardView.widthAnchor multiplier:1.0/3.0] setActive:true];
         //[[self.boxerPhotoImageView.heightAnchor constraintEqualToAnchor:self.backgroundCardView.heightAnchor multiplier:1.0/6.0] setActive:true];
         
         //Anchors nameBoxerLabel
         [[self.nameBoxerLabel.topAnchor constraintEqualToAnchor:self.backgroundCardView.topAnchor constant:8.f] setActive:true];
-        [[self.nameBoxerLabel.leftAnchor constraintEqualToAnchor:self.boxerPhotoImageView.rightAnchor constant:8.f] setActive:true];
-        [[self.nameBoxerLabel.rightAnchor constraintEqualToAnchor:self.backgroundCardView.rightAnchor constant:-9.f] setActive:true];
+        [[self.nameBoxerLabel.leadingAnchor constraintEqualToAnchor:self.boxerPhotoImageView.trailingAnchor constant:8.f] setActive:true];
+        [[self.nameBoxerLabel.trailingAnchor constraintEqualToAnchor:self.backgroundCardView.trailingAnchor constant:-8.f] setActive:true];
         //[[self.nameBoxerLabel.heightAnchor constraintEqualToAnchor:self.boxerPhotoImageView.widthAnchor multiplier:1.f/4.f] setActive:true];
         
         //Anchors descriptionLabel
         [[self.descriptionBoxerLabel.topAnchor constraintEqualToAnchor:self.nameBoxerLabel.bottomAnchor constant:8] setActive:true];
-        [[self.descriptionBoxerLabel.leftAnchor constraintEqualToAnchor:self.boxerPhotoImageView.rightAnchor constant:8] setActive:true];
+        [[self.descriptionBoxerLabel.leadingAnchor constraintEqualToAnchor:self.nameBoxerLabel.leadingAnchor] setActive:true];
         [[self.descriptionBoxerLabel.rightAnchor constraintEqualToAnchor:self.backgroundCardView.rightAnchor constant:-9] setActive:true];
         [[self.descriptionBoxerLabel.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-8] setActive:true];
     
@@ -58,6 +59,27 @@ static const CGFloat KSElementOffset = 8.f;
 }
 
 #pragma mark - Getters UI
+
+- (UIView *)container
+{
+    
+    if (!_backgroundCardView) {
+        
+        UIView* view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor colorWithRed:240.f/255.f green:240.f/255 blue:240.f/255.f alpha:1.f];
+        view.translatesAutoresizingMaskIntoConstraints = false;
+        view.clipsToBounds = true;
+        view.layer.cornerRadius = 10.f;
+        view.layer.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f].CGColor;
+        view.layer.shadowOffset = CGSizeMake(0, 0);
+        view.layer.shadowOpacity = 1.f;
+        view.layer.masksToBounds = false;
+        
+        _backgroundCardView = view;
+    }
+    
+    return _backgroundCardView;
+}
 
 - (UIView *)backgroundCardView
 {
@@ -88,7 +110,6 @@ static const CGFloat KSElementOffset = 8.f;
         UILabel* label = [[UILabel alloc] init];
         label.translatesAutoresizingMaskIntoConstraints = false;
         label.numberOfLines = 0;
-
         
         _nameBoxerLabel = label;
     }
