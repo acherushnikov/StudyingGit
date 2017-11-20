@@ -165,6 +165,13 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
+//    self.tableView.frame = self.view.frame;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -212,8 +219,12 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
         return 44;
     }
     
-    return 44;
+//    CGSize detailTextLabelSize = [self.descriptionPersonLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.firstNameLabel.frame), CGFLOAT_MAX)];
+//    NSNumber *detailTextLabelHeight = [NSNumber numberWithFloat:detailTextLabelSize.height];
+    
+    return [CASPersonTableViewCell cellHeight:person.personDescription];
 }
 
 @end
+
 
