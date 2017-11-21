@@ -18,7 +18,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, copy) NSArray <SBTPerson *>* personList;
+@property (nonatomic, copy) NSMutableArray <SBTPerson *>* personList;
 
 @end
 
@@ -48,7 +48,8 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
         thirdPerson.lastName = @"Старк";
         thirdPerson.personDescription = @"При создании связей типа Action и Outlet разрешены соединения типа один-ко-многим. То есть мы могли добавить на нашу форму еще несколько элементов и связать их с нажатием на кнопку. В этом случае вызов Touch Up Inside приводил к реакции сразу нескольких элементов.";
 		
-        _personList = @[firstPerson, secondPerson, thirdPerson];
+        //_personList = @[firstPerson, secondPerson, thirdPerson];
+        _personList = [NSMutableArray arrayWithObjects:firstPerson, secondPerson, thirdPerson, nil];
         //_personList = @[firstPerson];
 	}
 	return self;
@@ -90,7 +91,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     self.rightbutton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.rightbutton setTitle:@"Add" forState:UIControlStateNormal];
     self.rightbutton.backgroundColor = UIColor.blueColor;
-    [self.rightbutton addTarget:self action:@selector(addButtonAction:toTable:toTheCell:) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightbutton addTarget:self action:@selector(addButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.rightbutton];
     
     NSLayoutConstraint *rightButtonTopConstr = [NSLayoutConstraint constraintWithItem:self.rightbutton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:15];
@@ -161,22 +162,39 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     else{
         [but setTitle:@"Done" forState:UIControlStateNormal];
     }
+    
+    
+//    BOOL isEditing = self.tableView.editing;
+//    
+//    [self.tableView setEditing:!isEditing animated:YES];
+//    
+//    UIBarButtonSystemItem item = UIBarButtonSystemItemEdit;
+//    
+//    if (self.tableView.editing) {
+//        item = UIBarButtonSystemItemDone;
+//    }
+//    
+//    UIBarButtonItem* editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item
+//                                                                                target:self
+//                                                                                action:@selector(actionEdit:)];
+//    [self.navigationItem setRightBarButtonItem:editButton animated:YES];
 };
-- (void)addButtonAction:(UIButton*)sender toTable:(UITableView *)tableView toTheCell:(NSIndexPath *)indexPath
+
+
+- (void)addButtonAction:(UIButton*)sender
 {
     NSLog(@"Add button pressed");
-    BOOL isEditing = self.tableView.editing;
-    [self.tableView setEditing:!isEditing];
-    
-    //UITableViewCell *cell;
-    CASPersonTableViewCell *addingNewCell = [[CASPersonTableViewCell alloc] initWithStyle:CASPersonCellTypeCustom reuseIdentifier:@"test"];
-    addingNewCell.firstNameLabel.text = @"Новый";
-    addingNewCell.lastNameLabel.text = @"Персонаж";
-    addingNewCell.descriptionPersonLabel.text =@"omnomnomnomnomnomnomnomnomnomnomnomnomnomnomnom";
-    //addingNewCell.frame = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
-    //[addingNewCell layoutSubviews];
-    //[self.tableView insertSections:addingNewCell withRowAnimation:UITableViewRowAnimationLeft];
-    [self.view addSubview:addingNewCell];
+    SBTPerson *newPerson = [SBTPerson new];
+    newPerson.personCellType = CASPersonCellTypeCustom;
+    newPerson.firstName = @"Новый";
+    newPerson.lastName = @"Персонаж";
+    newPerson.personDescription = @"omnomnomnomnomnomnomnomnomnomnomnomnomnomnomnom";
+    [self.personList insertObject:newPerson atIndex:0];
+    NSLog(@"Current size of list %lu",(unsigned long)self.personList.count);
+    NSIndexPath *insertIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[insertIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView endUpdates];
 };
 
 #pragma mark - UITableViewDataSource
