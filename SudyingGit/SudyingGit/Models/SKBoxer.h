@@ -12,5 +12,8 @@
 @interface SKBoxer : NSObject
 @property (strong, nonatomic) NSString* boxerName;
 @property (strong, nonatomic) NSString* boxerDescription;
-@property (strong, nonatomic) UIImage* boxerImage;
+@property (strong, nonatomic) NSString* boxerImageName;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

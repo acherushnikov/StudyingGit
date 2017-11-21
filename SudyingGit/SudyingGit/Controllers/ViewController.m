@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-
 #import "CASPersonTableViewCell.h"
+#import "ViewController+ViewController_JSON.h"
+
 #import "SKBoxer.h"
 #import <Masonry/Masonry.h>
 
@@ -51,6 +52,12 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     [self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:SKBoxerCellIdentifier];
     
     self.boxers = [NSMutableArray new];
+    
+    for (NSDictionary* dict in [self generateJSON]) {
+        
+        SKBoxer* boxer = [[SKBoxer alloc] initWithDictionary:dict];
+        [self.boxers addObject:boxer];
+    }
     
     //Anchors tableView
     [[self.tableView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor] setActive:true];
@@ -99,6 +106,60 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     [[self.deleteButton.centerYAnchor constraintEqualToAnchor:self.addButton.centerYAnchor] setActive:true];
     [[self.deleteButton.rightAnchor constraintEqualToAnchor:self.containerView.rightAnchor constant:-10.f] setActive:true];
     [[self.deleteButton.widthAnchor constraintEqualToAnchor:self.addButton.widthAnchor] setActive:true];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.boxers count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    CASPersonTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:SKBoxerCellIdentifier];
+    
+    SKBoxer* boxer = self.boxers[indexPath.section];
+    
+    cell.boxerPhotoImageView.image = [UIImage imageNamed:boxer.boxerImageName];
+    cell.nameBoxerLabel.text = boxer.boxerName;
+    cell.descriptionBoxerLabel.text = boxer.boxerDescription;
+
+    [cell.nameBoxerLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
+    [cell.descriptionBoxerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:11.f]];
+    return cell;
+}
+
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.alpha = 0;
+    cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 10);
+
+    [UIView animateWithDuration:1.f animations:^{
+        cell.alpha = 1.f;
+        cell.layer.transform = CATransform3DIdentity;
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return SKHeightBetweenCells;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView* headerView = [[UIView alloc] init];
+    headerView.backgroundColor = [UIColor clearColor];
+    return headerView;
 }
 
 #pragma mark - Getters UI
@@ -153,59 +214,6 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     }
     
     return _deleteButton;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.alpha = 0;
-    cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 10);
-
-    [UIView animateWithDuration:1.f animations:^{
-        cell.alpha = 1.f;
-        cell.layer.transform = CATransform3DIdentity;
-    }];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [self.boxers count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    CASPersonTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:SKBoxerCellIdentifier];
-    
-    cell.boxerPhotoImageView.image = [UIImage imageNamed:@"image"];
-    cell.descriptionBoxerLabel.text = @"Его первый профессиональный боксерский поединок в среднем весе произошел в 1935 или 1936 году. Свои первые 13 боев Арчи выиграл нокаутом. На протяжении долгой, красочной карьеры спортсмена, умный и опасный боксер совершил 220 боев. Из них 136 завершил нокаутом – рекордная отметка в истории бокса.";
-    cell.nameBoxerLabel.text = @"Арчи Мур (1913-1998) – американский боксер, родился в городе Беноит, штат Миссисипи. При рождении им было получено имя Арчи Ли Райт. Он заявил, что родился в 1916 году в Коллинсвилле, штат Иллинойс.";
-
-    [cell.nameBoxerLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
-    [cell.descriptionBoxerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:11.f]];
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return SKHeightBetweenCells;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView* headerView = [[UIView alloc] init];
-    headerView.backgroundColor = [UIColor clearColor];
-    return headerView;
 }
 
 @end
