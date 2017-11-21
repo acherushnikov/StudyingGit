@@ -177,4 +177,45 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
     return UITableViewAutomaticDimension;
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+  
+}
+
+
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    
+}
+
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    NSArray* indexes = [self.tableView indexPathsForVisibleRows];
+    
+    for(int i = 0; i < indexes.count; i ++){
+        UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexes[i]];
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            CATransform3D rotation = CATransform3DMakeRotation( (60.0*M_PI)/180, 0.0, 0.7, 0.7);
+            cell.layer.transform = rotation;
+        }];
+        NSLog(@"%f, %f",velocity.x, velocity.y);
+        [UIView animateWithDuration:0.5 delay:0.1 options:0 animations:^{
+            cell.layer.transform = CATransform3DIdentity;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [UIView animateWithDuration:0.3 animations:^{
+        CATransform3D rotation = CATransform3DMakeRotation( (60.0*M_PI)/180, 0.0, 0.7, 0.7);
+        cell.layer.transform = rotation;
+    }];
+
+    [UIView animateWithDuration:0.5 delay:0.1 options:0 animations:^{
+        cell.layer.transform = CATransform3DIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 @end
