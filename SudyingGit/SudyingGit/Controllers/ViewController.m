@@ -182,7 +182,6 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     return cell;
 }
 
-
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

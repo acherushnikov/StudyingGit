@@ -55,12 +55,11 @@
 //        [[self.boxerPhotoImageView.heightAnchor constraintEqualToAnchor:self.backgroundCardView.widthAnchor multiplier:1.f/4.f] setActive:true];
         
         //Constraints boxerPhotoImageView
-        
-        [self.boxerPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.boxerPhotoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.backgroundCardView.mas_top).with.offset(10.f);
             make.leading.equalTo(self.backgroundCardView.mas_leading).offset(10.f);
-            make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/2.f);
-            make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/2.f);
+            make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/3.f);
+            make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/3.f);
         }];
         
 //        //Anchors nameBoxerLabel
@@ -102,8 +101,13 @@
             make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/6.f);
             make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/6.f);
         }];
-    } else {
-
+    } else if (UIDeviceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        [self.boxerPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.backgroundCardView.mas_top).with.offset(10.f);
+            make.leading.equalTo(self.backgroundCardView.mas_leading).offset(10.f);
+            make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
+            make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
+        }];
     }
     
     [super updateConstraints];
