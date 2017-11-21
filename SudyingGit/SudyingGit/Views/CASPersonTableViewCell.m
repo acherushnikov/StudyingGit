@@ -7,7 +7,9 @@
 //
 
 #import "CASPersonTableViewCell.h"
+#define MAS_SHORTHAND
 #import <Masonry/Masonry.h>
+
 
 //static const CGSize CASPersonPhotoSize = {50.f, 50.f};
 //static const CGFloat KSElementOffset = 8.f;
@@ -31,35 +33,68 @@
         [self.backgroundCardView addSubview:self.descriptionBoxerLabel];
         [self.backgroundCardView addSubview:self.boxerPhotoImageView];
         
-        //Anchors backgroundCardView
-        [[self.backgroundCardView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor] setActive:true];
-        [[self.backgroundCardView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor] setActive:true];
-        [[self.backgroundCardView.widthAnchor constraintEqualToAnchor:self.widthAnchor constant:-16.f] setActive:true];
-        [[self.backgroundCardView.heightAnchor constraintEqualToAnchor:self.heightAnchor] setActive:true];
+//        //Anchors backgroundCardView
+//        [[self.backgroundCardView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor] setActive:true];
+//        [[self.backgroundCardView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor] setActive:true];
+//        [[self.backgroundCardView.widthAnchor constraintEqualToAnchor:self.widthAnchor constant:-16.f] setActive:true];
+//        [[self.backgroundCardView.heightAnchor constraintEqualToAnchor:self.heightAnchor] setActive:true];
         
-        //Anchors boxerPhotoImageView
-        [[self.boxerPhotoImageView.topAnchor constraintEqualToAnchor:self.backgroundCardView.topAnchor constant:10.f] setActive:true];
-        [[self.boxerPhotoImageView.leadingAnchor constraintEqualToAnchor:self.backgroundCardView.leadingAnchor constant:10.f] setActive:true];
-        [[self.boxerPhotoImageView.widthAnchor constraintEqualToAnchor:self.backgroundCardView.widthAnchor multiplier:1.f/4.f] setActive:true];
-        [[self.boxerPhotoImageView.heightAnchor constraintEqualToAnchor:self.backgroundCardView.widthAnchor multiplier:1.f/4.f] setActive:true];
-        //[[self.boxerPhotoImageView.bottomAnchor constraintEqualToAnchor:self.descriptionBoxerLabel.bottomAnchor] setActive:true];
+        //Constraints backgroundCardView
+        [self.backgroundCardView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.mas_centerY);
+            make.centerX.equalTo(self.mas_centerX);
+            make.width.equalTo(self.mas_width).with.valueOffset(@(-16));
+            make.height.equalTo(self.mas_height);
+        }];
         
-        //Anchors nameBoxerLabel
-        [[self.nameBoxerLabel.topAnchor constraintEqualToAnchor:self.boxerPhotoImageView.topAnchor] setActive:true];
-        [[self.nameBoxerLabel.leadingAnchor constraintEqualToAnchor:self.boxerPhotoImageView.trailingAnchor constant:10.f] setActive:true];
-        [[self.nameBoxerLabel.trailingAnchor constraintEqualToAnchor:self.backgroundCardView.trailingAnchor constant:-10.f] setActive:true];
-        [[self.nameBoxerLabel.bottomAnchor constraintEqualToAnchor:self.descriptionBoxerLabel.topAnchor constant:-10.f] setActive:true];
+//        //Anchors boxerPhotoImageView
+//        [[self.boxerPhotoImageView.topAnchor constraintEqualToAnchor:self.backgroundCardView.topAnchor constant:10.f] setActive:true];
+//        [[self.boxerPhotoImageView.leadingAnchor constraintEqualToAnchor:self.backgroundCardView.leadingAnchor constant:10.f] setActive:true];
+//        [[self.boxerPhotoImageView.widthAnchor constraintEqualToAnchor:self.backgroundCardView.widthAnchor multiplier:1.f/4.f] setActive:true];
+//        [[self.boxerPhotoImageView.heightAnchor constraintEqualToAnchor:self.backgroundCardView.widthAnchor multiplier:1.f/4.f] setActive:true];
+        
+        //Constraints boxerPhotoImageView
+        [self.boxerPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.backgroundCardView.mas_top).with.offset(10.f);
+            make.leading.equalTo(self.backgroundCardView.mas_leading).offset(10.f);
+            make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
+            make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
+        }];
+        
+//        //Anchors nameBoxerLabel
+//        [[self.nameBoxerLabel.topAnchor constraintEqualToAnchor:self.boxerPhotoImageView.topAnchor] setActive:true];
+//        [[self.nameBoxerLabel.leadingAnchor constraintEqualToAnchor:self.boxerPhotoImageView.trailingAnchor constant:10.f] setActive:true];
+//        [[self.nameBoxerLabel.trailingAnchor constraintEqualToAnchor:self.backgroundCardView.trailingAnchor constant:-10.f] setActive:true];
+//        [[self.nameBoxerLabel.bottomAnchor constraintEqualToAnchor:self.descriptionBoxerLabel.topAnchor constant:-10.f] setActive:true];
+        
+        [self.nameBoxerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.boxerPhotoImageView.mas_top);
+            make.leading.equalTo(self.boxerPhotoImageView.mas_trailing).with.offset(10.f);
+            make.trailing.equalTo(self.backgroundCardView.mas_trailing).with.offset(-10.f);
+            make.bottom.equalTo(self.descriptionBoxerLabel.mas_top).with.offset(-10.f);
+        }];
         
         //Anchors descriptionLabel
-        [[self.descriptionBoxerLabel.topAnchor constraintEqualToAnchor:self.nameBoxerLabel.bottomAnchor constant:8.f] setActive:true];
-        [[self.descriptionBoxerLabel.leadingAnchor constraintEqualToAnchor:self.nameBoxerLabel.leadingAnchor] setActive:true];
-        [[self.descriptionBoxerLabel.trailingAnchor constraintEqualToAnchor:self.nameBoxerLabel.trailingAnchor] setActive:true];
-        [[self.descriptionBoxerLabel.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-20.f] setActive:true];
+//        [[self.descriptionBoxerLabel.topAnchor constraintEqualToAnchor:self.nameBoxerLabel.bottomAnchor constant:8.f] setActive:true];
+//        [[self.descriptionBoxerLabel.leadingAnchor constraintEqualToAnchor:self.nameBoxerLabel.leadingAnchor] setActive:true];
+//        [[self.descriptionBoxerLabel.trailingAnchor constraintEqualToAnchor:self.nameBoxerLabel.trailingAnchor] setActive:true];
+//        [[self.descriptionBoxerLabel.bottomAnchor constraintEqualToAnchor:self.backgroundCardView.bottomAnchor constant:-20.f] setActive:true];
+        
+        [self.descriptionBoxerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(self.nameBoxerLabel.mas_leading);
+            make.trailing.equalTo(self.nameBoxerLabel.mas_trailing);
+            make.bottom.equalTo(self.backgroundCardView.mas_bottom).with.offset(-10.f);
+        }];
+
     }
     return self;
 }
 
+- (void)updateConstraints
+{
+    [super updateConstraints];
 
+}
 
 #pragma mark - Getters UI
 
