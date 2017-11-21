@@ -18,7 +18,10 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, copy) NSArray <SBTPerson *>* personList;
+@property (nonatomic, strong) UIButton *button1;
+@property (nonatomic, strong) UIButton *button2;
+@property (nonatomic, assign) CATransform3D transform;
+@property (nonatomic, copy) NSMutableArray <SBTPerson *>* personList;
 
 @end
 
@@ -30,7 +33,7 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	if (self)
 	{
 		SBTPerson *firstPerson = [SBTPerson new];
-		firstPerson.personCellType = CASPersonCellTypeDefault;
+		firstPerson.personCellType = CASPersonCellTypeCustom;
 		firstPerson.firstName = @"Стив";
 		firstPerson.lastName = @"Джобс Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал";
 		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал";
@@ -41,7 +44,16 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 		secondPerson.lastName = @"Кук";
 		secondPerson.personDescription = @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
 		
-		_personList = @[firstPerson, secondPerson];
+        _personList = [NSMutableArray arrayWithObjects:firstPerson, secondPerson, nil];
+        
+        CGFloat rotationAngleDegrees = -15;
+        CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/180);
+        CGPoint offsetPositioning = CGPointMake(-20, -20);
+        
+        CATransform3D transform = CATransform3DIdentity;
+        transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0, 0.0, 1.0);
+        transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y, 0.0);
+        _transform = transform;
 	}
 	return self;
 }
@@ -51,20 +63,75 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	[super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.tableView = [UITableView new];
+    self.button1 = [UIButton new];
+    self.button2 = [UIButton new];
+    
+    self.button1.titleLabel.text = @"Добавить";
+    self.button1.backgroundColor = UIColor.blueColor;
+    self.button2.titleLabel.text = @"Удалить";
+    self.button2.backgroundColor = UIColor.redColor;
+    
+    self.button1.translatesAutoresizingMaskIntoConstraints = NO;
+    self.button2.translatesAutoresizingMaskIntoConstraints = NO;
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
+    
 	[self.view addSubview:self.tableView];
+    [self.view addSubview:self.button1];
+    [self.view addSubview:self.button2];
+    
+    [self.button1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).with.offset(15);
+        make.left.equalTo(self.view.mas_left).with.offset(15);
+        make.right.equalTo(self.button2.mas_left).with.offset(-15);
+        make.height.mas_equalTo(44);
+    }];
+    
+    [self.button2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).with.offset(15);
+        make.width.equalTo(self.button1.mas_width);
+        make.right.equalTo(self.view.mas_right).with.offset(-15);
+        make.height.equalTo(self.button1.mas_height);
+    }];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.top.equalTo(self.button1.mas_bottom).with.offset(10);
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.right.equalTo(self.view.mas_right);
+    }];
+    
+    [self.button1 addTarget:self action:@selector(appendTouched) forControlEvents:UIControlEventTouchUpInside];
+    [self.button2 addTarget:self action:@selector(deleteTouched) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-	
-	self.tableView.frame = self.view.frame;
+-(void)appendTouched {
+    [self.tableView beginUpdates];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    SBTPerson *person = [SBTPerson new];
+    person.firstName = @"Тим2";
+    person.lastName = @"Кук2";
+    person.personCellType = CASPersonCellTypeCustom;
+    person.personDescription = @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
+    [self.personList insertObject:person atIndex:path.row];
+    [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView endUpdates];
 }
 
+-(void)deleteTouched {
+    if (self.personList.count > 0) {
+        [self.tableView beginUpdates];
+        NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.personList removeObjectAtIndex:path.row];
+        [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.tableView endUpdates];
+    }
+}
 
 #pragma mark - UITableViewDataSource
 
