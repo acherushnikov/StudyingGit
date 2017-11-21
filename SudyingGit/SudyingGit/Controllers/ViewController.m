@@ -73,16 +73,53 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 
 #pragma mark - Handlers buttons
 
-- (void)addRowForIndexPath
+- (void)addRowForIndexPath:(UIButton *)sender
 {
-
+    
+    NSDictionary* paramsBoxer = [[self generateJSON] objectAtIndex:arc4random_uniform(28)];
+    
+    SKBoxer* boxer = [[SKBoxer alloc] initWithDictionary:paramsBoxer];
+    
+    NSInteger newSectionIndex = 0;
+    
+    [self.boxers insertObject:boxer atIndex:0];
+    
     [self.tableView beginUpdates];
-    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    
+    NSIndexSet* insertSections = [NSIndexSet indexSetWithIndex:newSectionIndex];
+    
+    UITableViewRowAnimation animation = UITableViewRowAnimationFade;
+    
+    [self.tableView insertSections:insertSections
+                  withRowAnimation:animation];
+    
+    [self.tableView insertSections:insertSections withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
+    
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        if ([[UIApplication sharedApplication] isIgnoringInteractionEvents]) {
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        }
+    });
 }
 
-- (void)deleteRowForIndexPath{
+- (void)deleteRowForIndexPath:(UIButton *)sender
+{
     
+    NSInteger deleteRowIndex = 0;
+    
+    [self.boxers removeObjectAtIndex:deleteRowIndex];
+    
+    [self.tableView beginUpdates];
+    
+    NSIndexSet* deleteSection = [NSIndexSet indexSetWithIndex:deleteRowIndex];
+    
+    [self.tableView deleteSections:deleteSection withRowAnimation:UITableViewRowAnimationLeft];
+    
+    [self.tableView endUpdates];
 }
 
 #pragma mark - Anchors
@@ -101,7 +138,7 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     [[self.addButton.leftAnchor constraintEqualToAnchor:self.containerView.leftAnchor constant:10.f] setActive:true];
     [[self.addButton.widthAnchor constraintEqualToAnchor:self.containerView.widthAnchor multiplier:1.f/3.f] setActive:true];
     [[self.addButton.heightAnchor constraintEqualToAnchor:self.containerView.heightAnchor multiplier:1.f/5.f] setActive:true];
-    
+
     //Anchors deleteButton
     [[self.deleteButton.centerYAnchor constraintEqualToAnchor:self.addButton.centerYAnchor] setActive:true];
     [[self.deleteButton.rightAnchor constraintEqualToAnchor:self.containerView.rightAnchor constant:-10.f] setActive:true];
@@ -185,8 +222,8 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     if (!_addButton) {
         
         UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button addTarget:self action:@selector(addRowForIndexPath) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@"Add Row" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(addRowForIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:@"Add Boxer" forState:UIControlStateNormal];
         button.showsTouchWhenHighlighted = true;
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.layer.cornerRadius = 10.f;
@@ -203,8 +240,8 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     if (!_deleteButton) {
         
         UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button addTarget:self action:@selector(deleteRowForIndexPath) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@"Delete Row" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(deleteRowForIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:@"Delete Boxer" forState:UIControlStateNormal];
         button.showsTouchWhenHighlighted = true;
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.layer.cornerRadius = 10.f;
