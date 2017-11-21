@@ -48,6 +48,7 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     
     self.tableView.estimatedRowHeight = self.tableView.rowHeight;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.allowsSelection = NO;
     
     [self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:SKBoxerCellIdentifier];
     
@@ -96,6 +97,30 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     [self.tableView insertSections:insertSections withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
     
+    [self delayEvents];
+}
+
+- (void)deleteRowForIndexPath:(UIButton *)sender
+{
+    
+    if (self.boxers.count > 0) {
+        
+        NSInteger deleteRowIndex = 0;
+        
+        [self.boxers removeObjectAtIndex:deleteRowIndex];
+        
+        [self.tableView beginUpdates];
+        
+        NSIndexSet* deleteSection = [NSIndexSet indexSetWithIndex:deleteRowIndex];
+        [self.tableView deleteSections:deleteSection withRowAnimation:UITableViewRowAnimationLeft];
+        [self.tableView endUpdates];
+        
+        [self delayEvents];
+    }
+}
+
+- (void)delayEvents
+{
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     double delayInSeconds = 0.3;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -106,23 +131,7 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     });
 }
 
-- (void)deleteRowForIndexPath:(UIButton *)sender
-{
-    
-    NSInteger deleteRowIndex = 0;
-    
-    [self.boxers removeObjectAtIndex:deleteRowIndex];
-    
-    [self.tableView beginUpdates];
-    
-    NSIndexSet* deleteSection = [NSIndexSet indexSetWithIndex:deleteRowIndex];
-    
-    [self.tableView deleteSections:deleteSection withRowAnimation:UITableViewRowAnimationLeft];
-    
-    [self.tableView endUpdates];
-}
-
-#pragma mark - Anchors
+#pragma mark - Constraints
 
 - (void)setupContainerView
 {
@@ -179,10 +188,11 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.alpha = 0;
-    cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 10);
+    cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -300, 0, 0);
 
     [UIView animateWithDuration:1.f animations:^{
         cell.alpha = 1.f;
+        cell.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4, 0.4);
         cell.layer.transform = CATransform3DIdentity;
     }];
 }
@@ -198,6 +208,8 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     headerView.backgroundColor = [UIColor clearColor];
     return headerView;
 }
+
+
 
 #pragma mark - Getters UI
 
