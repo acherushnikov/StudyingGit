@@ -178,8 +178,6 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     cell.nameBoxerLabel.text = boxer.boxerName;
     cell.descriptionBoxerLabel.text = boxer.boxerDescription;
 
-    [cell.nameBoxerLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
-    [cell.descriptionBoxerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:11.f]];
     
     
     return cell;

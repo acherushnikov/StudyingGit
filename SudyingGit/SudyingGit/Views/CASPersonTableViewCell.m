@@ -33,10 +33,6 @@
         [self.backgroundCardView addSubview:self.nameBoxerLabel];
         [self.backgroundCardView addSubview:self.descriptionBoxerLabel];
         [self.backgroundCardView addSubview:self.boxerPhotoImageView];
-//
-        self.nameBoxerLabel.backgroundColor = [UIColor redColor];
-        self.descriptionBoxerLabel.backgroundColor = [UIColor yellowColor];
-        
         
         //Constraints backgroundCardView
         [self.backgroundCardView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -46,7 +42,7 @@
             make.height.equalTo(self.mas_height);
         }];
         
-//        //Constraints boxerPhotoImageView
+        //Constraints boxerPhotoImageView
         [self.boxerPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.backgroundCardView.mas_top).with.offset(10.f);
             make.leading.equalTo(self.backgroundCardView.mas_leading).offset(10.f);
@@ -112,14 +108,16 @@
     return _backgroundCardView;
 }
 
-- (UIView *)nameBoxerLabel
+- (UILabel *)nameBoxerLabel
 {
     
     if (!_nameBoxerLabel) {
         
         UILabel* label = [[UILabel alloc] init];
+        
         label.translatesAutoresizingMaskIntoConstraints = false;
         label.numberOfLines = 0;
+        label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f];
         
         _nameBoxerLabel = label;
     }
@@ -133,9 +131,10 @@
     if (!_descriptionBoxerLabel) {
         
         UILabel* label = [[UILabel alloc] init];
-        label.numberOfLines = 0;
+        
         label.translatesAutoresizingMaskIntoConstraints = false;
-        label.textAlignment = NSTextAlignmentJustified;
+        label.numberOfLines = 0;
+        label.font = [UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:11.f];
         
         _descriptionBoxerLabel = label;
     }
