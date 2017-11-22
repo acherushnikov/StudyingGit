@@ -7,6 +7,7 @@
 //
 
 #import "CASCollectionViewCell.h"
+#import <Masonry/Masonry.h>
 
 
 @implementation CASCollectionViewCell
@@ -17,11 +18,24 @@
     if (self)
     {
         _textLabel = [UILabel new];
-        _textLabel.frame = CGRectMake(0, 0, CGRectGetWidth(frame), 25);
+        _textLabel.backgroundColor = UIColor.whiteColor;
+        
+        [_textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentView.mas_top); //with is an optional semantic filler
+            make.right.equalTo(self.contentView.mas_right);
+            make.height.mas_equalTo(25);
+            make.bottom.equalTo(self.contentView.mas_bottom);
+            make.width.equalTo(self.contentView.mas_width);
+        }];
         
         [self.contentView addSubview:_textLabel];
     }
     return self;
+}
+
+- (void)prepareForReuse
+{
+    self.textLabel = nil;
 }
 
 @end

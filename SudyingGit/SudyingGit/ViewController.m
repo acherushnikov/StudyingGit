@@ -33,13 +33,13 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	if (self)
 	{
 		SBTPerson *firstPerson = [SBTPerson new];
-		firstPerson.personCellType = CASPersonCellTypeDefault;
+		firstPerson.personCellType = CASPersonCellTypeCustom;
 		firstPerson.firstName = @"Стив";
 		firstPerson.lastName = @"Джобс";
 		firstPerson.personDescription = @"Lorem Ipsum - это текст-рыба, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной рыбой для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал";
 		
 		SBTPerson *secondPerson = [SBTPerson new];
-		firstPerson.personCellType = CASPersonCellTypeCustom;
+		secondPerson.personCellType = CASPersonCellTypeCustom;
 		secondPerson.firstName = @"Тим";
 		secondPerson.lastName = @"Кук";
 		secondPerson.personDescription = @"Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации Здесь ваш текст.. Здесь ваш текст";
@@ -84,7 +84,6 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	
 
 	[self.view setNeedsUpdateConstraints];
-	[self.view layoutIfNeeded];
 	
 }
 
@@ -92,194 +91,47 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 
 - (void)updateViewConstraints
 {
-	
 
-	
-	// [self.buttonsView setTranslatesAutoresizingMaskIntoConstraints:NO];
-	
-	// левая кнопка
-	NSLayoutConstraint *leftButtonLeftConstraint = [NSLayoutConstraint
-												 constraintWithItem:self.leftButton
-												 attribute:NSLayoutAttributeLeft
-												 relatedBy:NSLayoutRelationEqual
-												 toItem:self.buttonsView
-												 attribute:
-												 NSLayoutAttributeLeft
-												 multiplier:1.0
-												 constant:15];
+	UIEdgeInsets padding = UIEdgeInsetsMake(15, 15, 15, 15);
+		
+	[self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.top.equalTo(self.buttonsView.mas_top).with.offset(padding.top); //with is an optional semantic filler
+		make.right.equalTo(self.buttonsView.mas_right).with.offset(-padding.right);
+		make.height.mas_equalTo(44);
+		make.bottom.equalTo(self.buttonsView.mas_bottom).with.offset(-padding.bottom);
+	}];
+    
+	[self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.top.equalTo(self.buttonsView.mas_top).with.offset(padding.top); //with is an optional semantic filler
+		make.left.equalTo(self.buttonsView.mas_left).with.offset(padding.left);
+		make.height.mas_equalTo(44);
+		make.width.equalTo(self.rightButton);
+		make.bottom.equalTo(self.buttonsView.mas_bottom).with.offset(-padding.bottom);
+		make.right.equalTo(self.rightButton.mas_left).with.offset(-padding.right);
+	}];
+    
+    [self.buttonsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(74);
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+    }];
 
-	NSLayoutConstraint *leftButtonTopConstraint = [NSLayoutConstraint constraintWithItem:self.leftButton
-																		   attribute:NSLayoutAttributeTop
-																		   relatedBy:NSLayoutRelationEqual
-																			  toItem:self.buttonsView
-																		   attribute:NSLayoutAttributeTop
-																		  multiplier:1
-																			constant:15.f];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.buttonsView.mas_bottom);
+        make.bottom.equalTo(self.view.mas_bottom);
+        
+    }];
 
-
-	NSLayoutConstraint *leftButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.leftButton
-																			   attribute:NSLayoutAttributeBottom
-																			   relatedBy:NSLayoutRelationEqual
-																				  toItem:self.buttonsView
-																			   attribute:NSLayoutAttributeBottom
-																			  multiplier:1
-																				constant:15.f];
-
-	/* Fixed Height */
-	NSLayoutConstraint *heightLeftButtonConstraint = [NSLayoutConstraint constraintWithItem:self.leftButton
-																			  attribute:NSLayoutAttributeHeight
-																			  relatedBy:NSLayoutRelationEqual
-																				 toItem:nil
-																			  attribute:NSLayoutAttributeHeight
-																			 multiplier:1.0
-																			   constant:44.f];
-
-	
-	
-	
-	
-	 //Правая кнопка
-
-	NSLayoutConstraint *rightButtonRightConstraint = [NSLayoutConstraint
-													constraintWithItem:self.rightButton
-													attribute:NSLayoutAttributeRight
-													relatedBy:NSLayoutRelationEqual
-													toItem:self.buttonsView
-													attribute:
-													NSLayoutAttributeRight
-													multiplier:1.0
-													constant:-15];
-	
-
-	
-	
-
-	NSLayoutConstraint *rightButtonTopConstraint = [NSLayoutConstraint constraintWithItem:self.rightButton
-																			   attribute:NSLayoutAttributeTop
-																			   relatedBy:NSLayoutRelationEqual
-																				  toItem:self.buttonsView
-																			   attribute:NSLayoutAttributeTop
-																			  multiplier:1
-																				constant:15.f];
-
-
-	NSLayoutConstraint *rightButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.rightButton
-																					attribute:NSLayoutAttributeBottom
-																					relatedBy:NSLayoutRelationEqual
-																					   toItem:self.buttonsView
-																					attribute:NSLayoutAttributeBottom
-																				   multiplier:1
-																					 constant:15.f];
-
-	NSLayoutConstraint *heightRightButtonConstraint = [NSLayoutConstraint constraintWithItem:self.rightButton
-																					 attribute:NSLayoutAttributeHeight
-																					 relatedBy:NSLayoutRelationEqual
-																						toItem:nil
-																					 attribute:NSLayoutAttributeHeight
-																					multiplier:1.0
-																					  constant:44.f];
-	
-	
-	
-	NSLayoutConstraint *equal = [NSLayoutConstraint
-								 constraintWithItem:self.rightButton
-								 attribute:NSLayoutAttributeLeft
-								 relatedBy:NSLayoutRelationEqual
-								 toItem:self.leftButton
-								 attribute:
-								 NSLayoutAttributeRight
-								 multiplier:1.0
-								 constant:15];
-	
-
-	NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.leftButton attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
-	
-	// Задаем констренты для button View
-	/* Fixed Height */
-	NSLayoutConstraint *heightButtonConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsView
-																			  attribute:NSLayoutAttributeHeight
-																			  relatedBy:NSLayoutRelationEqual
-																				 toItem:nil
-																			  attribute:NSLayoutAttributeHeight
-																			 multiplier:1.0
-																			   constant:74.f];
-	
-	
-	NSLayoutConstraint *topButtonConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsView
-																		   attribute:NSLayoutAttributeTop
-																		   relatedBy:NSLayoutRelationEqual
-																			  toItem:self.view
-																		   attribute:NSLayoutAttributeTop
-																		  multiplier:1
-																			constant:0];
-	
-	NSLayoutConstraint *leftButtonViewConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsView
-																			attribute:NSLayoutAttributeLeading
-																			relatedBy:NSLayoutRelationEqual
-																			   toItem:self.view
-																			attribute:NSLayoutAttributeLeading
-																		   multiplier:1.0
-																			 constant:0];
-	
-	NSLayoutConstraint *rightViewButtonConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsView
-																			attribute:NSLayoutAttributeTrailing
-																			relatedBy: NSLayoutRelationEqual
-																			   toItem:self.view
-																			attribute:NSLayoutAttributeTrailing
-																		   multiplier:1.f
-																			 constant:0];
-	
-	// Настройка таблицы
-	
-	NSLayoutConstraint *rightTableViewConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
-													 attribute:NSLayoutAttributeRight
-													 relatedBy: NSLayoutRelationEqual
-														toItem:self.view
-													 attribute:NSLayoutAttributeRight
-													multiplier:1.f
-													  constant:0];
-	
-	NSLayoutConstraint *leftTableViewConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
-																				attribute:NSLayoutAttributeLeft
-																				relatedBy: NSLayoutRelationEqual
-																				   toItem:self.view
-																				attribute:NSLayoutAttributeLeft
-																			   multiplier:1.f
-																				 constant:0];
-	
-	
-	NSLayoutConstraint *topTableViewConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
-																			   attribute:NSLayoutAttributeTop
-																			   relatedBy: NSLayoutRelationEqual
-																				  toItem:self.buttonsView
-																			   attribute:NSLayoutAttributeBottom
-																			  multiplier:1.f
-																				constant:0];
-	
-	NSLayoutConstraint *bottomTableViewConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
-																			  attribute:NSLayoutAttributeBottom
-																			  relatedBy: NSLayoutRelationEqual
-																				 toItem:self.view
-																			  attribute:NSLayoutAttributeBottom
-																			 multiplier:1.f
-																			   constant:0];
-	
-	
-	
-	
-	[self.view addConstraints:@[ rightViewButtonConstraint, leftButtonViewConstraint, heightButtonConstraint, topButtonConstraint, rightButtonTopConstraint, heightLeftButtonConstraint, rightButtonBottomConstraint, heightRightButtonConstraint, leftButtonLeftConstraint,leftButtonTopConstraint,rightButtonRightConstraint, heightLeftButtonConstraint,leftButtonBottomConstraint,height, equal, rightTableViewConstraint, leftTableViewConstraint, topTableViewConstraint, bottomTableViewConstraint]];
-	
-	//
-	
-	
-		[super updateViewConstraints];
+    [super updateViewConstraints];
 }
 
 - (void)viewDidLayoutSubviews
 {
 	[super viewDidLayoutSubviews];
-	
-	//self.tableView.frame = self.view.frame;
 }
 
 
@@ -329,8 +181,8 @@ static NSString *const CASPersonTableViewCellIdentifier = @"CASPersonTableViewCe
 	{
 		return 44;
 	}
-	
-    return 44;
+    
+    return [CASPersonTableViewCell cellHeight:person.personDescription];
 }
 
 @end

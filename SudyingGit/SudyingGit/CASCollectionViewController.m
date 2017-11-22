@@ -9,6 +9,7 @@
 #import "CASCollectionViewController.h"
 #import "CASCollectionViewCell.h"
 #import "CASCollectionReusableView.h"
+#import <Masonry/Masonry.h>
 
 
 static NSString *const CollectionViewID = @"CASCollectionViewCell";
@@ -18,10 +19,11 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
 @interface CASCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, copy) NSArray *albums;
+@property (nonatomic, copy) NSMutableArray *albums;
 @property (nonatomic, strong) UIView *buttonsView;
 @property (nonatomic, strong) UIButton *rightButton;
 @property (nonatomic, strong) UIButton *leftButton;
+@property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
 @end
 
@@ -31,49 +33,50 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
 {
     [super viewDidLoad];
     
-    self.albums = @[
+    self.albums = [NSMutableArray arrayWithArray: @[
                     @[
                         @{ @"title": @"12424j" }
                     ],
-                    @[],
                     @[
-                        @{ @"key": @1 },
-                        @{}
+                        @{ @"title": @"12424j" }
                     ],
                     @[
-                        @{}
+                        @{ @"title": @"12424j" },
+                    ],
+                    @[
+                        @{ @"title": @"12424j" },
                     ]
-                ];
+                ]];
     
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(175, 175);
-    layout.minimumLineSpacing = 50;
+    self.layout = [UICollectionViewFlowLayout new];
+    self.layout.itemSize = CGSizeMake(175, 175);
+    self.layout.minimumLineSpacing = 50;
     
-    [layout setFooterReferenceSize:CGSizeMake(100, 50)];
-    [layout setHeaderReferenceSize:CGSizeMake(150, 25)];
+    [self.layout setFooterReferenceSize:CGSizeMake(100, 50)];
+    [self.layout setHeaderReferenceSize:CGSizeMake(150, 25)];
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame    collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame    collectionViewLayout:self.layout];
 	self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.collectionView.backgroundColor = UIColor.greenColor;
+    self.collectionView.backgroundColor = UIColor.whiteColor;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
 	
 	self.buttonsView = [UIView new];
-	self.buttonsView.backgroundColor = UIColor.redColor;
 	self.buttonsView.translatesAutoresizingMaskIntoConstraints = NO;
 	
-	self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom ];
-	self.rightButton.backgroundColor = UIColor.whiteColor;
-	self.rightButton.titleLabel.text = @"Правая кнопка";
-	self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
-	
-	
-	self.leftButton = [UIButton buttonWithType:UIButtonTypeCustom ];
-	self.leftButton.backgroundColor = UIColor.blackColor;
-	self.leftButton.titleLabel.text = @"Левая кнопка";
-	self.leftButton.translatesAutoresizingMaskIntoConstraints = NO;
+	self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.rightButton setTitle:@"Удалить ячейку" forState:UIControlStateNormal];
+    self.rightButton.backgroundColor = UIColor.blackColor;
+	self.leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[self.leftButton setTitle:@"Добавить ячейку" forState:UIControlStateNormal];
+    self.leftButton.backgroundColor = UIColor.blackColor;
 	[self.buttonsView addSubview:self.rightButton];
 	[self.buttonsView addSubview:self.leftButton];
+    
+    [self.rightButton addTarget:self action:@selector(deleteCellAction) forControlEvents: UIControlEventTouchUpInside];
+    
+    [self.leftButton addTarget:self action:@selector(addCellAction) forControlEvents:UIControlEventTouchUpInside];
+
 	
 	[self.view addSubview: self.buttonsView];
 	self.view.backgroundColor = [UIColor whiteColor];
@@ -85,225 +88,110 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     [self.view addSubview:self.collectionView];
 	
 	[self.view setNeedsUpdateConstraints];
-	[self.view layoutIfNeeded];
 }
 
 - (void)updateViewConstraints
 {
-	
-//	NSDictionary *views = NSDictionaryOfVariableBindings(self.leftButton,self.rightButton);
-	
-	NSDictionary *views = @{
-						  @"leftButton" : self.leftButton,
-						  @"rightButton" : self.rightButton,
-						  @"buttonsView" : self.buttonsView,
-						  @"collectionView" : self.collectionView
-						  };
-	
-	
-	NSArray *horizontalConstraints =[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[leftButton]-15-[rightButton]-15-|" options:0 metrics:nil views:views];
-	
-	NSArray *equalWidthConstraints1 = [NSLayoutConstraint constraintsWithVisualFormat:@"[leftButton(==rightButton)]" options:0 metrics:nil views:views];
-	
+    
+    
+    
+    
+    UIEdgeInsets padding = UIEdgeInsetsMake(15, 15, 15, 15);
+    
+    [self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.buttonsView.mas_top).with.offset(padding.top); //with is an optional semantic filler
+        make.right.equalTo(self.buttonsView.mas_right).with.offset(-padding.right);
+        make.height.mas_equalTo(44);
+        make.bottom.equalTo(self.buttonsView.mas_bottom).with.offset(-padding.bottom);
+    }];
+    
+    [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.buttonsView.mas_top).with.offset(padding.top); //with is an optional semantic filler
+        make.left.equalTo(self.buttonsView.mas_left).with.offset(padding.left);
+        make.height.mas_equalTo(44);
+        make.width.equalTo(self.rightButton);
+        make.bottom.equalTo(self.buttonsView.mas_bottom).with.offset(-padding.bottom);
+        make.right.equalTo(self.rightButton.mas_left).with.offset(-padding.right);
+    }];
+    
+    [self.buttonsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(74);
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+    }];
+    
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.buttonsView.mas_bottom);
+        make.bottom.equalTo(self.view.mas_bottom);
+        
+    }];
 
-	NSArray *verticalConstraints1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[leftButton(44)]-15-|" options:0 metrics:nil views:views];
-	NSArray *verticalConstraints2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[rightButton(44)]-15-|" options:0 metrics:nil views:views];
 	
-	[self.view addConstraints:horizontalConstraints];
-	[self.view addConstraints:equalWidthConstraints1];
-	[self.view addConstraints:verticalConstraints1];
-	[self.view addConstraints:verticalConstraints2];
-	
-	NSArray *horizontalConstraintsButtonsView = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[buttonsView]-0-|" options:0 metrics:nil views:views];
-
-	
-	NSArray *horizontalConstraintsCollectionView = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[collectionView]-0-|" options:0 metrics:nil views:views];
-	
-	NSArray *verticalConstraintsCollectionView = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[buttonsView]-0-[collectionView]-0-|" options:0 metrics:nil views:views];
-	
-	[self.view addConstraints:horizontalConstraintsButtonsView];
-	[self.view addConstraints:verticalConstraintsCollectionView];
-	[self.view addConstraints:horizontalConstraintsCollectionView];
-	
-	
-	
-	
-//	// левая кнопка
-//	NSLayoutConstraint *leftButtonLeftConstraint = [NSLayoutConstraint
-//													constraintWithItem:self.leftButton
-//													attribute:NSLayoutAttributeLeft
-//													relatedBy:NSLayoutRelationEqual
-//													toItem:self.buttonsView
-//													attribute:
-//													NSLayoutAttributeLeft
-//													multiplier:1.0
-//													constant:15];
+//    NSDictionary *views = @{
+//                          @"leftButton" : self.leftButton,
+//                          @"rightButton" : self.rightButton,
+//                          @"buttonsView" : self.buttonsView,
+//                          @"collectionView" : self.collectionView
+//                          };
 //
-//	NSLayoutConstraint *leftButtonTopConstraint = [NSLayoutConstraint constraintWithItem:self.leftButton
-//																			   attribute:NSLayoutAttributeTop
-//																			   relatedBy:NSLayoutRelationEqual
-//																				  toItem:self.buttonsView
-//																			   attribute:NSLayoutAttributeTop
-//																			  multiplier:1
-//																				constant:15.f];
+//    NSArray *horizontalConstraints =[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[leftButton]-15-[rightButton]-15-|" options:0 metrics:nil views:views];
+//
+//    NSArray *equalWidthConstraints1 = [NSLayoutConstraint constraintsWithVisualFormat:@"[leftButton(==rightButton)]" options:0 metrics:nil views:views];
 //
 //
-//	NSLayoutConstraint *leftButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.leftButton
-//																				  attribute:NSLayoutAttributeBottom
-//																				  relatedBy:NSLayoutRelationEqual
-//																					 toItem:self.buttonsView
-//																				  attribute:NSLayoutAttributeBottom
-//																				 multiplier:1
-//																				   constant:15.f];
+//    NSArray *verticalConstraints1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[leftButton(44)]-15-|" options:0 metrics:nil views:views];
+//    NSArray *verticalConstraints2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[rightButton(44)]-15-|" options:0 metrics:nil views:views];
 //
-//	/* Fixed Height */
-//	NSLayoutConstraint *heightLeftButtonConstraint = [NSLayoutConstraint constraintWithItem:self.leftButton
-//																				  attribute:NSLayoutAttributeHeight
-//																				  relatedBy:NSLayoutRelationEqual
-//																					 toItem:nil
-//																				  attribute:NSLayoutAttributeHeight
-//																				 multiplier:1.0
-//																				   constant:44.f];
+//    [self.view addConstraints:horizontalConstraints];
+//    [self.view addConstraints:equalWidthConstraints1];
+//    [self.view addConstraints:verticalConstraints1];
+//    [self.view addConstraints:verticalConstraints2];
+//
+//    NSArray *horizontalConstraintsButtonsView = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[buttonsView]-0-|" options:0 metrics:nil views:views];
 //
 //
+//    NSArray *horizontalConstraintsCollectionView = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[collectionView]-0-|" options:0 metrics:nil views:views];
 //
+//    NSArray *verticalConstraintsCollectionView = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[buttonsView]-0-[collectionView]-0-|" options:0 metrics:nil views:views];
 //
-//
-//	//Правая кнопка
-//
-//	NSLayoutConstraint *rightButtonRightConstraint = [NSLayoutConstraint
-//													  constraintWithItem:self.rightButton
-//													  attribute:NSLayoutAttributeRight
-//													  relatedBy:NSLayoutRelationEqual
-//													  toItem:self.buttonsView
-//													  attribute:
-//													  NSLayoutAttributeRight
-//													  multiplier:1.0
-//													  constant:-15];
-//
-//
-//
-//
-//
-//	NSLayoutConstraint *rightButtonTopConstraint = [NSLayoutConstraint constraintWithItem:self.rightButton
-//																				attribute:NSLayoutAttributeTop
-//																				relatedBy:NSLayoutRelationEqual
-//																				   toItem:self.buttonsView
-//																				attribute:NSLayoutAttributeTop
-//																			   multiplier:1
-//																				 constant:15.f];
-//
-//
-//	NSLayoutConstraint *rightButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.rightButton
-//																				   attribute:NSLayoutAttributeBottom
-//																				   relatedBy:NSLayoutRelationEqual
-//																					  toItem:self.buttonsView
-//																				   attribute:NSLayoutAttributeBottom
-//																				  multiplier:1
-//																					constant:15.f];
-//
-//	NSLayoutConstraint *heightRightButtonConstraint = [NSLayoutConstraint constraintWithItem:self.rightButton
-//																				   attribute:NSLayoutAttributeHeight
-//																				   relatedBy:NSLayoutRelationEqual
-//																					  toItem:nil
-//																				   attribute:NSLayoutAttributeHeight
-//																				  multiplier:1.0
-//																					constant:44.f];
-//
-//
-//
-//	NSLayoutConstraint *equal = [NSLayoutConstraint
-//								 constraintWithItem:self.rightButton
-//								 attribute:NSLayoutAttributeLeft
-//								 relatedBy:NSLayoutRelationEqual
-//								 toItem:self.leftButton
-//								 attribute:
-//								 NSLayoutAttributeRight
-//								 multiplier:1.0
-//								 constant:15];
-//
-//
-//	NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.leftButton attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
-	
-	// Задаем констренты для button View
-	/* Fixed Height */
-//	NSLayoutConstraint *heightButtonConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsView
-//																			  attribute:NSLayoutAttributeHeight
-//																			  relatedBy:NSLayoutRelationEqual
-//																				 toItem:nil
-//																			  attribute:NSLayoutAttributeHeight
-//																			 multiplier:1.0
-//																			   constant:74.f];
-//	
-//	
-//	NSLayoutConstraint *topButtonConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsView
-//																		   attribute:NSLayoutAttributeTop
-//																		   relatedBy:NSLayoutRelationEqual
-//																			  toItem:self.view
-//																		   attribute:NSLayoutAttributeTop
-//																		  multiplier:1
-//																			constant:0];
-//	
-//	NSLayoutConstraint *leftButtonViewConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsView
-//																				attribute:NSLayoutAttributeLeading
-//																				relatedBy:NSLayoutRelationEqual
-//																				   toItem:self.view
-//																				attribute:NSLayoutAttributeLeading
-//																			   multiplier:1.0
-//																				 constant:0];
-//	
-//	NSLayoutConstraint *rightViewButtonConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsView
-//																				 attribute:NSLayoutAttributeTrailing
-//																				 relatedBy: NSLayoutRelationEqual
-//																					toItem:self.view
-//																				 attribute:NSLayoutAttributeTrailing
-//																				multiplier:1.f
-//																				  constant:0];
-//	
-//	// Настройка таблицы
-//	
-//	NSLayoutConstraint *rightTableViewConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView
-//																				attribute:NSLayoutAttributeRight
-//																				relatedBy: NSLayoutRelationEqual
-//																				   toItem:self.view
-//																				attribute:NSLayoutAttributeRight
-//																			   multiplier:1.f
-//																				 constant:0];
-//	
-//	NSLayoutConstraint *leftTableViewConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView
-//																			   attribute:NSLayoutAttributeLeft
-//																			   relatedBy: NSLayoutRelationEqual
-//																				  toItem:self.view
-//																			   attribute:NSLayoutAttributeLeft
-//																			  multiplier:1.f
-//																				constant:0];
-//	
-//	
-//	NSLayoutConstraint *topTableViewConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView
-//																			  attribute:NSLayoutAttributeTop
-//																			  relatedBy: NSLayoutRelationEqual
-//																				 toItem:self.buttonsView
-//																			  attribute:NSLayoutAttributeBottom
-//																			 multiplier:1.f
-//																			   constant:0];
-//	
-//	NSLayoutConstraint *bottomTableViewConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView
-//																				 attribute:NSLayoutAttributeBottom
-//																				 relatedBy: NSLayoutRelationEqual
-//																					toItem:self.view
-//																				 attribute:NSLayoutAttributeBottom
-//																				multiplier:1.f
-//																				  constant:0];
-//	
-//	
-//	
-//	
-//	[self.view addConstraints:@[ rightViewButtonConstraint, leftButtonViewConstraint, heightButtonConstraint, topButtonConstraint, rightTableViewConstraint, leftTableViewConstraint, topTableViewConstraint, bottomTableViewConstraint]];
-//	
-	//rightButtonTopConstraint,heightLeftButtonConstraint,heightRightButtonConstraint,leftButtonLeftConstraint,leftButtonTopConstraint,rightButtonRightConstraint,heightLeftButtonConstraint,leftButtonBottomConstraint,height,equal,rightButtonBottomConstraint
-	
+//    [self.view addConstraints:horizontalConstraintsButtonsView];
+//    [self.view addConstraints:verticalConstraintsCollectionView];
+//    [self.view addConstraints:horizontalConstraintsCollectionView];
 	
 	[super updateViewConstraints];
+}
+
+#pragma mark - UIButton Action
+
+- (void)deleteCellAction
+{
+    if (self.albums.count)
+    {
+        [self.albums removeObjectAtIndex:0];
+        [self.collectionView reloadData];
+    }
+}
+
+- (void)setAlbums:(NSMutableArray *)albums {
+    
+    if (_albums != albums)
+    {
+        _albums = [albums mutableCopy];
+    }
+    
+    return;
+}
+
+- (void)addCellAction
+{
+    NSArray *addElemet = @[@{ @"title": @"Новый элемент"}];
+    
+    [self.albums insertObject:addElemet atIndex:0];
+    [self.collectionView reloadData];
 }
 
 
@@ -314,7 +202,7 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
                                 forIndexPath:indexPath];
     
     cell.textLabel.text = self.albums[indexPath.section][indexPath.row][@"title"];
-    cell.backgroundColor = UIColor.redColor;
+    cell.backgroundColor = UIColor.blackColor;
     
     return cell;
 }
@@ -347,7 +235,6 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
         return 0;
     }
     
-    
     NSArray *photos = self.albums[section];
     if (![photos isKindOfClass:[NSArray class]])
     {
@@ -362,6 +249,19 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
     return self.albums.count;
 }
 
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    animation.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-30.0f, 0.0f, 0.0f)],
+                         [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(30.0f, 0.0f, 0.0f)]];
+    animation.autoreverses = YES;
+    animation.repeatCount = 2.0f;
+    animation.duration = 0.1f;
+    [cell.layer addAnimation:animation forKey:nil];
+}
+
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
@@ -369,7 +269,6 @@ static NSString *const CollectionViewSupplyID = @"CASCollectionViewSupplyCell";
 {
     return UIEdgeInsetsMake(15, 15, 15, 15);
 }
-
 
 /*
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

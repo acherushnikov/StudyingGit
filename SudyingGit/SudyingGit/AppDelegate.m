@@ -18,9 +18,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	self.window = [UIWindow new];
 	
-	CASCollectionViewController *rootViewController = [CASCollectionViewController new];
+    self.window = [UIWindow new];
+    
+	//ViewController *rootViewController = [ViewController new];
+    CASCollectionViewController *rootViewController = [CASCollectionViewController new];
 	self.window.rootViewController = rootViewController;
 	
 	[self.window makeKeyAndVisible];
