@@ -33,6 +33,9 @@
         [self.backgroundCardView addSubview:self.nameBoxerLabel];
         [self.backgroundCardView addSubview:self.descriptionBoxerLabel];
         [self.backgroundCardView addSubview:self.boxerPhotoImageView];
+//
+        self.nameBoxerLabel.backgroundColor = [UIColor redColor];
+        self.descriptionBoxerLabel.backgroundColor = [UIColor yellowColor];
         
         
         //Constraints backgroundCardView
@@ -44,12 +47,13 @@
         }];
         
 //        //Constraints boxerPhotoImageView
-//        [self.boxerPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(self.backgroundCardView.mas_top).with.offset(10.f);
-//            make.leading.equalTo(self.backgroundCardView.mas_leading).offset(10.f);
-//            make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/6.f);
-//            make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/6.f);
-//        }];
+        [self.boxerPhotoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.backgroundCardView.mas_top).with.offset(10.f);
+            make.leading.equalTo(self.backgroundCardView.mas_leading).offset(10.f);
+            make.bottom.lessThanOrEqualTo(self.descriptionBoxerLabel.mas_bottom);
+            make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
+            make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
+        }];
         
         //Constraints nameBoxerLabel
         [self.nameBoxerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,36 +65,13 @@
         
         //Constraints descriptionBoxerLabel
         [self.descriptionBoxerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.nameBoxerLabel.mas_bottom).with.offset(-10.f);
             make.leading.equalTo(self.nameBoxerLabel.mas_leading);
             make.trailing.equalTo(self.nameBoxerLabel.mas_trailing);
             make.bottom.equalTo(self.backgroundCardView.mas_bottom).with.offset(-10.f);
         }];
     }
     return self;
-}
-
--(void)updateConstraints
-{
-
-//    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]))
-//    {
-//        [self.boxerPhotoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(self.backgroundCardView.mas_top).with.offset(10.f);
-//            make.leading.equalTo(self.backgroundCardView.mas_leading).offset(10.f);
-//            make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/7.f);
-//            make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/7.f);
-//        }];
-//        
-//    } else if (UIDeviceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
-//        [self.boxerPhotoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(self.backgroundCardView.mas_top).with.offset(10.f);
-//            make.leading.equalTo(self.backgroundCardView.mas_leading).offset(10.f);
-//            make.width.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
-//            make.height.equalTo(self.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
-//        }];
-//    }
-    
-    [super updateConstraints];
 }
 
 #pragma mark - Getters UI

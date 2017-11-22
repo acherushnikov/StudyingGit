@@ -181,26 +181,6 @@ static CGFloat const SKHeightBetweenCells = 20.f;
     [cell.nameBoxerLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11.f]];
     [cell.descriptionBoxerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:11.f]];
     
-    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]))
-    {
-        [cell.boxerPhotoImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(cell.backgroundCardView.mas_top).with.offset(10.f);
-            make.leading.equalTo(cell.backgroundCardView.mas_leading).offset(10.f);
-            make.bottom.lessThanOrEqualTo(cell.descriptionBoxerLabel.mas_bottom);
-            make.width.equalTo(cell.backgroundCardView.mas_width).with.multipliedBy(1.f/6.f);
-            make.height.equalTo(cell.backgroundCardView.mas_width).with.multipliedBy(1.f/6.f);
-        }];
-        
-    } else {
-        [cell.boxerPhotoImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(cell.backgroundCardView.mas_top).with.offset(10.f);
-            make.leading.equalTo(cell.backgroundCardView.mas_leading).offset(10.f);
-            make.bottom.lessThanOrEqualTo(cell.descriptionBoxerLabel.mas_bottom);
-            make.width.equalTo(cell.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
-            make.height.equalTo(cell.backgroundCardView.mas_width).with.multipliedBy(1.f/4.f);
-
-        }];
-    }
     
     return cell;
 }
@@ -208,7 +188,7 @@ static CGFloat const SKHeightBetweenCells = 20.f;
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     //[self.tableView setNeedsUpdateConstraints];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
  
 }
 
