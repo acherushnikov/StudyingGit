@@ -84,6 +84,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		945FF2341FC06D4F00B78911 /* tableView */ = {
+			isa = PBXGroup;
+			children = (
+				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
+				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
+				AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */,
+				AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */,
+			);
+			path = tableView;
+			sourceTree = "<group>";
+		};
+		945FF2351FC06DAB00B78911 /* collectionView */ = {
+			isa = PBXGroup;
+			children = (
+				2BF2677C1FBDE952007E873F /* CASCollectionViewController.h */,
+				2BF2677F1FBDF540007E873F /* CASCollectionViewCell.h */,
+				2BF267801FBDF540007E873F /* CASCollectionViewCell.m */,
+				2BF267821FBE02CF007E873F /* CASCollectionReusableView.h */,
+				2BF2677D1FBDE952007E873F /* CASCollectionViewController.m */,
+				2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */,
+			);
+			path = collectionView;
+			sourceTree = "<group>";
+		};
 		ADCE1BD91FC027E500ACEB6F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,12 +138,10 @@
 		ADEDECEB1FB211E1007BC9E2 /* SudyingGit */ = {
 			isa = PBXGroup;
 			children = (
+				945FF2351FC06DAB00B78911 /* collectionView */,
+				945FF2341FC06D4F00B78911 /* tableView */,
 				ADEDECEC1FB211E1007BC9E2 /* AppDelegate.h */,
 				ADEDECED1FB211E1007BC9E2 /* AppDelegate.m */,
-				ADEDECEF1FB211E1007BC9E2 /* ViewController.h */,
-				ADEDECF01FB211E1007BC9E2 /* ViewController.m */,
-				AD11848C1FBB5480004E87A7 /* CASPersonTableViewCell.h */,
-				AD11848D1FBB5480004E87A7 /* CASPersonTableViewCell.m */,
 				ADFDB0061FB4A78300962321 /* SBTPerson.h */,
 				ADFDB0081FB4A78300962321 /* SBTPerson.m */,
 				ADFDB00B1FB4A78300962321 /* SBTPersonProvider.h */,
@@ -132,12 +154,6 @@
 				ADEDECF71FB211E1007BC9E2 /* LaunchScreen.storyboard */,
 				ADEDECFA1FB211E1007BC9E2 /* Info.plist */,
 				ADEDECFB1FB211E1007BC9E2 /* main.m */,
-				2BF2677C1FBDE952007E873F /* CASCollectionViewController.h */,
-				2BF2677D1FBDE952007E873F /* CASCollectionViewController.m */,
-				2BF2677F1FBDF540007E873F /* CASCollectionViewCell.h */,
-				2BF267801FBDF540007E873F /* CASCollectionViewCell.m */,
-				2BF267821FBE02CF007E873F /* CASCollectionReusableView.h */,
-				2BF267831FBE02CF007E873F /* CASCollectionReusableView.m */,
 			);
 			path = SudyingGit;
 			sourceTree = "<group>";
