@@ -8,8 +8,9 @@
 
 #import "DTMPersonTableViewCell.h"
 
-static const CGSize DTMPersonSize = {50.f, 50.f};
-static const CGFloat DTMElementOfOffset = 10.f;
+static const CGSize DTMPersonPhotoSize = {50.f, 50.f};
+static const CGFloat DTMElementOffset = 10.f;
+static const CGFloat DTMLabelHeight = 20.f;
 
 @implementation DTMPersonTableViewCell
 
@@ -37,6 +38,7 @@ static const CGFloat DTMElementOfOffset = 10.f;
         _personPhotoImageView.backgroundColor = [UIColor orangeColor];
         [self.contentView addSubview:_personPhotoImageView];
         
+        _elementsOffset = DTMElementOffset;
     }
     return self;
 }
@@ -45,13 +47,22 @@ static const CGFloat DTMElementOfOffset = 10.f;
 {
     [super layoutSubviews];
     
-    self.personPhotoImageView.frame = CGRectMake(10, (CGRectGetHeight(self.frame)/2 - 50)/2, 50, 50);
+    self.personPhotoImageView.frame = CGRectMake(DTMElementOffset, (CGRectGetHeight(self.frame) - DTMPersonPhotoSize.height)/2, DTMPersonPhotoSize.width, DTMPersonPhotoSize.height);
     
-    self.firstNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + DTMElementOfOffset, DTMElementOfOffset, CGRectGetWidth(self.contentView.frame) - CGRectGetWidth(self.personPhotoImageView.frame) - DTMElementOfOffset *3, 20);
+    self.firstNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + DTMElementOffset, DTMElementOffset, CGRectGetWidth(self.contentView.frame) - CGRectGetWidth(self.personPhotoImageView.frame) - DTMElementOffset *3, DTMLabelHeight);
     
-    self.lastNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + DTMElementOfOffset, CGRectGetMaxY(self.firstNameLabel.frame) + DTMElementOfOffset, CGRectGetWidth(self.firstNameLabel.frame), 20);
+    self.lastNameLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + DTMElementOffset, CGRectGetMaxY(self.firstNameLabel.frame) + DTMElementOffset, CGRectGetWidth(self.firstNameLabel.frame), DTMLabelHeight);
     
+    CGSize detailTextLabelSize = [self.descriptionLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.firstNameLabel.frame), CGFLOAT_MAX)];
+    
+    self.descriptionLabel.frame = CGRectMake(CGRectGetMaxX(self.personPhotoImageView.frame) + DTMElementOffset, CGRectGetMaxY(self.lastNameLabel.frame) + DTMElementOffset, CGRectGetWidth(self.firstNameLabel.frame), detailTextLabelSize.height);
+    self.widthOfDescriptionLabel = self.descriptionLabel.frame.size.width;
 }
 
+- (CGFloat)cellHeight
+{
+    CGFloat height = CGRectGetMaxY(self.descriptionLabel.frame) + DTMElementOffset;
+    return height;
+}
 
 @end
