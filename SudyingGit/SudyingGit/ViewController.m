@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "DTMPersonTableViewCell.h"
 #import "SBTPerson.h"
+#import <Masonry/Masonry.h>
 
 static NSString *const DTMCellIdentifier = @"CellIdentifier";
 static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
@@ -133,23 +134,56 @@ static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
 //}
 
 
+//-(void)viewDidLayoutSubviews
+//{
+//    //NSDictionary *views = NSDictionaryOfVariableBindings(self.button1, self.button2, self.tableView);
+//
+//    NSDictionary *views = @{ @"leftButton": self.button1,
+//                             @"rightButton": self.button2,
+//                             @"table": self.tableView};
+//
+//    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[leftButton(==rightButton)]-15-[rightButton]-15-|" options:0 metrics:nil views:views]];
+//
+//    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[table]-0-|" options:0 metrics:nil views:views]];
+//
+//    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[leftButton(==44)]-15-[table]-0-|" options:0 metrics:nil views:views]];
+//
+//    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[rightButton(==44)]-15-[table]-0-|" options:0 metrics:nil views:views]];
+//
+//    return;
+//}
+
+
 -(void)viewDidLayoutSubviews
 {
-    //NSDictionary *views = NSDictionaryOfVariableBindings(self.button1, self.button2, self.tableView);
-
-    NSDictionary *views = @{ @"leftButton": self.button1,
-                             @"rightButton": self.button2,
-                             @"table": self.tableView};
-
-    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[leftButton(==rightButton)]-15-[rightButton]-15-|" options:0 metrics:nil views:views]];
-
-    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[table]-0-|" options:0 metrics:nil views:views]];
-
-    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[leftButton(==44)]-15-[table]-0-|" options:0 metrics:nil views:views]];
-
-    [self.view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[rightButton(==44)]-15-[table]-0-|" options:0 metrics:nil views:views]];
-
-    return;
+    [self.button1 mas_makeConstraints:^(MASConstraintMaker *leftButtonConstraint)
+     {
+         leftButtonConstraint.bottom.equalTo(self.tableView.mas_top).with.offset(-15.0);
+         leftButtonConstraint.top.equalTo(self.view.mas_top).with.offset(15.0);
+         leftButtonConstraint.right.equalTo(self.button2.mas_left).with.offset(- 15.0);
+         leftButtonConstraint.left.equalTo(self.view.mas_left).with.offset(15.0);
+         leftButtonConstraint.width.equalTo(self.button2.mas_width);
+         leftButtonConstraint.height.mas_equalTo(44.0);
+     }];
+    
+    
+    [self.button2 mas_makeConstraints:^(MASConstraintMaker *rightButtonConstraint)
+     {
+         rightButtonConstraint.bottom.equalTo(self.tableView.mas_top).with.offset(-15.0);
+         rightButtonConstraint.top.equalTo(self.view.mas_top).with.offset(15.0);
+         rightButtonConstraint.right.equalTo(self.view.mas_right).with.offset(-15.0);
+         rightButtonConstraint.left.equalTo(self.button1.mas_right).with.offset(-15.0);
+         rightButtonConstraint.width.equalTo(self.button1.mas_width);
+         rightButtonConstraint.height.mas_equalTo(44.0);
+     }];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.bottom.equalTo(self.view.mas_bottom);
+        //make.top.equalTo(self.button1.mas_bottom).with.offset(15.0);
+        make.right.equalTo(self.view.mas_right);
+        make.left.equalTo(self.view.mas_left);
+    }];
 }
 
 
@@ -205,7 +239,7 @@ static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
 
     if(person.personCellType == DTMPersonTableViewCellTypeDefault)
         return 44;
-    
+
     if (person.personCellType == DTMPersonTableViewCellTypeCustom)
     {
         //костыль для рассчета высоты ячейки
@@ -215,22 +249,25 @@ static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
         cell.lastNameLabel.text = person.lastName;
         cell.descriptionLabel.text = person.personDescription;
         [cell layoutSubviews];
-        
+
         CGFloat height = cell.elementsOffset * 4 + cell.firstNameLabel.frame.size.height + cell.lastNameLabel.frame.size.height + cell.descriptionLabel.frame.size.height;
-        
-//        CGFloat height;
-//
-//        UILabel *fakeDescriptionLabel = [UILabel alloc] initWithFrame:CGRectMake(0, 0, , );
-//
-//        fakeDescriptionLabel.text = person.personDescription;
-//        [fakeDescriptionLabel sizeToFit];
-//
-//        height = 44 + fakeDescriptionLabel.frame.size.height;
-//
+
         return height;
     }
-  
+
     return 44;
 }
+
+
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSStringDrawingContext *ctx = [NSStringDrawingContext new];
+//    NSAttributedString *aString = [[NSAttributedString alloc] initWithString:@"The Cell's Text!"];
+//    UITextView *calculationView = [[UITextView alloc] init];
+//    [calculationView setAttributedText:aString];
+//    CGRect textRect = [calculationView.text boundingRectWithSize:self.view.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:calculationView.font} context:ctx];
+//    return textRect.size.height;
+//}
 
 @end

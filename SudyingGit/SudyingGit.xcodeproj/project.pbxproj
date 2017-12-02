@@ -19,6 +19,7 @@
 		CE534CC91FBDE9480080E201 /* DTMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE534CC81FBDE9480080E201 /* DTMCollectionViewController.m */; };
 		CE534CCC1FBDF53F0080E201 /* DTMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE534CCB1FBDF53F0080E201 /* DTMCollectionViewCell.m */; };
 		CE97F5241FB89AC90000601C /* SBTPersonProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97F5231FB89AC90000601C /* SBTPersonProviderTests.m */; };
+		CEAD75BE1FD0426C00293118 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAD75BD1FD0426C00293118 /* Masonry.framework */; };
 		CEBFCC611FBB54A2006B6754 /* DTMPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBFCC601FBB54A2006B6754 /* DTMPersonTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		CE534CCA1FBDF53F0080E201 /* DTMCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTMCollectionViewCell.h; sourceTree = "<group>"; };
 		CE534CCB1FBDF53F0080E201 /* DTMCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTMCollectionViewCell.m; sourceTree = "<group>"; };
 		CE97F5231FB89AC90000601C /* SBTPersonProviderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBTPersonProviderTests.m; sourceTree = "<group>"; };
+		CEAD75BD1FD0426C00293118 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = Externals/Masonry.framework; sourceTree = "<group>"; };
 		CEBFCC5F1FBB54A2006B6754 /* DTMPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTMPersonTableViewCell.h; sourceTree = "<group>"; };
 		CEBFCC601FBB54A2006B6754 /* DTMPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTMPersonTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAD75BE1FD0426C00293118 /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +86,7 @@
 		ADEDECE01FB211E0007BC9E2 = {
 			isa = PBXGroup;
 			children = (
+				CEAD75BD1FD0426C00293118 /* Masonry.framework */,
 				ADEDECEB1FB211E1007BC9E2 /* SudyingGit */,
 				ADEDED181FB22D41007BC9E2 /* SudyingGitTests */,
 				ADEDECEA1FB211E1007BC9E2 /* Products */,
@@ -330,6 +334,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Externals";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -379,6 +384,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Externals";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -392,6 +398,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Externals",
+				);
 				INFOPLIST_FILE = SudyingGit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sbertech.SudyingGit;
@@ -408,6 +418,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Externals",
+				);
 				INFOPLIST_FILE = SudyingGit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sbertech.SudyingGit;
