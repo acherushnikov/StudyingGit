@@ -19,5 +19,7 @@
 @property (nonatomic, assign) CGFloat widthOfDescriptionLabel; //чтобы работал костыль с адаптивной ячейкой
 
 - (CGFloat)cellHeight;
+- (void)animationForAddingInTable;
+- (void)animationForRemovingFromTable;
 
 @end

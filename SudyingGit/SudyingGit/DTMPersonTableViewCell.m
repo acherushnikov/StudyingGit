@@ -65,4 +65,8 @@ static const CGFloat DTMLabelHeight = 20.f;
     return height;
 }
 
+#pragma mark - animation
+
+
+
 @end

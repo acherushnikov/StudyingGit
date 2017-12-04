@@ -55,18 +55,25 @@ static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
     self.view.backgroundColor = [UIColor yellowColor];
     
     self.button1 = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.button1.translatesAutoresizingMaskIntoConstraints = NO;
+    //self.button1.translatesAutoresizingMaskIntoConstraints = NO;
     self.button1.backgroundColor = [UIColor greenColor];
+    [self.button1 setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+    [self.button1 setTitle:@"ADD" forState:UIControlStateNormal];
     [self.view addSubview:self.button1];
+    [self.button1 addTarget:self action:@selector(addCell) forControlEvents:UIControlEventTouchUpInside];
 
     self.button2 = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.button2.translatesAutoresizingMaskIntoConstraints = NO;
+    //self.button2.translatesAutoresizingMaskIntoConstraints = NO;
     self.button2.backgroundColor = [UIColor redColor];
+    [self.button2 setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+    [self.button2 setTitle:@"REMOVE" forState:UIControlStateNormal];
+    self.button2.alpha = 0.5;
     [self.view addSubview:self.button2];
+    [self.button2 addTarget:self action:@selector(removeCell) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.tableView = [UITableView new];
-    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    //self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.tableView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -172,7 +179,7 @@ static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
          rightButtonConstraint.bottom.equalTo(self.tableView.mas_top).with.offset(-15.0);
          rightButtonConstraint.top.equalTo(self.view.mas_top).with.offset(15.0);
          rightButtonConstraint.right.equalTo(self.view.mas_right).with.offset(-15.0);
-         rightButtonConstraint.left.equalTo(self.button1.mas_right).with.offset(-15.0);
+         rightButtonConstraint.left.equalTo(self.button1.mas_right).with.offset(15.0);
          rightButtonConstraint.width.equalTo(self.button1.mas_width);
          rightButtonConstraint.height.mas_equalTo(44.0);
      }];
@@ -218,11 +225,12 @@ static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
         personCell.lastNameLabel.text = person.lastName;
         personCell.descriptionLabel.text = person.personDescription;
     }
-    
-   
-    
     return cell;
 }
+
+
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView //optional
 {
@@ -231,6 +239,33 @@ static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
 
 
 #pragma mark - UITableViewDelegate
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect frame = cell.frame;
+    [cell setFrame:CGRectMake(0, self.tableView.frame.size.height, frame.size.width, frame.size.height)];
+    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionTransitionCrossDissolve  animations:
+     ^{
+         [cell setFrame:frame];
+     }
+                     completion:^(BOOL finished) {}
+     ];
+    
+    return;
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath*)indexPath
+{
+   
+}
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    return;
+}
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -258,16 +293,65 @@ static NSString *const DTMPersonCellIdentifier = @"PersonCellIdentifier";
     return 44;
 }
 
+#pragma mark - addingAnCells
 
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSStringDrawingContext *ctx = [NSStringDrawingContext new];
-//    NSAttributedString *aString = [[NSAttributedString alloc] initWithString:@"The Cell's Text!"];
-//    UITextView *calculationView = [[UITextView alloc] init];
-//    [calculationView setAttributedText:aString];
-//    CGRect textRect = [calculationView.text boundingRectWithSize:self.view.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:calculationView.font} context:ctx];
-//    return textRect.size.height;
-//}
+- (void)addCell
+{
+    if (self.personList.count == 2)
+        self.button2.alpha = 1.f;
+    
+    NSMutableArray *newPersonList = [[NSMutableArray alloc] initWithArray:self.personList];
+    SBTPerson *person;
+    if ((self.personList.count % 2) == 0)
+    {
+        person = (SBTPerson *)self.personList[0];
+    }
+    else
+    {
+        person = (SBTPerson *)self.personList[1];
+    }
+    
+    [newPersonList addObject:person];
+    self.personList = newPersonList;
+    //[self.tableView reloadData]; // for animating adding:
+    
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:(self.personList.count-1) inSection:0]];
+    [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+    
+    return;
+}
+
+- (void)removeCell
+{
+    if (self.personList.count <= 2)
+        return;
+    
+    if (self.personList.count == 3)
+        self.button2.alpha = 0.5;
+    
+    
+    NSMutableArray *newPersonList = [[NSMutableArray alloc] initWithArray:self.personList];
+    [newPersonList removeObjectAtIndex:(self.personList.count - 1)];
+    self.personList = newPersonList;
+    //[self.tableView reloadData];
+    
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(self.personList.count) inSection:0]];
+    
+    
+    CGRect frame = CGRectMake(0, cell.frame.origin.y - 300, cell.frame.size.width, cell.frame.size.height);
+    [UIView animateWithDuration:0.6 delay:0 options:UIViewAnimationOptionTransitionNone  animations:
+       ^{
+            [cell setFrame:frame];
+        }
+        completion:nil
+    ];
+
+    
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:(self.personList.count) inSection:0]];
+    
+    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+    
+    return;
+}
 
 @end
