@@ -396,7 +396,7 @@
 					"$(PROJECT_DIR)/Externals",
 				);
 				INFOPLIST_FILE = SudyingGit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(PROJECT_DIR)/Externals";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sbertech.SudyingGit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -417,7 +417,7 @@
 					"$(PROJECT_DIR)/Externals",
 				);
 				INFOPLIST_FILE = SudyingGit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(PROJECT_DIR)/Externals";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sbertech.SudyingGit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

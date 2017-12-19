@@ -72,12 +72,12 @@ static NSString *KVBDescriptions[] = {
 	self.tableView = [UITableView new];
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0;
     
 	[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CASCellIdentifier];
 	[self.tableView registerClass:[CASPersonTableViewCell class] forCellReuseIdentifier:CASPersonTableViewCellIdentifier];
     
-   self.tableView.estimatedRowHeight = 44.0;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
 	[self.view addSubview:self.tableView];
     
@@ -107,9 +107,6 @@ static NSString *KVBDescriptions[] = {
     
     [self setConstrains];
     
-    CGPoint content = CGPointMake(0, 15.f);
-    [self.tableView setContentOffset:content animated:YES];
-    
     
     
 }
@@ -124,7 +121,7 @@ static NSString *KVBDescriptions[] = {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	CASPersonTableViewCell *cell;
+    id cell;
 	SBTPerson *person = self.personList[indexPath.row];
     
 	if (person.personCellType == CASPersonCellTypeDefault)
@@ -135,20 +132,22 @@ static NSString *KVBDescriptions[] = {
 	else
 	{
 		cell = [tableView dequeueReusableCellWithIdentifier:CASPersonTableViewCellIdentifier forIndexPath:indexPath];
+        
 	}
     
     [cell prepareForReuse];
 	
 	if (person.personCellType == CASPersonCellTypeDefault)
 	{
-		cell.textLabel.text = person.firstName;
+        UITableViewCell *defaultCell = cell;
+        defaultCell.textLabel.text = person.firstName;
 	}
 	else
 	{
 		CASPersonTableViewCell *personCell = (id)cell;
 		personCell.firstNameLabel.text = person.firstName;
 		personCell.lastNameLabel.text = person.lastName;
-		personCell.descriptionPersonLabel.text = person.personDescription;		
+		personCell.descriptionPersonLabel.text = person.personDescription;
 	}
 	return cell;
 }
@@ -166,9 +165,6 @@ static NSString *KVBDescriptions[] = {
 
 - (void) setConstrains
 {
-    self.leftButton.translatesAutoresizingMaskIntoConstraints = NO;
-    self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
-    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).with.offset(KVBElementOffset);
@@ -180,9 +176,9 @@ static NSString *KVBDescriptions[] = {
     }];
     
     [self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).with.offset(KVBElementOffset);
-        make.right.equalTo(self.view.mas_right).with.offset(-KVBElementOffset);
-        make.bottom.equalTo(self.tableView.mas_top).with.offset(-KVBElementOffset);
+        make.top.equalTo(self.view.mas_top).offset(KVBElementOffset);
+        make.right.equalTo(self.view.mas_right).offset(-KVBElementOffset);
+        make.bottom.equalTo(self.tableView.mas_top).offset(-KVBElementOffset);
         make.height.mas_equalTo(KVBButtonHeight);
     }];
     
@@ -258,10 +254,10 @@ static NSString *KVBDescriptions[] = {
     
     [self.tableView endUpdates];
     
-//    if(![self isVisible:newIndexPath])
-//    {
-//         [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//    }
+    if(![self isVisible:newIndexPath])
+    {
+         [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
     
     
 }
@@ -304,17 +300,6 @@ static NSString *KVBDescriptions[] = {
     }
 }
 
-//- (void) addHeightForPerson:(SBTPerson*) person
-//{
-//    
-//    CGFloat height = [CASPersonTableViewCell heightForCellWithPerson:person];
-//    
-//    if (person.personCellType ==CASPersonCellTypeDefault) {
-//        height = 40;
-//    }
-//    [self.heights addObject:[NSNumber numberWithFloat:height]];
-//    
-//}
 
 
 @end
